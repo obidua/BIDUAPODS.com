@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --svg-background-pattern: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html {
+  background: linear-gradient(-45deg, #f8fafc, #f1f5f9, #e2e8f0, #cbd5e1, #94a3b8, #64748b);
+  background-size: 800% 800%; /* Increased size for more movement */
+  animation: moveBackground 30s ease infinite; /* Slower animation for a grander feel */
+  min-height: 100vh;
+}
+
+.dark html {
+  background: linear-gradient(-45deg, #0f0f23, #1a1a2e, #16213e, #0f3460, #533483, #7209b7, #2d1b69);
+  background-size: 800% 800%; /* Increased size for more movement */
+  animation: moveBackground 40s ease infinite; /* Slower animation for a grander feel */
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.35;
+  box-shadow:
+    /* Small bright stars - increased size and brightness */
+    100px 200px 0 3px rgba(255, 255, 255, 1), 300px 150px 0 2px rgba(255, 255, 255, 0.9),
+    500px 300px 0 4px rgba(255, 255, 255, 1), 700px 100px 0 3px rgba(255, 255, 255, 0.8),
+    900px 250px 0 3px rgba(255, 255, 255, 1), 1100px 180px 0 2px rgba(255, 255, 255, 0.7),
+    1300px 320px 0 4px rgba(255, 255, 255, 1), 1500px 80px 0 3px rgba(255, 255, 255, 0.9),
+    200px 400px 0 3px rgba(255, 255, 255, 0.8), 400px 350px 0 4px rgba(255, 255, 255, 1),
+    600px 450px 0 2px rgba(255, 255, 255, 0.7), 800px 380px 0 4px rgba(255, 255, 255, 1),
+    1000px 420px 0 3px rgba(255, 255, 255, 0.6), 1200px 480px 0 4px rgba(255, 255, 255, 1),
+    1400px 360px 0 3px rgba(255, 255, 255, 0.8), 150px 50px 0 2px rgba(255, 255, 255, 0.7),
+    350px 80px 0 4px rgba(255, 255, 255, 1), 550px 120px 0 3px rgba(255, 255, 255, 0.8),
+    750px 60px 0 3px rgba(255, 255, 255, 1), 950px 90px 0 2px rgba(255, 255, 255, 0.6),
+    1150px 40px 0 4px rgba(255, 255, 255, 1), 1350px 110px 0 3px rgba(255, 255, 255, 0.7),
+    /* Medium stars - much larger and brighter */
+    250px 500px 0 6px rgba(255, 255, 255, 0.9), 450px 520px 0 5px rgba(255, 255, 255, 0.8),
+    650px 480px 0 7px rgba(255, 255, 255, 1), 850px 540px 0 5px rgba(255, 255, 255, 0.7),
+    1050px 510px 0 6px rgba(255, 255, 255, 0.9), 1250px 490px 0 5px rgba(255, 255, 255, 0.8),
+    1450px 530px 0 7px rgba(255, 255, 255, 1), 80px 600px 0 6px rgba(255, 255, 255, 0.9),
+    280px 620px 0 5px rgba(255, 255, 255, 0.8), 480px 580px 0 7px rgba(255, 255, 255, 1),
+    680px 640px 0 5px rgba(255, 255, 255, 0.7), 880px 610px 0 6px rgba(255, 255, 255, 0.9),
+    1080px 590px 0 5px rgba(255, 255, 255, 0.8), 1280px 630px 0 7px rgba(255, 255, 255, 1),
+    1480px 600px 0 6px rgba(255, 255, 255, 0.9), 120px 700px 0 5px rgba(255, 255, 255, 0.8),
+    /* Large planets - very bright and prominent */
+    100px 100px 0 12px rgba(255, 255, 255, 0.9), 250px 50px 0 10px rgba(255, 255, 255, 0.8),
+    400px 200px 0 15px rgba(255, 255, 255, 1), 600px 120px 0 12px rgba(255, 255, 255, 0.7),
+    800px 300px 0 18px rgba(255, 255, 255, 0.9), 1000px 250px 0 12px rgba(255, 255, 255, 0.8),
+    1200px 150px 0 10px rgba(255, 255, 255, 0.7), 1400px 350px 0 15px rgba(255, 255, 255, 1),
+    1600px 280px 0 12px rgba(255, 255, 255, 0.6), 1800px 180px 0 18px rgba(255, 255, 255, 1),
+    2000px 400px 0 12px rgba(255, 255, 255, 0.8), 2200px 100px 0 10px rgba(255, 255, 255, 0.7),
+    2400px 220px 0 15px rgba(255, 255, 255, 1), 2600px 320px 0 12px rgba(255, 255, 255, 0.6),
+    2800px 50px 0 18px rgba(255, 255, 255, 1),
+    /* Extra large nebulae/galaxies - massive and glowing */
+    320px 720px 0 25px rgba(255, 255, 255, 0.6), 520px 680px 0 20px rgba(255, 255, 255, 0.7),
+    720px 740px 0 30px rgba(255, 255, 255, 0.8), 920px 710px 0 25px rgba(255, 255, 255, 0.5),
+    1120px 690px 0 35px rgba(255, 255, 255, 0.7), 1320px 730px 0 20px rgba(255, 255, 255, 0.6),
+    1520px 700px 0 30px rgba(255, 255, 255, 0.8), 1720px 650px 0 25px rgba(255, 255, 255, 0.7),
+    /* Additional scattered bright stars */
+    50px 350px 0 4px rgba(255, 255, 255, 0.8), 180px 280px 0 3px rgba(255, 255, 255, 0.7),
+    380px 420px 0 5px rgba(255, 255, 255, 1), 580px 380px 0 3px rgba(255, 255, 255, 0.6),
+    780px 520px 0 4px rgba(255, 255, 255, 0.8), 980px 480px 0 3px rgba(255, 255, 255, 0.7),
+    1180px 420px 0 5px rgba(255, 255, 255, 1), 1380px 380px 0 4px rgba(255, 255, 255, 0.8),
+    1580px 520px 0 3px rgba(255, 255, 255, 0.6), 1780px 480px 0 5px rgba(255, 255, 255, 1);
+  animation: starFieldMove 180s linear infinite; /* Slower animation for light mode */
+}
+
+.dark body::before {
+  box-shadow: 
+    /* Small bright stars - electric cyan and blue with glow */
+    100px 200px 0 5px rgba(0, 255, 255, 1), 300px 150px 0 4px rgba(0, 191, 255, 1),
+    500px 300px 0 6px rgba(0, 255, 255, 1), 700px 100px 0 4px rgba(0, 191, 255, 0.9),
+    900px 250px 0 5px rgba(0, 255, 255, 1), 1100px 180px 0 3px rgba(0, 191, 255, 0.8),
+    1300px 320px 0 6px rgba(0, 255, 255, 1), 1500px 80px 0 4px rgba(0, 191, 255, 1),
+    200px 400px 0 5px rgba(0, 255, 255, 0.9), 400px 350px 0 6px rgba(0, 191, 255, 1),
+    600px 450px 0 4px rgba(0, 255, 255, 0.8), 800px 380px 0 6px rgba(0, 191, 255, 1),
+    1000px 420px 0 3px rgba(0, 255, 255, 0.7), 1200px 480px 0 6px rgba(0, 191, 255, 1),
+    1400px 360px 0 5px rgba(0, 255, 255, 0.9), 150px 50px 0 4px rgba(0, 191, 255, 0.8),
+    350px 80px 0 6px rgba(0, 255, 255, 1), 550px 120px 0 5px rgba(0, 191, 255, 0.9),
+    750px 60px 0 5px rgba(0, 255, 255, 1), 950px 90px 0 3px rgba(0, 191, 255, 0.7),
+    1150px 40px 0 6px rgba(0, 255, 255, 1), 1350px 110px 0 4px rgba(0, 191, 255, 0.8),
+    /* Medium stars - purple and violet with strong glow */
+    250px 500px 0 10px rgba(138, 43, 226, 1), 450px 520px 0 8px rgba(75, 0, 130, 0.9),
+    650px 480px 0 12px rgba(138, 43, 226, 1), 850px 540px 0 8px rgba(75, 0, 130, 0.8),
+    1050px 510px 0 10px rgba(138, 43, 226, 1), 1250px 490px 0 8px rgba(75, 0, 130, 0.7),
+    1450px 530px 0 12px rgba(138, 43, 226, 1), 80px 600px 0 10px rgba(75, 0, 130, 0.9),
+    280px 620px 0 8px rgba(138, 43, 226, 1), 480px 580px 0 12px rgba(75, 0, 130, 0.8),
+    680px 640px 0 10px rgba(138, 43, 226, 1), 880px 610px 0 8px rgba(75, 0, 130, 0.7),
+    1080px 590px 0 10px rgba(138, 43, 226, 1), 1280px 630px 0 12px rgba(75, 0, 130, 0.9),
+    1480px 600px 0 10px rgba(138, 43, 226, 1), 120px 700px 0 8px rgba(75, 0, 130, 0.8),
+    /* Large planets - bright cyan and blue with massive glow */
+    100px 100px 0 20px rgba(0, 255, 255, 0.9), 250px 50px 0 15px rgba(0, 191, 255, 0.8),
+    400px 200px 0 25px rgba(0, 255, 255, 1), 600px 120px 0 18px rgba(0, 191, 255, 0.7),
+    800px 300px 0 30px rgba(0, 255, 255, 0.9), 1000px 250px 0 20px rgba(0, 191, 255, 0.8),
+    1200px 150px 0 15px rgba(0, 255, 255, 0.7), 1400px 350px 0 25px rgba(0, 191, 255, 1),
+    1600px 280px 0 18px rgba(0, 255, 255, 0.6), 1800px 180px 0 30px rgba(0, 191, 255, 1),
+    2000px 400px 0 20px rgba(0, 255, 255, 0.8), 2200px 100px 0 15px rgba(0, 191, 255, 0.7),
+    2400px 220px 0 25px rgba(0, 255, 255, 1), 2600px 320px 0 18px rgba(0, 191, 255, 0.6),
+    2800px 50px 0 30px rgba(0, 255, 255, 1),
+    /* Extra large nebulae - purple and violet with enormous glow */
+    320px 720px 0 40px rgba(138, 43, 226, 0.8), 520px 680px 0 35px rgba(75, 0, 130, 0.7),
+    720px 740px 0 50px rgba(138, 43, 226, 0.9), 920px 710px 0 40px rgba(75, 0, 130, 0.6),
+    1120px 690px 0 60px rgba(138, 43, 226, 0.9), 1320px 730px 0 35px rgba(75, 0, 130, 0.7),
+    1520px 700px 0 50px rgba(138, 43, 226, 0.8), 1720px 650px 0 40px rgba(75, 0, 130, 0.8),
+    /* Massive galaxies - ultra bright and huge */
+    180px 120px 0 70px rgba(0, 255, 255, 0.5), 580px 220px 0 80px rgba(138, 43, 226, 0.6),
+    980px 320px 0 90px rgba(0, 191, 255, 0.5), 1380px 420px 0 70px rgba(75, 0, 130, 0.5),
+    1780px 520px 0 85px rgba(0, 255, 255, 0.6), 380px 620px 0 75px rgba(138, 43, 226, 0.5),
+    780px 720px 0 100px rgba(0, 191, 255, 0.6), 1180px 820px 0 70px rgba(75, 0, 130, 0.5),
+    /* Additional bright scattered stars */
+    50px 350px 0 6px rgba(0, 255, 255, 0.8), 180px 280px 0 4px rgba(0, 191, 255, 0.7),
+    380px 420px 0 8px rgba(138, 43, 226, 1), 580px 380px 0 5px rgba(75, 0, 130, 0.6),
+    780px 520px 0 6px rgba(0, 255, 255, 0.8), 980px 480px 0 4px rgba(0, 191, 255, 0.7),
+    1180px 420px 0 8px rgba(138, 43, 226, 1), 1380px 380px 0 6px rgba(75, 0, 130, 0.8),
+    1580px 520px 0 5px rgba(0, 255, 255, 0.6), 1780px 480px 0 8px rgba(0, 191, 255, 1),
+    /* More medium stars for cosmic richness */
+    220px 160px 0 10px rgba(0, 255, 255, 0.7), 420px 260px 0 12px rgba(138, 43, 226, 0.8),
+    620px 360px 0 8px rgba(0, 191, 255, 0.6), 820px 460px 0 14px rgba(75, 0, 130, 0.9),
+    1020px 560px 0 10px rgba(0, 255, 255, 0.7), 1220px 660px 0 12px rgba(138, 43, 226, 0.8),
+    1420px 760px 0 8px rgba(0, 191, 255, 0.6), 1620px 860px 0 14px rgba(75, 0, 130, 0.9);
+  animation: starFieldMove 240s linear infinite; /* Slower animation for dark mode */
+}
+
+@keyframes starFieldMove {
+  0% {
+    transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-200px) translateY(-100px) scale(1.1) rotate(10deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-400px) translateY(150px) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-600px) translateY(-80px) scale(0.9) rotate(-10deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-800px) translateY(120px) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Futuristic glow animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 255, 255, 0.3),
+      0 0 30px rgba(0, 255, 255, 0.2), 0 0 40px rgba(138, 43, 226, 0.1),
+      inset 0 0 10px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6),
+      0 0 60px rgba(0, 255, 255, 0.4), 0 0 80px rgba(138, 43, 226, 0.3),
+      inset 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    border-color: rgba(0, 255, 255, 0.9);
+  }
+}
+
+/* New animation for subtle floating/shimmering of cards */
+@keyframes float-shimmer {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1), 0 0 20px rgba(138, 43, 226, 0.05);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.005);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), 0 0 30px rgba(138, 43, 226, 0.1);
+  }
+}
+
+.dark-mode-card-glow {
+  animation: pulse-glow 3s ease-in-out infinite, float-shimmer 8s ease-in-out infinite; /* Combined animations */
+}
+
+/* Ensure fixed header stays on top */
+nav[class*="fixed"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+/* Prevent content from hiding behind fixed header */
+main {
+  padding-top: 4rem; /* 64px to match h-16 header height */
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Light mode border enhancements - keep dark mode unchanged */
+html:not(.dark) .border-gray-100,
+html:not(.dark) .border-gray-200,
+html:not(.dark) .border-gray-300 { /* Changed to a lighter cool grey for better visibility */
+  border-color: #a0b0c0 !important;
+}
