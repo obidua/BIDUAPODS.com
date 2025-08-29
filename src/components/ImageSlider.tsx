@@ -21,6 +21,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const clearAutoPlay = () => {
     if (autoPlayRef.current) {
@@ -41,6 +42,28 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     );
   };
 
+  // Programmatically play video when it becomes active
+  useEffect(() => {
+    if (isCurrentMediaVideo() && videoRef.current) {
+      const playVideo = async () => {
+        try {
+          await videoRef.current?.play();
+        } catch (error) {
+          console.log('Video autoplay prevented by browser:', error);
+          // Fallback: try to play after a short delay
+          setTimeout(async () => {
+            try {
+              await videoRef.current?.play();
+            } catch (retryError) {
+              console.log('Video autoplay retry failed:', retryError);
+            }
+          }, 100);
+        }
+      };
+      
+      playVideo();
+    }
+  }, [currentIndex, images]);
   useEffect(() => {
     clearAutoPlay();
     // Don't start auto-play if user is interacting, only 1 image, or current media is video
@@ -121,11 +144,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           >
             {isVideo(images[currentIndex]) ? (
               <motion.video
+                ref={videoRef}
                 src={images[currentIndex]}
                 className="w-full h-full object-cover block"
                 autoPlay
                 muted
                 playsInline
+                loop
                 onEnded={handleVideoEnded}
                 whileHover={{ scale: 1.02 }}
                 onError={(e) => {
