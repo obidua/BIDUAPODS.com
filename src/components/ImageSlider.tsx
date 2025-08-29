@@ -184,7 +184,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 autoPlay
                 muted
                 playsInline
-                loop
                 onEnded={handleVideoEnded}
                 onPlay={() => setIsPaused(false)}
                 onPause={() => setIsPaused(true)}
