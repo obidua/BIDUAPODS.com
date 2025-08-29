@@ -235,6 +235,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             >
               <Play className="h-12 w-12 text-gray-800 dark:text-white fill-current" />
             </motion.button>
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-4 py-2 text-gray-900 dark:text-white font-medium text-sm shadow-lg">
+              Tap to watch video
+            </div>
           </motion.div>
         )}
 
