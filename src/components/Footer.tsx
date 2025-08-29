@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
                 <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   BIDUA Pods
                 </span>
-                <p className="text-gray-400 text-xs">Premium Sleep Solutions</p>
+                <p className="text-gray-400 text-xs mt-0.5">Premium Sleep Solutions</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-sm leading-relaxed">
@@ -35,8 +35,8 @@ const Footer: React.FC = () => {
             
             {/* Company Info - Simplified */}
             <div className="mb-6">
-              <h4 className="text-cyan-400 font-medium mb-2 text-sm">Companies</h4>
-              <div className="text-gray-300 space-y-0.5 text-sm">
+              <h4 className="text-cyan-400 font-semibold mb-3 text-sm uppercase tracking-wider">Companies</h4>
+              <div className="text-gray-300 space-y-1 text-sm">
                 <p>BIDUA Industries Pvt Ltd</p>
                 <p>Motorsers Pvt Ltd</p>
               </div>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-8 h-8 bg-white/5 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-600/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  className="w-8 h-8 bg-white/5 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-600/20 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 group"
                   aria-label={social.label}
                 >
                   <social.icon className="h-4 w-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Quick Links</h3>
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
               {[
                 { href: "/products", label: "Products" },
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Services</h3>
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h3>
             <ul className="space-y-2">
               {[
                 "Manufacturing",
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
                 "Custom Design",
                 "Global Shipping"
               ].map((service, index) => (
-                <li key={index} className="text-gray-300 text-sm flex items-center">
+                <li key={index} className="text-gray-300 text-sm flex items-center hover:text-cyan-400 transition-colors duration-200 cursor-default">
                   <div className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></div>
                   {service}
                 </li>
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Info - Streamlined */}
           <div className="lg:col-span-4">
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Get In Touch</h3>
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Get In Touch</h3>
             <div className="space-y-4">
               {/* Email */}
               <div className="flex items-start space-x-3">
@@ -116,7 +116,7 @@ const Footer: React.FC = () => {
                   <Mail className="h-4 w-4 text-cyan-400" />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1 text-sm">Email</h4>
+                  <h4 className="text-white font-semibold mb-1 text-sm">Email</h4>
                   <div className="space-y-0.5">
                     <a href="mailto:biduaindustries@gmail.com" className="text-gray-300 hover:text-cyan-400 transition-colors text-sm block">
                       biduaindustries@gmail.com
@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                   <Phone className="h-4 w-4 text-cyan-400" />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1 text-sm">Phone</h4>
+                  <h4 className="text-white font-semibold mb-1 text-sm">Phone</h4>
                   <a href="tel:9512921903" className="text-gray-300 hover:text-cyan-400 transition-colors text-sm">
                     +91 9512921903
                   </a>
@@ -147,7 +147,7 @@ const Footer: React.FC = () => {
                   <MapPin className="h-4 w-4 text-cyan-400" />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium mb-1 text-sm">Location</h4>
+                  <h4 className="text-white font-semibold mb-1 text-sm">Location</h4>
                   <p className="text-gray-300 text-sm">
                     H-77 Sector 63<br />
                     Noida, Uttar Pradesh
@@ -160,10 +160,10 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section - Simplified */}
         <div className="border-t border-white/5 mt-8 pt-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between space-y-3 lg:space-y-0">
+          <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>© 2025 BIDUA Pods. All rights reserved.</span>
+              <span className="text-center lg:text-left">© 2025 BIDUA Pods. All rights reserved.</span>
               <span className="hidden sm:inline">•</span>
               <span className="hidden sm:inline flex items-center">
                 Made with <Heart className="h-3 w-3 text-red-400 mx-1" /> in India
