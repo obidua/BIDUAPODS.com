@@ -283,13 +283,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             </div>
             
             {/* Media Type Indicator */}
-            {isVideo(images[currentIndex]) && (
-              <div className="absolute top-3 left-3 bg-black/50 text-white px-2 py-1 rounded text-xs font-medium z-10">
-                VIDEO
-              </div>
-            )}
-          </>
-        )}
       </div>
 
       {/* Lightbox - only show for images */}
