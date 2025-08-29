@@ -283,6 +283,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             </div>
             
             {/* Media Type Indicator */}
+          </>
+        )}
       </div>
 
       {/* Lightbox - only show for images */}
