@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import Lightbox from './Lightbox';
 
 interface ImageSliderProps {
@@ -21,6 +21,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const clearAutoPlay = () => {
@@ -37,6 +38,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   // Handle video ended event
   const handleVideoEnded = () => {
+    setIsPaused(true);
     setCurrentIndex((prevIndex) => 
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
@@ -45,17 +47,21 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   // Programmatically play video when it becomes active
   useEffect(() => {
     if (isCurrentMediaVideo() && videoRef.current) {
+      setIsPaused(true);
       const playVideo = async () => {
         try {
           await videoRef.current?.play();
+          setIsPaused(false);
         } catch (error) {
           console.log('Video autoplay prevented by browser:', error);
           // Fallback: try to play after a short delay
           setTimeout(async () => {
             try {
               await videoRef.current?.play();
+              setIsPaused(false);
             } catch (retryError) {
               console.log('Video autoplay retry failed:', retryError);
+              setIsPaused(true);
             }
           }, 100);
         }
@@ -122,6 +128,34 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     setIsLightboxOpen(false);
   };
 
+  const handleVideoClick = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      try {
+        if (isPaused) {
+          await videoRef.current.play();
+          setIsPaused(false);
+        } else {
+          videoRef.current.pause();
+          setIsPaused(true);
+        }
+      } catch (error) {
+        console.log('Video play/pause failed:', error);
+      }
+    }
+  };
+
+  const handlePlayButtonClick = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      try {
+        await videoRef.current.play();
+        setIsPaused(false);
+      } catch (error) {
+        console.log('Video play failed:', error);
+      }
+    }
+  };
   if (images.length === 0) return null;
 
   // Helper function to determine if media is video
@@ -152,6 +186,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 playsInline
                 loop
                 onEnded={handleVideoEnded}
+                onPlay={() => setIsPaused(false)}
+                onPause={() => setIsPaused(true)}
+                onClick={handleVideoClick}
                 whileHover={{ scale: 1.02 }}
                 onError={(e) => {
                   const target = e.target as HTMLVideoElement;
@@ -180,6 +217,30 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             )}
           </motion.div>
         </AnimatePresence>
+
+        {/* Play Button Overlay for Videos */}
+        {isCurrentMediaVideo() && isPaused && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm z-20"
+            onClick={handlePlayButtonClick}
+          >
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full p-6 shadow-2xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-200"
+              onClick={handlePlayButtonClick}
+            >
+              <Play className="h-12 w-12 text-gray-800 dark:text-white fill-current" />
+            </motion.button>
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-medium">
+              Tap to play video
+            </div>
+          </motion.div>
+        )}
 
         {images.length > 1 && (
           <>
