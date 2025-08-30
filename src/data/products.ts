@@ -297,6 +297,123 @@ export const products: Product[] = [
       typicalConsumption: '~65W (optimized)',
       freshAirVentilation: '~35 m³/h with adjustable flow'
     }
+  },
+  {
+    id: 'platinum-frp-fully-loaded',
+    name: 'Platinum FRP Series - Fully Loaded Pod',
+    description: 'Premium 100% Made in India FRP capsule sleeping pod with complete smart features, digital safe, fire safety systems, and luxury amenities. Perfect for high-end hospitality and premium accommodations.',
+    price: '₹3,00,000 per set (2 pods)',
+    origin: 'made-in-india',
+    images: [
+      '/Pods_Images/Made in India T1/Main.jpg',
+      '/Pods_Images/Made in India T1/Internal view.jpeg',
+      '/Pods_Images/Made in India T1/outer view.jpeg',
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-28-44.jpg'
+    ],
+    features: [
+      'Smart Panel with USB & universal charging point',
+      'Premium wiring (ISI-standard RR Kabel FRLS)',
+      'Cosmetic mirror with touch LED function (Saint Gobain & ModiGuard)',
+      'Reading & ceiling LED lights (ISI standard, 1-year warranty)',
+      'Digital safe locker for security',
+      'Fire extinguisher (as per Indian standards)',
+      'Smoke alarm detector (Indian-made)',
+      'Stainless steel ladder & handle',
+      'Hanging hooks (SS material)',
+      'Optional: Smart TV & Wireless Headphones (Indian assembled brand)',
+      'High-quality fiberglass with mild steel structure',
+      'Adjustable 4-inch AC duct for fresh airflow',
+      '4-inch comfort mattress with pillow (customizable, premium quality)',
+      'FRP sliding door with smooth operation',
+      'Customizable color as per RAL Code'
+    ],
+    specifications: {
+      dimensions: 'External: 2150 × 1270 × 1270 mm | Internal: 2000 × 1000 × 1000 mm',
+      materials: 'High-quality fiberglass (FRP) with mild steel structure',
+      colors: 'Customizable as per RAL Code',
+      ratedVoltage: '220V (Indian standard)',
+      lightingPower: 'ISI standard LED system with 1-year warranty',
+      typicalConsumption: '~70W (energy optimized for Indian conditions)',
+      freshAirVentilation: 'Adjustable 4-inch AC duct system'
+    }
+  },
+  {
+    id: 'platinum-frp-mid-tier',
+    name: 'Platinum FRP Series - Mid-tier Pod',
+    description: '100% Made in India FRP capsule with essential features including structure, mattress, electrical switches, USB charging, mirror, and LED lights. Ideal for budget-conscious premium installations.',
+    price: '₹2,50,000 per set (2 pods)',
+    origin: 'made-in-india',
+    images: [
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-28-45.jpg',
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-28-46.jpg',
+      '/Pods_Images/Made in India T1/Internal view.jpeg',
+      '/Pods_Images/Made in India T1/outer view.jpeg'
+    ],
+    features: [
+      'FRP structure with MS frame',
+      '4-inch comfort mattress with pillow',
+      'Electrical switches and USB charging points',
+      'Cosmetic mirror with basic lighting',
+      'Reading & ceiling LED lights',
+      'Stainless steel ladder & handle',
+      'FRP sliding door',
+      'Adjustable ventilation system',
+      'High-quality fiberglass construction',
+      'Lightweight yet durable design',
+      'Customizable color options',
+      'Made in India quality assurance',
+      'Cost-effective premium solution',
+      'Easy maintenance and cleaning',
+      'Suitable for commercial applications'
+    ],
+    specifications: {
+      dimensions: 'External: 2150 × 1270 × 1270 mm | Internal: 2000 × 1000 × 1000 mm',
+      materials: 'High-quality fiberglass (FRP) with mild steel structure',
+      colors: 'Customizable as per RAL Code',
+      ratedVoltage: '220V (Indian standard)',
+      lightingPower: 'Basic LED lighting system',
+      typicalConsumption: '~50W (energy efficient)',
+      freshAirVentilation: 'Adjustable 4-inch AC duct system'
+    }
+  },
+  {
+    id: 'platinum-frp-basic',
+    name: 'Platinum FRP Series - Basic Pod',
+    description: '100% Made in India FRP capsule structure with MS frame and sliding door. Basic configuration for custom fitouts and budget installations. Bedding and electronics not included.',
+    price: '₹2,00,000 per set (2 pods)',
+    origin: 'made-in-india',
+    images: [
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-29-22.jpg',
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-29-23.jpg',
+      '/Pods_Images/Made in India T1/Main.jpg',
+      '/Pods_Images/Made in India T1/outer view.jpeg'
+    ],
+    features: [
+      'FRP capsule structure with MS frame',
+      'FRP sliding door with smooth operation',
+      'High-quality fiberglass construction',
+      'Mild steel structural framework',
+      'Lightweight yet robust design',
+      'Customizable color as per RAL Code',
+      'Made in India manufacturing',
+      'Cost-effective base solution',
+      'Ready for custom electronics fitout',
+      'Easy installation and setup',
+      'Durable fiberglass finish',
+      'Corrosion-resistant materials',
+      'Suitable for DIY customization',
+      'Commercial-grade construction',
+      'Flexible configuration options'
+    ],
+    specifications: {
+      dimensions: 'External: 2150 × 1270 × 1270 mm | Internal: 2000 × 1000 × 1000 mm',
+      materials: 'High-quality fiberglass (FRP) with mild steel structure',
+      colors: 'Customizable as per RAL Code',
+      ratedVoltage: 'Not included (customer fitout)',
+      lightingPower: 'Not included (customer fitout)',
+      typicalConsumption: 'Depends on customer electronics',
+      freshAirVentilation: 'Structure ready for ventilation system'
+    }
   }
 ];
 
@@ -581,5 +698,38 @@ export const productSeries: ProductSeriesDetail[] = [
     ],
     availableMaterials: ['Premium ABS V0 Fire-retardant'],
     origin: 'imported'
+  },
+  {
+    id: 'platinum-frp',
+    name: 'Platinum FRP Series',
+    description: '100% Made in India fiberglass capsule sleeping pods with MS structure. Available in three configurations: Fully Loaded (complete smart features), Mid-tier (essential features), and Basic (structure only). Customizable colors as per RAL Code.',
+    images: [
+      '/Pods_Images/Made in India T1/Main.jpg',
+      '/Pods_Images/Made in India T1/Internal view.jpeg',
+      '/Pods_Images/Made in India T1/outer view.jpeg',
+      '/Pods_Images/Made in India T1/PHOTO-2024-07-18-23-28-44.jpg'
+    ],
+    models: ['FRP-FL-001', 'FRP-MT-002', 'FRP-BS-003'],
+    colors: ['Customizable as per RAL Code', 'White', 'Blue', 'Green', 'Custom colors available'],
+    sizes: [
+      { variant: 'Single Pod', dimensions: 'External: 2150 × 1270 × 1270 mm | Internal: 2000 × 1000 × 1000 mm' },
+      { variant: 'Weight', dimensions: '~125 kg per pod' }
+    ],
+    material: 'High-quality fiberglass (FRP) with mild steel structure',
+    features: [
+      'Smart Panel with USB & universal charging (Fully Loaded)',
+      'Premium ISI-standard wiring',
+      'Touch LED mirror function',
+      'Digital safe locker',
+      'Fire extinguisher & smoke alarm',
+      'Stainless steel components',
+      'Adjustable AC duct ventilation'
+    ],
+    applications: [
+      'Hotels', 'Hostels', 'Corporate housing', 'Hospitals', 'Schools',
+      'Airports', 'Budget accommodations', 'Staff quarters', 'Dormitories'
+    ],
+    availableMaterials: ['Fiberglass (FRP)', 'Mild Steel Structure'],
+    origin: 'made-in-india'
   }
 ];
