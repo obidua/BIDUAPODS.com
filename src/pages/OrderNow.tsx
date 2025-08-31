@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X } from 'lucide-react';
-import { products } from '../data/products';
+import { products, productSeries } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 interface CartItem {
