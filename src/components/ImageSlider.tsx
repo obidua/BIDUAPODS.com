@@ -50,7 +50,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   // Programmatically play video when it becomes active
   useEffect(() => {
-    if (isCurrentMediaVideo() && videoRef.current) {
+    if (isCurrentMediaVideo() && videoRef.current && autoPlay) {
       setIsPaused(true);
       const playVideo = async () => {
         try {
@@ -73,7 +73,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       
       playVideo();
     }
-  }, [currentIndex, images]);
+  }, [currentIndex, images, autoPlay]);
   useEffect(() => {
     clearAutoPlay();
     // Don't start auto-play if user is interacting, only 1 image, or current media is video
