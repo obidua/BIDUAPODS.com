@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent, method: 'whatsapp' | 'email') => {
     e.preventDefault();
     
     // Basic validation
@@ -37,20 +37,14 @@ const Contact: React.FC = () => {
     emailBody += `Message:\n${formData.message}\n\n`;
     emailBody += `---\nSubmitted via BIDUA Pods Contact Form`;
 
-    // Encode for URL
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(emailBody);
-    
-    // Create mailto URL with both email addresses
-    const mailtoUrl = `mailto:biduaindustries@gmail.com,support@biduapods.com?subject=${encodedSubject}&body=${encodedBody}`;
-    
-    // Try WhatsApp first, fallback to email
-    const whatsappNumber = '919512921903';
-    const whatsappMessage = encodeURIComponent(emailBody);
-    
-    if (whatsappNumber) {
+    if (method === 'whatsapp') {
+      const whatsappNumber = '919512921903';
+      const whatsappMessage = encodeURIComponent(emailBody);
       window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-    } else {
+    } else if (method === 'email') {
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedBody = encodeURIComponent(emailBody);
+      const mailtoUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${encodedSubject}&body=${encodedBody}`;
       window.open(mailtoUrl, '_blank');
     }
   };
@@ -252,11 +246,21 @@ const Contact: React.FC = () => {
                 </div>
 
                 <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-4 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 group shadow-lg hover:shadow-cyan-500/25"
+                  type="button"
+                  onClick={(e) => handleSubmit(e, 'whatsapp')}
+                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-xl hover:from-green-400 hover:to-green-500 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 group shadow-lg hover:shadow-green-500/25 mb-3"
                 >
-                  <span className="font-semibold">Send Message</span>
+                  <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <span className="font-semibold">Send Message via WhatsApp</span>
+                </button>
+                
+                <button
+                  type="button"
+                  onClick={(e) => handleSubmit(e, 'email')}
+                  className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-xl hover:from-blue-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 group shadow-lg hover:shadow-blue-500/25"
+                >
                   <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <span className="font-semibold">Send Message via Email</span>
                 </button>
               </form>
             </div>

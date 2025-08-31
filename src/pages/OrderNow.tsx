@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X } from 'lucide-react';
+import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X, Mail } from 'lucide-react';
 import SEO from '../components/SEO';
 import { products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
@@ -250,7 +250,7 @@ const OrderNow: React.FC = () => {
     return message;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent, method: 'whatsapp' | 'email') => {
     e.preventDefault();
     
     // Basic validation
@@ -265,14 +265,16 @@ const OrderNow: React.FC = () => {
     }
 
     const message = encodeURIComponent(generateMessage());
-    const whatsappNumber = '919512921903';
-    const fallbackEmail = 'biduaindistries@gmail.com';
-
-    // Try WhatsApp first, fallback to email
-    if (whatsappNumber) {
-      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-    } else {
-      window.open(`mailto:${fallbackEmail}?subject=Capsule%20Beds%20Enquiry&body=${message}`, '_blank');
+    
+    if (method === 'whatsapp') {
+      const whatsappNumber = '919512921903';
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    } else if (method === 'email') {
+      const subject = encodeURIComponent('Capsule Beds Multi-Product Enquiry');
+      const body = encodeURIComponent(message);
+      const emailUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${subject}&body=${body}`;
+      window.open(emailUrl, '_blank');
     }
   };
 
@@ -645,13 +647,22 @@ const OrderNow: React.FC = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col gap-4">
                   <button
-                    type="submit"
-                    className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-4 px-6 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-semibold flex items-center justify-center space-x-2 group shadow-lg hover:shadow-cyan-500/25"
+                    type="button"
+                    onClick={(e) => handleSubmit(e, 'whatsapp')}
+                    className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-6 rounded-xl hover:from-green-400 hover:to-green-500 transition-all duration-200 transform hover:scale-105 font-semibold flex items-center justify-center space-x-2 group shadow-lg hover:shadow-green-500/25"
                   >
                     <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                    <span>Send Multi-Product Inquiry</span>
+                    <span>Send Inquiry via WhatsApp</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => handleSubmit(e, 'email')}
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 px-6 rounded-xl hover:from-blue-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-semibold flex items-center justify-center space-x-2 group shadow-lg hover:shadow-blue-500/25"
+                  >
+                    <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                    <span>Send Inquiry via Email</span>
                   </button>
                 </div>
 
