@@ -327,7 +327,6 @@ const Home: React.FC = () => {
             </Link>
           </motion.div>
         </div>
-      </section>
     </div>
     </>
   );
