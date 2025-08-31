@@ -330,7 +330,7 @@ const OrderNow: React.FC = () => {
         ogTitle="Order BIDUA Capsule Beds | Multi-Product Inquiry & Quote"
         ogDescription="Order premium capsule beds with multi-product inquiry system. Factory-direct pricing with delivery across India."
       />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
       {/* Success Message */}
       {showSuccessMessage && (
         <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50">
@@ -386,7 +386,7 @@ const OrderNow: React.FC = () => {
       </section>
 
       {/* Order Form */}
-      <section className="py-12 bg-gray-50/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-12 bg-gray-50/70 dark:bg-gray-950/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
             <div className="p-8">
@@ -738,7 +738,7 @@ const OrderNow: React.FC = () => {
       </section>
 
       {/* Pricing Note */}
-      <section className="py-12 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <section className="py-12 bg-white/70 dark:bg-gray-900/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Pricing Structure (India)</h3>
           <div className={`bg-white dark:bg-gray-900/60 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>

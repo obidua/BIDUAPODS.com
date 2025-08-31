@@ -66,7 +66,7 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <WhatsAppButton />
-        <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 backdrop-blur-xl transition-colors duration-500 relative z-20">
+        <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 transition-colors duration-500 relative z-20">
           <main className="pt-16">
             <Routes>
               <Route path="/" element={<Home />} />

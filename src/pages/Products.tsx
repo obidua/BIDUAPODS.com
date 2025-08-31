@@ -38,39 +38,24 @@ const Products: React.FC = () => {
         ogTitle="BIDUA Capsule Beds & Sleeping Pods | Complete Product Range"
         ogDescription="Premium capsule beds in multiple series - GALAXY, COSMOS, SPACE, Wooden, E-sports. Factory-direct pricing from manufacturer."
       />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
       {/* Header */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40 relative overflow-hidden"
-      >
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'var(--svg-background-pattern)' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Capsule Beds by <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">BIDUA</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto"
-          >
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             As a premier manufacturer and importer, we deliver hotel-grade sleeping pods in Single, Double, Vertical Single 
             and Wooden variants. Fire-retardant ABS shell (Taiwan Chi-Mei) with metal structure, intelligent LED control panel, 
             security lock and ergonomic ladder—all with direct quality assurance and competitive factory pricing.
-          </motion.p>
+          </p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Product Series Overview */}
-      <section className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-20 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

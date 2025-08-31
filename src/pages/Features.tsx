@@ -62,38 +62,23 @@ const Features: React.FC = () => {
         ogTitle="BIDUA Pods Advanced Technology & Features"
         ogDescription="Intelligent LED controls, security features, fresh-air ventilation, and premium materials in BIDUA capsule beds."
       />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
       {/* Header */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40 relative overflow-hidden"
-      >
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/features-background.svg')] opacity-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Advanced <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Technology</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto"
-          >
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             Experience the convergence of cutting-edge technology and sleep science in our revolutionary capsule bed systems. 
             Every feature is designed with safety, comfort, and efficiency in mind.
-          </motion.p>
+          </p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Core Technologies */}
-      <section className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-20 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +136,7 @@ const Features: React.FC = () => {
       </section>
 
       {/* Standard Features */}
-      <section className="py-20 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <section className="py-20 bg-gray-50/70 dark:bg-gray-900/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -185,7 +170,7 @@ const Features: React.FC = () => {
       </section>
 
       {/* Materials & Safety */}
-      <section className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-20 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -251,7 +236,7 @@ const Features: React.FC = () => {
       </section>
 
       {/* Innovation Timeline */}
-      <section className="py-20 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <section className="py-20 bg-gray-50/70 dark:bg-gray-900/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

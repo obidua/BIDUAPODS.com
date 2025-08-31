@@ -152,14 +152,9 @@ const ProductDetail: React.FC = () => {
         ogImage={product.images.find(img => !img.toLowerCase().endsWith('.mp4')) || "https://biduapods.com/image.png"}
         structuredData={productStructuredData}
       />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
       {/* Header */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40"
-      >
+      <section className="py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/products"
@@ -169,27 +164,17 @@ const ProductDetail: React.FC = () => {
             <span>Back to All Products</span>
           </Link>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
-          >
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             {product.name}
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl"
-          >
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
             {product.description}
-          </motion.p>
+          </p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Product Details */}
-      <section className="py-16 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-16 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Images */}
@@ -276,7 +261,7 @@ const ProductDetail: React.FC = () => {
       </section>
 
       {/* Detailed Specifications */}
-      <section className="py-16 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <section className="py-16 bg-gray-50/70 dark:bg-gray-900/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -345,7 +330,7 @@ const ProductDetail: React.FC = () => {
       </section>
 
       {/* Why Choose This Model */}
-      <section className="py-16 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-16 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

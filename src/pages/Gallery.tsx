@@ -177,7 +177,7 @@ const Gallery: React.FC = () => {
         ogTitle="BIDUA Pods Project Gallery | Installations Worldwide"
         ogDescription="Explore BIDUA Pods installations in hotels, hostels, airports, and commercial spaces worldwide."
       />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
         {/* Header */}
         <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -191,7 +191,7 @@ const Gallery: React.FC = () => {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+        <section className="py-8 bg-white/70 dark:bg-gray-950/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category) => (
@@ -212,7 +212,7 @@ const Gallery: React.FC = () => {
         </section>
 
         {/* Gallery Grid */}
-        <section className="py-12 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+        <section className="py-12 bg-white/70 dark:bg-gray-950/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredImages.map((image, index) => (
