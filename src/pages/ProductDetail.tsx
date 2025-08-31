@@ -342,16 +342,16 @@ const ProductDetail: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
             className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6"
           >
             Ready to Order {product.name.split(' - ')[0]}?
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-2xl mx-auto"
           >
             Get factory-direct pricing with our comprehensive manufacturing and import capabilities. 
@@ -359,8 +359,8 @@ const ProductDetail: React.FC = () => {
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
