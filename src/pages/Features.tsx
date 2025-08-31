@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import FeatureCard from '../components/FeatureCard';
 import { features } from '../data/features';
 import { Cpu, Shield, Zap, Layers, Settings, Wind } from 'lucide-react';
@@ -53,7 +54,15 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Advanced Technology & Features | BIDUA Pods Capsule Beds"
+        description="Discover advanced features of BIDUA capsule beds: intelligent LED controls, fresh-air ventilation, security locks, Taiwan Chi-Mei fire-retardant ABS shell, universal power system, and premium safety features."
+        canonical="https://biduapods.com/features"
+        ogTitle="BIDUA Pods Advanced Technology & Features"
+        ogDescription="Intelligent LED controls, security features, fresh-air ventilation, and premium materials in BIDUA capsule beds."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
@@ -287,6 +296,7 @@ const Features: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

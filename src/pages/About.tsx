@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { Users, Target, Lightbulb, Award } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -7,7 +8,15 @@ const About: React.FC = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="About BIDUA Pods | Capsule Beds Manufacturer & Importer India"
+        description="Learn about BIDUA Pods - leading manufacturer and importer of premium capsule beds since 2020. Our mission, values, and commitment to quality sleep technology for commercial applications."
+        canonical="https://biduapods.com/about"
+        ogTitle="About BIDUA Pods | Premium Capsule Beds Manufacturer"
+        ogDescription="Leading manufacturer and importer of premium capsule beds since 2020. Quality sleep technology for commercial applications."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
@@ -142,6 +151,7 @@ const About: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

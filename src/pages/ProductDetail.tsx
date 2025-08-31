@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { ArrowLeft, Star, Check, Layers, Shield, Zap, Package, Truck, Award } from 'lucide-react';
 import ImageSlider from '../components/ImageSlider';
 import { products } from '../data/products';
@@ -94,8 +95,64 @@ const ProductDetail: React.FC = () => {
 
   const currentSpecs = additionalSpecs[product.id as keyof typeof additionalSpecs] || additionalSpecs['galaxy-single'];
 
+  // Generate structured data for the product
+  const productStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": product.images.filter(img => !img.toLowerCase().endsWith('.mp4')),
+    "description": product.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "BIDUA Pods"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "BIDUA Industries Pvt Ltd"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": product.price.match(/₹([\d,]+)/)?.[1]?.replace(/,/g, '') || "0",
+      "availability": "https://schema.org/InStock",
+      "url": `https://biduapods.com/products/${product.id}`,
+      "seller": {
+        "@type": "Organization",
+        "name": "BIDUA Pods"
+      }
+    },
+    "category": "Furniture > Beds > Capsule Beds",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Origin",
+        "value": product.origin === 'made-in-india' ? 'Made in India' : 'Imported'
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Material",
+        "value": product.specifications.materials
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Dimensions",
+        "value": product.specifications.dimensions
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title={`${product.name} | BIDUA Pods Capsule Bed Specifications & Price`}
+        description={`${product.name} - ${product.description} Features: ${product.features.slice(0, 3).join(', ')}. Price: ${product.price}. Contact for delivery and installation.`}
+        canonical={`https://biduapods.com/products/${product.id}`}
+        ogTitle={`${product.name} | BIDUA Pods`}
+        ogDescription={`${product.description} Price: ${product.price}. Contact for delivery and installation.`}
+        ogImage={product.images.find(img => !img.toLowerCase().endsWith('.mp4')) || "https://biduapods.com/image.png"}
+        structuredData={productStructuredData}
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -379,6 +436,7 @@ const ProductDetail: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

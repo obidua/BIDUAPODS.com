@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import { 
   BookOpen, 
   Star, 
@@ -89,7 +90,15 @@ const Catalogue: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Product Catalogue | BIDUA Pods Capsule Beds Specifications"
+        description="Complete catalogue of BIDUA capsule beds with detailed specifications, dimensions, colors, and pricing. GALAXY, COSMOS, SPACE, Wooden, E-sports series. Download PDF catalogue available."
+        canonical="https://biduapods.com/catalogue"
+        ogTitle="BIDUA Pods Product Catalogue | Complete Specifications"
+        ogDescription="Detailed catalogue with specifications, dimensions, colors, and pricing for all BIDUA capsule bed series."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
@@ -647,6 +656,7 @@ const Catalogue: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

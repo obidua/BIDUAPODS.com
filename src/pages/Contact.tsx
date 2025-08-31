@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 import { useTheme } from '../context/ThemeContext';
 
 const Contact: React.FC = () => {
@@ -61,7 +62,15 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Contact BIDUA Pods | Get Quote for Capsule Beds & Sleeping Pods"
+        description="Contact BIDUA Pods for capsule beds quotes and inquiries. Phone: +91-9512921903, Email: biduaindustries@gmail.com. Located in Noida, UP. WhatsApp support available 24/7."
+        canonical="https://biduapods.com/contact"
+        ogTitle="Contact BIDUA Pods | Get Quote for Capsule Beds"
+        ogDescription="Get quotes and inquiries for premium capsule beds. Phone, email, and WhatsApp support available."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -294,6 +303,7 @@ const Contact: React.FC = () => {
         </div>
       </motion.section>
     </div>
+    </>
   );
 };
 

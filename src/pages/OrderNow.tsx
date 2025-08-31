@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X } from 'lucide-react';
+import SEO from '../components/SEO';
 import { products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
@@ -282,7 +283,15 @@ const OrderNow: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Order Capsule Beds | BIDUA Pods Multi-Product Inquiry & Quote"
+        description="Order BIDUA capsule beds with multi-product inquiry system. Get quotes for GALAXY, COSMOS, SPACE, Wooden, E-sports series. Factory-direct pricing with delivery across India. GST 18% applies."
+        canonical="https://biduapods.com/order-now"
+        ogTitle="Order BIDUA Capsule Beds | Multi-Product Inquiry & Quote"
+        ogDescription="Order premium capsule beds with multi-product inquiry system. Factory-direct pricing with delivery across India."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -671,6 +680,7 @@ const OrderNow: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

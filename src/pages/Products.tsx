@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import { productSeries, getSeriesPriceDisplay } from '../data/products';
 import { Check, Star, Award, Globe, ChevronDown, ChevronUp, Zap, Shield, Layers, Palette, Package, Building } from 'lucide-react';
@@ -29,7 +30,15 @@ const Products: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Capsule Beds & Sleeping Pods | BIDUA Products Range"
+        description="Explore BIDUA's complete range of capsule beds: GALAXY, COSMOS, SPACE, Wooden, E-sports series. Taiwan Chi-Mei ABS shell, intelligent controls, security features. Made-in-India & imported options available."
+        canonical="https://biduapods.com/products"
+        ogTitle="BIDUA Capsule Beds & Sleeping Pods | Complete Product Range"
+        ogDescription="Premium capsule beds in multiple series - GALAXY, COSMOS, SPACE, Wooden, E-sports. Factory-direct pricing from manufacturer."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
       {/* Header */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
@@ -633,6 +642,7 @@ const Products: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

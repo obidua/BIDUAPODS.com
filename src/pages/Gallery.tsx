@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import { useLightbox } from '../context/LightboxContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -168,7 +169,15 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <>
+      <SEO
+        title="Project Gallery | BIDUA Pods Installations & Manufacturing"
+        description="View BIDUA Pods installations worldwide: hotels, hostels, airports, hospitals. See our manufacturing process, interior designs, and commercial applications of capsule beds and sleeping pods."
+        canonical="https://biduapods.com/gallery"
+        ogTitle="BIDUA Pods Project Gallery | Installations Worldwide"
+        ogDescription="Explore BIDUA Pods installations in hotels, hostels, airports, and commercial spaces worldwide."
+      />
+      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
         {/* Header */}
         <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -239,6 +248,7 @@ const Gallery: React.FC = () => {
           </div>
         </section>
     </div>
+    </>
   );
 };
 

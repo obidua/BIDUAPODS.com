@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, Suspense } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -40,31 +41,33 @@ const ScrollToTop: React.FC = () => {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <WhatsAppButton />
-      <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 backdrop-blur-xl transition-colors duration-500 relative z-20">
-        <main className="pt-16">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/catalogue" element={<Catalogue />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/features" element={<Features />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/order-now" element={<OrderNow />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Navbar />
+        <WhatsAppButton />
+        <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 backdrop-blur-xl transition-colors duration-500 relative z-20">
+          <main className="pt-16">
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/catalogue" element={<Catalogue />} />
+                <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/order-now" element={<OrderNow />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

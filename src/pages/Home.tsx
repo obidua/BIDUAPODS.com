@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import SeriesCard from '../components/SeriesCard';
 import FeatureCard from '../components/FeatureCard';
@@ -10,6 +11,45 @@ import { features } from '../data/features';
 
 const Home: React.FC = () => {
   const heroDescription = 'As a leading manufacturer and importer of hotel-grade sleeping pods, we deliver intelligent lighting, secure locks, fresh-air ventilation and compact footprint solutions—built for hostels, airports, offices, hospitals and more with direct quality control and competitive pricing.';
+
+  // Structured data for homepage
+  const organizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BIDUA Pods",
+    "url": "https://biduapods.com/",
+    "logo": "https://biduapods.com/image.png",
+    "description": "Leading manufacturer and importer of premium capsule beds and sleeping pods for commercial applications",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "H-77 Sector 63",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9512921903",
+      "contactType": "sales",
+      "email": "biduaindustries@gmail.com"
+    },
+    "sameAs": [
+      "https://wa.me/919512921903"
+    ]
+  };
+
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://biduapods.com/",
+    "name": "BIDUA Pods",
+    "description": "Premium capsule beds and sleeping pods manufacturer and importer",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://biduapods.com/products?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
 
   // Home page hero images
   const homePageImages = [
@@ -30,7 +70,17 @@ const Home: React.FC = () => {
   // Show all product series (excluding any Made in India series for now)
   const featuredSeries = productSeries; // Show all 9 product series
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
+    <>
+      <SEO
+        title="BIDUA Pods | Premium Capsule Beds & Sleeping Pods Manufacturer India"
+        description="Leading manufacturer & importer of premium capsule beds for hotels, hostels, airports, hospitals. Taiwan Chi-Mei ABS shell, intelligent LED controls, security features. Made-in-India & imported options. Get factory-direct pricing."
+        canonical="https://biduapods.com/"
+        ogTitle="BIDUA Pods | Premium Capsule Beds & Sleeping Pods"
+        ogDescription="Premium capsule beds with intelligent LED controls, security features, and fresh-air ventilation. Factory-direct pricing from manufacturer."
+        ogImage="https://biduapods.com/image.png"
+        structuredData={[organizationData, websiteData]}
+      />
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
       {/* Image Slider Section */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -304,6 +354,7 @@ const Home: React.FC = () => {
         </div>
       </motion.section>
     </div>
+    </>
   );
 };
 
