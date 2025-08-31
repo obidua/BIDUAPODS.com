@@ -113,16 +113,12 @@ const OrderNow: React.FC = () => {
     const product = products.find(p => p.id === productId);
     if (!product) return 0;
     
-    if (product.origin === 'imported') {
-      return 499999; // New imported base price
-    } else {
-      // Made in India - parse price from string
-      const priceMatch = product.price.match(/₹([\d,]+)/);
-      if (priceMatch) {
-        return parseInt(priceMatch[1].replace(/,/g, ''));
-      }
-      return 0;
+    // Parse price from string for all products
+    const priceMatch = product.price.match(/₹([\d,]+)/);
+    if (priceMatch) {
+      return parseInt(priceMatch[1].replace(/,/g, ''));
     }
+    return 0;
   };
 
   const formatNumber = (num: number) => {

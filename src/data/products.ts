@@ -5,7 +5,7 @@ export const products: Product[] = [
     id: 'galaxy-single',
     name: 'GALAXY Series - Horizontal Single',
     description: 'Standard ABS shell with metal frame featuring TV slot, security sliding door, and ergonomic non-slip ladder. Perfect for hotels, airports, and commercial applications.',
-    price: '₹4,99,999 per set (2 pods)',
+    price: '₹4,75,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/Galaxy Series/Galaxy Series Horizontal single:double bed.png',
@@ -269,7 +269,7 @@ export const products: Product[] = [
     id: 'abs-flagship-2025-single-vertical-zzk-sc02',
     name: 'ABS Flagship Series - Single Vertical (ZZK-SC02)',
     description: 'Designed to optimize vertical space usage, ideal for facilities with limited floor area. Perfect for medical hostels, training dormitories, and staff accommodations where vertical stacking increases capacity.',
-    price: '₹4,99,999 per set (2 pods)',
+    price: '₹4,75,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/ABS Flagship Series/ABS Single Vertical.png',
@@ -419,30 +419,32 @@ export const products: Product[] = [
 
 // Helper function to get series price display
 export const getSeriesPriceDisplay = (seriesId: string): string => {
-  const series = productSeries.find(s => s.id === seriesId);
-  if (!series) return 'Contact for Quote';
+  // Find all products that belong to this series
+  const seriesProducts = products.filter(product => 
+    product.id.toLowerCase().includes(seriesId.toLowerCase()) || 
+    (seriesId === 'platinum-frp' && product.id.includes('platinum-frp'))
+  );
   
-  if (series.origin === 'imported') {
-    return '₹4,99,999 per set (2 pods)';
-  } else {
-    // For Made in India series, find the lowest price among associated products
-    const seriesProducts = products.filter(product => 
-      product.id.toLowerCase().includes(seriesId.toLowerCase()) || 
-      (seriesId === 'platinum-frp' && product.id.includes('platinum-frp'))
-    );
-    
-    if (seriesProducts.length === 0) return 'Contact for Quote';
-    
-    const prices = seriesProducts.map(product => {
-      const priceMatch = product.price.match(/₹([\d,]+)/);
-      return priceMatch ? parseInt(priceMatch[1].replace(/,/g, '')) : 0;
-    }).filter(price => price > 0);
-    
-    if (prices.length === 0) return 'Contact for Quote';
-    
-    const minPrice = Math.min(...prices);
-    return `Starting from ₹${new Intl.NumberFormat('en-IN').format(minPrice)} per set (2 pods)`;
+  if (seriesProducts.length === 0) return 'Contact for Quote';
+  
+  // Extract prices from all products in this series
+  const prices = seriesProducts.map(product => {
+    const priceMatch = product.price.match(/₹([\d,]+)/);
+    return priceMatch ? parseInt(priceMatch[1].replace(/,/g, '')) : 0;
+  }).filter(price => price > 0);
+  
+  if (prices.length === 0) return 'Contact for Quote';
+  
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
+  
+  // If all products have the same price, show that price
+  if (minPrice === maxPrice) {
+    return `₹${new Intl.NumberFormat('en-IN').format(minPrice)} per set (2 pods)`;
   }
+  
+  // If there are different prices, show the range
+  return `Starting from ₹${new Intl.NumberFormat('en-IN').format(minPrice)} per set (2 pods)`;
 };
 
 export const productSeries: ProductSeriesDetail[] = [
