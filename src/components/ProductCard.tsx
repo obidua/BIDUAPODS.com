@@ -87,7 +87,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               className="flex items-center space-x-3"
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              transition={{ duration: 0.2, delay: 0.25 + index * 0.05 }}
+              viewport={{ once: true }}
               whileHover={{ x: 5 }}
             >
               <motion.div 

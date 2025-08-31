@@ -61,6 +61,8 @@ function App() {
           </Suspense>
         </main>
         <Footer />
+        <WhatsAppButton />
+        <WhatsAppButton />
       </div>
     </Router>
   );

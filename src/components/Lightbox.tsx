@@ -213,7 +213,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, isOpen, onClo
             }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = 'https://picsum.photos/800/600?random=' + currentIndex;
+              target.src = `https://picsum.photos/800/600?random=${currentIndex + 1000}&grayscale`;
             }}
           />
         </motion.div>

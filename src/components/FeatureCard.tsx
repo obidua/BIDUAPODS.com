@@ -42,7 +42,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature }) => {
         className="text-gray-600 dark:text-gray-400 leading-relaxed text-base"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.3, delay: 0.15 }}
+        viewport={{ once: true }}
       >
         {feature.description}
       </motion.p>

@@ -204,7 +204,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   whileHover={{ scale: 1.02 }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = 'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=400';
+                    target.src = `https://picsum.photos/800/600?random=${currentIndex}&grayscale`;
                   }}
                 />
                 {/* Click to view overlay - only for images */}
