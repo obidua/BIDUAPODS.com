@@ -309,8 +309,8 @@ const Catalogue: React.FC = () => {
                       {/* Series Stats */}
                       <div className="bg-white/50 dark:bg-gray-700/50 rounded-xl p-6 min-w-[200px]">
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-cyan-500 mb-1">{seriesProducts.length}</div>
-                          <div className="text-gray-600 dark:text-gray-400 text-sm">Available Models</div>
+                          <div className="text-lg font-bold text-cyan-500 mb-2">{getSeriesPriceDisplay(series.id)}</div>
+                          <div className="text-sm text-gray-600 dark:text-gray-400">{seriesProducts.length} Available Models</div>
                         </div>
                       </div>
                     </div>

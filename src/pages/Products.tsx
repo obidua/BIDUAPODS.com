@@ -239,9 +239,9 @@ const Products: React.FC = () => {
                     </div>
                     <Link
                       to="/order-now"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block"
                     >
-                      Contact for Quote
+                      {getSeriesPriceDisplay(selectedSeries.id)}
                     </Link>
                   </div>
                 </div>
