@@ -225,7 +225,6 @@ const Gallery: React.FC = () => {
                     src={image.url}
                     alt={image.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = `https://picsum.photos/400/400?random=${index + 2000}&grayscale`;

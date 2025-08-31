@@ -271,26 +271,26 @@ const Home: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8"
           >
             Ready to Upgrade Your Facility?
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="text-gray-600 dark:text-gray-400 text-xl mb-12 leading-relaxed max-w-3xl mx-auto"
           >
             Join hotels, hostels, and facilities worldwide who trust BIDUA Pods for premium guest accommodation
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <Link
               to="/order-now"

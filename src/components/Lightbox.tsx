@@ -206,7 +206,6 @@ const Lightbox: React.FC<LightboxProps> = ({ images, initialIndex, isOpen, onClo
             src={images[currentIndex]}
             alt={`Image ${currentIndex + 1} of ${images.length}`}
             className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl block"
-            loading="lazy"
             style={{
               transform: isZoomed ? 'scale(1.5)' : 'scale(1)',
               transition: 'transform 0.3s ease',
