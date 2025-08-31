@@ -16,7 +16,7 @@ import {
   Grid,
   List,
   Search,
-  Download
+  Share2
 } from 'lucide-react';
 import ImageSlider from '../components/ImageSlider';
 import ProductCard from '../components/ProductCard';
@@ -228,9 +228,23 @@ const Catalogue: React.FC = () => {
             </div>
 
             {/* Download Catalogue */}
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-cyan-500/25">
-              <Download className="h-4 w-4" />
-              <span>Download PDF</span>
+            <button 
+              onClick={() => {
+                const message = encodeURIComponent(
+                  `Check out BIDUA Pods complete product catalogue!\n\n` +
+                  `🏨 Premium Capsule Beds & Sleeping Pods\n` +
+                  `📋 Complete specifications, dimensions & pricing\n` +
+                  `🔧 Made-in-India & Imported options available\n` +
+                  `🚚 Delivery across India\n\n` +
+                  `View full catalogue: https://biduapods.com/catalogue\n\n` +
+                  `Contact for quotes: +91 9512921903`
+                );
+                window.open(`https://wa.me/?text=${message}`, '_blank');
+              }}
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-lg hover:from-green-400 hover:to-green-500 transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-green-500/25"
+            >
+              <Share2 className="h-4 w-4" />
+              <span>Share Catalogue</span>
             </button>
           </div>
         </div>
