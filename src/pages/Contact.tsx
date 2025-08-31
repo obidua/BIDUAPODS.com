@@ -19,18 +19,34 @@ const Contact: React.FC = () => {
 
   // Check for success message on component mount
   useEffect(() => {
-    const messageSent = sessionStorage.getItem('messageSent');
-    if (messageSent === 'true') {
-      setShowSuccessMessage(true);
-      sessionStorage.removeItem('messageSent');
-      
-      // Auto-hide success message after 5 seconds
-      const timer = setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 5000);
-      
-      return () => clearTimeout(timer);
-    }
+    const checkForSuccessMessage = () => {
+      const messageSent = sessionStorage.getItem('messageSent');
+      if (messageSent === 'true') {
+        setShowSuccessMessage(true);
+        sessionStorage.removeItem('messageSent');
+        
+        // Auto-hide success message after 5 seconds
+        const timer = setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
+        
+        return () => clearTimeout(timer);
+      }
+    };
+
+    // Check on component mount
+    checkForSuccessMessage();
+
+    // Check when window regains focus (user returns from WhatsApp/email)
+    const handleWindowFocus = () => {
+      checkForSuccessMessage();
+    };
+
+    window.addEventListener('focus', handleWindowFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleWindowFocus);
+    };
   }, []);
 
   const handleSubmit = (e: React.FormEvent, method: 'whatsapp' | 'email') => {
@@ -55,13 +71,14 @@ const Contact: React.FC = () => {
     emailBody += `---\nSubmitted via BIDUA Pods Contact Form`;
 
     if (method === 'whatsapp') {
-      const whatsappNumber = '919512921903';
-      const whatsappMessage = encodeURIComponent(emailBody);
+      const message = encodeURIComponent(emailBody);
       sessionStorage.setItem('messageSent', 'true');
-      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+      window.open(`https://wa.me/919512921903?text=${message}`, '_blank');
     } else if (method === 'email') {
+      // Convert \n to \r\n for better email client compatibility
+      const emailMessage = emailBody.replace(/\n/g, '\r\n');
       const encodedSubject = encodeURIComponent(subject);
-      const encodedBody = encodeURIComponent(emailBody);
+      const encodedBody = encodeURIComponent(emailMessage);
       const mailtoUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${encodedSubject}&body=${encodedBody}`;
       sessionStorage.setItem('messageSent', 'true');
       window.open(mailtoUrl, '_blank');

@@ -82,18 +82,34 @@ const OrderNow: React.FC = () => {
 
   // Check for success message on component mount
   useEffect(() => {
-    const inquirySent = sessionStorage.getItem('inquirySent');
-    if (inquirySent === 'true') {
-      setShowSuccessMessage(true);
-      sessionStorage.removeItem('inquirySent');
-      
-      // Auto-hide success message after 5 seconds
-      const timer = setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 5000);
-      
-      return () => clearTimeout(timer);
-    }
+    const checkForSuccessMessage = () => {
+      const inquirySent = sessionStorage.getItem('inquirySent');
+      if (inquirySent === 'true') {
+        setShowSuccessMessage(true);
+        sessionStorage.removeItem('inquirySent');
+        
+        // Auto-hide success message after 5 seconds
+        const timer = setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
+        
+        return () => clearTimeout(timer);
+      }
+    };
+
+    // Check on component mount
+    checkForSuccessMessage();
+
+    // Check when window regains focus (user returns from WhatsApp/email)
+    const handleWindowFocus = () => {
+      checkForSuccessMessage();
+    };
+
+    window.addEventListener('focus', handleWindowFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleWindowFocus);
+    };
   }, []);
 
   // Update material when product changes to ensure compatibility
@@ -281,16 +297,19 @@ const OrderNow: React.FC = () => {
       return;
     }
 
-    const message = encodeURIComponent(generateMessage());
+    const rawMessage = generateMessage();
     
     if (method === 'whatsapp') {
+      const message = encodeURIComponent(rawMessage);
       const whatsappNumber = '919512921903';
       sessionStorage.setItem('inquirySent', 'true');
       window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
     } else if (method === 'email') {
+      // Convert \n to \r\n for better email client compatibility
+      const emailMessage = rawMessage.replace(/\n/g, '\r\n');
+      const message = encodeURIComponent(emailMessage);
       const subject = encodeURIComponent('Capsule Beds Multi-Product Enquiry');
-      const body = encodeURIComponent(message);
-      const emailUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${subject}&body=${body}`;
+      const emailUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${subject}&body=${message}`;
       sessionStorage.setItem('inquirySent', 'true');
       window.open(emailUrl, '_blank');
     }
