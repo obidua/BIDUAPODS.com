@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import ImageSlider from '../components/ImageSlider';
 import ProductCard from '../components/ProductCard';
-import { products, productSeries } from '../data/products';
+import { products, productSeries, getSeriesPriceDisplay } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 const Catalogue: React.FC = () => {
