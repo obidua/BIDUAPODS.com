@@ -42,8 +42,9 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Navbar />
+      <WhatsAppButton />
       <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 backdrop-blur-xl transition-colors duration-500 relative z-20">
-        <Navbar />
         <main className="pt-16">
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -62,8 +63,6 @@ function App() {
           </Suspense>
         </main>
         <Footer />
-        <WhatsAppButton />
-        <WhatsAppButton />
       </div>
     </Router>
   );
