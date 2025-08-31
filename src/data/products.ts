@@ -170,7 +170,7 @@ export const products: Product[] = [
     id: 'indian-premium-single',
     name: 'BIDUA Premium - Made in India Single',
     description: 'Locally manufactured premium capsule bed with indigenous materials and craftsmanship. Features advanced ventilation, LED controls, and security systems designed specifically for Indian market needs.',
-    price: '₹4,99,999 per set (2 pods)',
+    price: '₹3,00,000 per set (2 pods)',
     origin: 'made-in-india',
     images: [
       '/Pods_Images/Galaxy Series/Galaxy Series Horizontal single:double bed.png',
@@ -416,6 +416,34 @@ export const products: Product[] = [
     }
   }
 ];
+
+// Helper function to get series price display
+export const getSeriesPriceDisplay = (seriesId: string): string => {
+  const series = productSeries.find(s => s.id === seriesId);
+  if (!series) return 'Contact for Quote';
+  
+  if (series.origin === 'imported') {
+    return '₹4,99,999 per set (2 pods)';
+  } else {
+    // For Made in India series, find the lowest price among associated products
+    const seriesProducts = products.filter(product => 
+      product.id.toLowerCase().includes(seriesId.toLowerCase()) || 
+      (seriesId === 'platinum-frp' && product.id.includes('platinum-frp'))
+    );
+    
+    if (seriesProducts.length === 0) return 'Contact for Quote';
+    
+    const prices = seriesProducts.map(product => {
+      const priceMatch = product.price.match(/₹([\d,]+)/);
+      return priceMatch ? parseInt(priceMatch[1].replace(/,/g, '')) : 0;
+    }).filter(price => price > 0);
+    
+    if (prices.length === 0) return 'Contact for Quote';
+    
+    const minPrice = Math.min(...prices);
+    return `Starting from ₹${new Intl.NumberFormat('en-IN').format(minPrice)} per set (2 pods)`;
+  }
+};
 
 export const productSeries: ProductSeriesDetail[] = [
   {

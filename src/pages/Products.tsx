@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlider from '../components/ImageSlider';
-import { productSeries } from '../data/products';
+import { productSeries, getSeriesPriceDisplay } from '../data/products';
 import { Check, Star, Award, Globe, ChevronDown, ChevronUp, Zap, Shield, Layers, Palette, Package, Building } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ProductSeriesDetail } from '../types';
 import { ChevronRight, Package, Palette, Building } from 'lucide-react';
 import ImageSlider from './ImageSlider';
+import { getSeriesPriceDisplay } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 interface SeriesCardProps {
@@ -56,7 +57,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
             whileHover={{ scale: 1.1, rotate: 2 }}
             className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl backdrop-blur-sm"
           >
-            Contact for Quote
+            {getSeriesPriceDisplay(series.id)}
           </motion.span>
         </motion.div>
       </div>
