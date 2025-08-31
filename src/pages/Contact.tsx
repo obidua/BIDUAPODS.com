@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const Contact: React.FC = () => {
@@ -42,8 +42,15 @@ const Contact: React.FC = () => {
     // Create mailto URL with both email addresses
     const mailtoUrl = `mailto:biduaindustries@gmail.com,support@biduapods.com?subject=${encodedSubject}&body=${encodedBody}`;
     
-    // Open email client
-    window.open(mailtoUrl, '_blank');
+    // Try WhatsApp first, fallback to email
+    const whatsappNumber = '919512921903';
+    const whatsappMessage = encodeURIComponent(emailBody);
+    
+    if (whatsappNumber) {
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    } else {
+      window.open(mailtoUrl, '_blank');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -76,6 +83,23 @@ const Contact: React.FC = () => {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Let's Start a Conversation</h2>
               
               <div className="space-y-6 mb-12">
+                <div className={`flex items-center space-x-4 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                  <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 w-12 h-12 rounded-lg flex items-center justify-center">
+                    <MessageCircle className="h-6 w-6 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-gray-900 dark:text-white font-semibold">WhatsApp</h3>
+                    <a 
+                      href="https://wa.me/919512921903" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-600 dark:text-gray-400 hover:text-cyan-400 transition-colors"
+                    >
+                      +91 9512921903
+                    </a>
+                  </div>
+                </div>
+                
                 <div className={`flex items-center space-x-4 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                   <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 w-12 h-12 rounded-lg flex items-center justify-center">
                     <Phone className="h-6 w-6 text-cyan-400" />

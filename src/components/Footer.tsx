@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Bed, Mail, Phone, MapPin, ExternalLink, Heart, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Bed, Mail, Phone, MapPin, ExternalLink, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -48,11 +48,14 @@ const Footer: React.FC = () => {
                 { icon: Facebook, href: "#", label: "Facebook" },
                 { icon: Twitter, href: "#", label: "Twitter" },
                 { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" }
+                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: MessageCircle, href: "https://wa.me/919512921903", label: "WhatsApp" }
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 bg-white/5 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-600/20 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110 group"
                   aria-label={social.label}
                 >

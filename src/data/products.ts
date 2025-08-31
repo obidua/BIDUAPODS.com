@@ -5,7 +5,7 @@ export const products: Product[] = [
     id: 'galaxy-single',
     name: 'GALAXY Series - Horizontal Single',
     description: 'Standard ABS shell with metal frame featuring TV slot, security sliding door, and ergonomic non-slip ladder. Perfect for hotels, airports, and commercial applications.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/Galaxy Series/Galaxy Series Horizontal single:double bed.png',
@@ -38,7 +38,7 @@ export const products: Product[] = [
     id: 'galaxy-double',
     name: 'GALAXY Series - Horizontal Double',
     description: 'Spacious double variant with all premium GALAXY features, designed for couples or guests requiring extra space in commercial facilities.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/Galaxy Series/"GALAXY"series -Horizontal single:double bed more images5.png',
@@ -71,7 +71,7 @@ export const products: Product[] = [
     id: 'cosmos-vertical',
     name: 'COSMOS Series - Vertical Single',
     description: 'Innovative vertical design with ABS + metal construction, featuring sliding door, ladder, TV slot, and mirror panel for space-efficient installations.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed main.png',
@@ -104,7 +104,7 @@ export const products: Product[] = [
     id: 'wooden-single',
     name: 'Wooden Series - Horizontal Single',
     description: 'Premium eco multi-layer board construction with metal frame, offering natural wood-grain aesthetics while maintaining all essential capsule bed features.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/wooden series/"wooden"series -Horizontal single bed:Vertical single bed main.png',
@@ -137,7 +137,7 @@ export const products: Product[] = [
     id: 'esports-single',
     name: 'E-sports Series - Horizontal Single',
     description: 'Specialized gaming capsule with larger length specification and shorter ladder, featuring eco-board + ABS + metal construction for extended gaming sessions.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/E-sports series/"E-sports"series -Horizontal single bed main.png',
@@ -170,7 +170,7 @@ export const products: Product[] = [
     id: 'indian-premium-single',
     name: 'BIDUA Premium - Made in India Single',
     description: 'Locally manufactured premium capsule bed with indigenous materials and craftsmanship. Features advanced ventilation, LED controls, and security systems designed specifically for Indian market needs.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'made-in-india',
     images: [
       '/Pods_Images/Galaxy Series/Galaxy Series Horizontal single:double bed.png',
@@ -203,7 +203,7 @@ export const products: Product[] = [
     id: 'abs-flagship-2025-single-horizontal-zzk-hc02',
     name: 'ABS Flagship Series - Single Horizontal (ZZK-HC02)',
     description: 'Perfect for capsule hotels, hostels, and compact accommodations where space optimization is essential. Features universal adjustable air vent, integrated fresh air circulation system, and smart LED control panel.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/ABS Flagship Series/Pod real view.jpeg',
@@ -236,7 +236,7 @@ export const products: Product[] = [
     id: 'abs-flagship-2025-double-horizontal-zzk-sr02',
     name: 'ABS Flagship Series - Double Horizontal (ZZK-SR02)',
     description: 'Suitable for shared stays in dormitories, budget hotels, and group living setups. Same features as single capsule but with wider internal space for two occupants and strong fresh air system.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/ABS Flagship Series/Pod real view.jpeg',
@@ -269,7 +269,7 @@ export const products: Product[] = [
     id: 'abs-flagship-2025-single-vertical-zzk-sc02',
     name: 'ABS Flagship Series - Single Vertical (ZZK-SC02)',
     description: 'Designed to optimize vertical space usage, ideal for facilities with limited floor area. Perfect for medical hostels, training dormitories, and staff accommodations where vertical stacking increases capacity.',
-    price: 'Contact for Quote',
+    price: '₹4,99,999 per set (2 pods)',
     origin: 'imported',
     images: [
       '/Pods_Images/ABS Flagship Series/ABS Single Vertical.png',

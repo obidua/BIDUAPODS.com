@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X } from 'lucide-react';
-import { products, productSeries } from '../data/products';
+import { products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 interface CartItem {
@@ -268,11 +268,11 @@ const OrderNow: React.FC = () => {
     }
 
     const message = encodeURIComponent(generateMessage());
-    const whatsappNumber = '91XXXXXXXXXX'; // Replace with actual WhatsApp number
+    const whatsappNumber = '919512921903';
     const fallbackEmail = 'biduaindistries@gmail.com';
 
     // Try WhatsApp first, fallback to email
-    if (whatsappNumber && !whatsappNumber.includes('XXXXXXXXXX')) {
+    if (whatsappNumber) {
       window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
     } else {
       window.open(`mailto:${fallbackEmail}?subject=Capsule%20Beds%20Enquiry&body=${message}`, '_blank');
@@ -337,8 +337,6 @@ const OrderNow: React.FC = () => {
                 {/* Product Configurations */}
                 <div className="space-y-6">
                   {cartItems.map((item, index) => {
-                    const selectedSeries = productSeries.find(s => s.id === item.seriesId);
-                    
                     return (
                       <div key={item.id} className={`bg-gray-50 dark:bg-gray-800/40 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 relative ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                         <div className="flex items-center justify-between mb-4">
