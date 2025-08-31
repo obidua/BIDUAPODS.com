@@ -369,7 +369,6 @@ const Catalogue: React.FC = () => {
                 return (
                   <LazyLoadWrapper
                     key={series.id}
-                    onContentVisible={() => handleSeriesContentVisible(series.id)}
                     placeholder={
                       <div className="bg-gray-100 dark:bg-gray-800 rounded-3xl animate-pulse">
                         <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-t-3xl"></div>
@@ -391,7 +390,7 @@ const Catalogue: React.FC = () => {
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: seriesIndex * 0.1 }}
-                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl scroll-margin-top-nav ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
+                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                     >
                       {/* Series Images */}
                       <div className="relative">
