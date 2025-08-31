@@ -199,7 +199,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 <motion.img
                   src={images[currentIndex]}
                   alt={`Slide ${currentIndex + 1}`}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300 block"
+                  className="w-full h-full object-contain hover:scale-102 transition-transform duration-200 block"
+                  loading="lazy"
                   whileHover={{ scale: 1.02 }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
