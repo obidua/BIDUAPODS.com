@@ -23,6 +23,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const { openLightbox } = useLightbox();
 
+  // Helper function to determine if media is video
+  const isVideo = (mediaUrl: string) => {
+    return mediaUrl.toLowerCase().endsWith('.mp4');
+  };
+
   const clearAutoPlay = () => {
     if (autoPlayRef.current) {
       clearInterval(autoPlayRef.current);
@@ -154,11 +159,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     }
   };
   if (images.length === 0) return null;
-
-  // Helper function to determine if media is video
-  const isVideo = (mediaUrl: string) => {
-    return mediaUrl.toLowerCase().endsWith('.mp4');
-  };
 
   return (
     <>
