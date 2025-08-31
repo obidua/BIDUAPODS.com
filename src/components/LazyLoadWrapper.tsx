@@ -5,13 +5,15 @@ interface LazyLoadWrapperProps {
   placeholder?: React.ReactNode;
   rootMargin?: string;
   threshold?: number;
+  onContentVisible?: () => void;
 }
 
 const LazyLoadWrapper: React.FC<LazyLoadWrapperProps> = ({
   children,
   placeholder,
   rootMargin = '100px',
-  threshold = 0.1
+  threshold = 0.1,
+  onContentVisible
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -23,6 +25,11 @@ const LazyLoadWrapper: React.FC<LazyLoadWrapperProps> = ({
         if (entry.isIntersecting && !hasLoaded) {
           setIsVisible(true);
           setHasLoaded(true);
+          // Call the visibility callback if provided
+          if (onContentVisible) {
+            // Small delay to ensure content is painted before callback
+            setTimeout(onContentVisible, 100);
+          }
           // Disconnect observer after first load to prevent re-rendering
           observer.disconnect();
         }

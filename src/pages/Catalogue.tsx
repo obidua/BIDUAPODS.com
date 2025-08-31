@@ -30,6 +30,7 @@ const Catalogue: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMainContent, setShowMainContent] = useState(false);
+  const [scrollPendingSeries, setScrollPendingSeries] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const allProductsRef = useRef<HTMLElement>(null);
   const seriesRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -49,6 +50,7 @@ const Catalogue: React.FC = () => {
     const seriesParam = searchParams.get('series');
     if (seriesParam && productSeries.find(s => s.id === seriesParam)) {
       setSelectedSeries(seriesParam);
+      setScrollPendingSeries(seriesParam);
     }
   }, [searchParams]);
 
@@ -64,7 +66,80 @@ const Catalogue: React.FC = () => {
   // Show all series in filter (not just those with products)
   const seriesWithProducts = productSeries;
 
+  // Handle series content becoming visible for scrolling
+  const handleSeriesContentVisible = (seriesId: string) => {
+    if (scrollPendingSeries === seriesId) {
+      const seriesElement = seriesRefs.current.get(seriesId);
+      if (seriesElement) {
+        // Add a small delay to ensure content is fully painted
+        setTimeout(() => {
+          seriesElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+          setScrollPendingSeries(null);
+        }, 150);
+      }
+    }
+  };
+
   // Scroll to specific series section or products section when series is selected
+  useEffect(() => {
+    if (selectedSeries !== 'all') {
+      setScrollPendingSeries(selectedSeries);
+      
+      // Try immediate scroll if element is already rendered
+      const seriesElement = seriesRefs.current.get(selectedSeries);
+      if (seriesElement && seriesElement.offsetHeight > 0) {
+        // Element is already rendered, scroll immediately
+        setTimeout(() => {
+          seriesElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+          setScrollPendingSeries(null);
+        }, 100);
+      } else {
+        // Element not rendered yet, will be handled by onContentVisible callback
+        const fallbackTimer = setTimeout(() => {
+          // Fallback: scroll to all products section if series element never loads
+          if (scrollPendingSeries === selectedSeries && allProductsRef.current) {
+            allProductsRef.current.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+            setScrollPendingSeries(null);
+          }
+        }, 3000);
+        
+        return () => clearTimeout(fallbackTimer);
+      }
+    } else {
+      setScrollPendingSeries(null);
+    }
+  }, [selectedSeries, scrollPendingSeries]);
+
+  // Clear scroll pending when component unmounts
+  useEffect(() => {
+    return () => {
+      setScrollPendingSeries(null);
+    };
+  }, []);
+
+  // Original scroll effect - simplified
+  useEffect(() => {
+    if (selectedSeries !== 'all' && !scrollPendingSeries) {
+      const seriesElement = seriesRefs.current.get(selectedSeries);
+      if (seriesElement) {
+        seriesElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
+    }
+  }, [selectedSeries, scrollPendingSeries]);
+
+  // Legacy scroll effect - remove this entire block
   useEffect(() => {
     if (selectedSeries !== 'all') {
       // Use requestAnimationFrame to ensure elements are properly rendered before scrolling
@@ -93,8 +168,6 @@ const Catalogue: React.FC = () => {
       }, 150);
       
       return () => clearTimeout(timeoutId);
-    }
-  }, [selectedSeries]);
 
   // Function to set series ref
   const setSeriesRef = (seriesId: string) => (element: HTMLDivElement | null) => {
@@ -294,6 +367,7 @@ const Catalogue: React.FC = () => {
                 return (
                   <LazyLoadWrapper
                     key={series.id}
+                    onContentVisible={() => handleSeriesContentVisible(series.id)}
                     placeholder={
                       <div className="bg-gray-100 dark:bg-gray-800 rounded-3xl animate-pulse">
                         <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-t-3xl"></div>
@@ -315,7 +389,7 @@ const Catalogue: React.FC = () => {
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: seriesIndex * 0.1 }}
-                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
+                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl scroll-margin-top-nav ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                     >
                       {/* Series Images */}
                       <div className="relative">

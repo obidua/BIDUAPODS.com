@@ -221,6 +221,11 @@ main {
   padding-top: 4rem; /* 64px to match h-16 header height */
 }
 
+/* Scroll margin for fixed header navigation */
+.scroll-margin-top-nav {
+  scroll-margin-top: 5rem; /* 80px - slightly more than header height for better visibility */
+}
+
 /* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
