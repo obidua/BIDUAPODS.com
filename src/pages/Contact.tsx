@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useTheme } from '../context/ThemeContext';
