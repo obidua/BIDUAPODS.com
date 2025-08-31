@@ -415,6 +415,501 @@ export const products: Product[] = [
       freshAirVentilation: 'Structure ready for ventilation system'
     }
   }
+  {
+    id: 'galaxy-big-bed',
+    name: 'GALAXY Series - Horizontal Double Big Bed',
+    description: 'Extra-wide big bed variant with all premium GALAXY features, designed for maximum comfort in commercial facilities with spacious sleeping area.',
+    price: '₹5,24,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Galaxy Series/Galaxy Series Horizontal single:double bed.png',
+      '/Pods_Images/Galaxy Series/GALAXY"series -Horizontal single:double bed details.png',
+      '/Pods_Images/Galaxy Series/"GALAXY"series -Horizontal single:double bed more images4.png'
+    ],
+    features: [
+      'Intelligent LED multifunction control panel with back-lit number plate',
+      'Internal security lock with stainless-steel handle',
+      'Reading light, mirror light & ceiling light',
+      'Adjustable ventilation (two inlets/outlets)',
+      'Ergonomic non-slip ladder with security sliding door',
+      'TV slot integration ready',
+      'Fire-retardant ABS shell (Taiwan Chi-Mei)',
+      'High-quality metal frame construction',
+      'Extra-wide big bed sleeping space',
+      'Model codes: TWD-821/822/823'
+    ],
+    specifications: {
+      dimensions: '2060 × 1950 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'space-single',
+    name: 'SPACE Series - Horizontal Single',
+    description: 'Standard SPACE series with mirror panel, sliding door, TV slot, and intelligent LED controls. Perfect for hotels and commercial applications.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed details.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Mirror panel integration',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Ergonomic ladder design',
+      'Reading and ceiling lighting',
+      'Model codes: SPAS-801/802/803'
+    ],
+    specifications: {
+      dimensions: '2060 × 1140 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'space-double',
+    name: 'SPACE Series - Horizontal Double',
+    description: 'Spacious double variant of SPACE series with mirror panel, TV slot, and all premium features for couples or guests requiring extra space.',
+    price: '₹4,95,000 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images2.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images3.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images4.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Mirror panel integration',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide sleeping space for comfort',
+      'Reading and ceiling lighting',
+      'Model codes: SPAD-811/812/813'
+    ],
+    specifications: {
+      dimensions: '2060 × 1580 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'space-big-bed',
+    name: 'SPACE Series - Horizontal Big Bed',
+    description: 'Extra-wide big bed variant of SPACE series with mirror panel, TV slot, and maximum sleeping comfort for premium commercial applications.',
+    price: '₹5,24,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images4.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed more images5.png',
+      '/Pods_Images/Space Series/"SPACE"series -Horizontal single:double bed details.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Mirror panel integration',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide big bed sleeping space',
+      'Reading and ceiling lighting',
+      'Model codes: SPAD-821/822/823'
+    ],
+    specifications: {
+      dimensions: '2060 × 1950 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'explore-single',
+    name: 'EXPLORE THE WORLD Series - Horizontal Single',
+    description: 'Innovative "explore window" design with LED multifunction panel, stainless handle, and premium features for modern hospitality applications.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed main.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed details.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more1.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Explore window design feature',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Ergonomic ladder design',
+      'Reading and ceiling lighting',
+      'Model codes: EXWS-601/602/603'
+    ],
+    specifications: {
+      dimensions: '2060 × 1140 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'explore-double',
+    name: 'EXPLORE THE WORLD Series - Horizontal Double',
+    description: 'Spacious double variant with "explore window" design, LED multifunction panel, and premium features for couples or guests requiring extra space.',
+    price: '₹4,99,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more2.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more3.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more4.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Explore window design feature',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide sleeping space for comfort',
+      'Reading and ceiling lighting',
+      'Model codes: EXWD-611/612/613'
+    ],
+    specifications: {
+      dimensions: '2060 × 1580 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'explore-big-bed',
+    name: 'EXPLORE THE WORLD Series - Horizontal Big Bed',
+    description: 'Extra-wide big bed variant with "explore window" design and maximum sleeping comfort for premium commercial applications.',
+    price: '₹5,24,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more3.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed more4.png',
+      '/Pods_Images/EXPLORETHE WORLD series/"EXPLORETHE WORLD"series -Horizontal single:double bed details.png'
+    ],
+    features: [
+      'Capsule number LED with back-lit display',
+      'Internal security lock with stainless-steel handle',
+      'Explore window design feature',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door with smooth operation',
+      'Adjustable ventilation system',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide big bed sleeping space',
+      'Reading and ceiling lighting',
+      'Model codes: EXWD-621/622/623'
+    ],
+    specifications: {
+      dimensions: '2060 × 1950 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'cosmos-horizontal-single',
+    name: 'COSMOS Series - Horizontal Single',
+    description: 'Horizontal single variant with ABS + metal construction, featuring sliding door, ladder, TV slot, and mirror panel for standard installations.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed main.png',
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed details.png',
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed more2.png'
+    ],
+    features: [
+      'Horizontal space-efficient design',
+      'Intelligent LED multifunction control panel',
+      'Internal security lock with stainless-steel handle',
+      'Mirror panel integration',
+      'TV slot ready for entertainment systems',
+      'Sliding door with ergonomic ladder',
+      'Fire-retardant ABS shell construction',
+      'Adjustable ventilation system',
+      'Suitable for standard installations',
+      'Model codes: COS-H891/892/893'
+    ],
+    specifications: {
+      dimensions: '2060 × 1140 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'cosmos-horizontal-double',
+    name: 'COSMOS Series - Horizontal Double',
+    description: 'Spacious double variant with ABS + metal construction, featuring sliding door, ladder, TV slot, and mirror panel for couples or extra space requirements.',
+    price: '₹4,99,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed more3.png',
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed more4.png',
+      '/Pods_Images/COSMOS series/"COSMOS"series -Horizontal:Verticalsingle bed details.png'
+    ],
+    features: [
+      'Horizontal double space design',
+      'Intelligent LED multifunction control panel',
+      'Internal security lock with stainless-steel handle',
+      'Mirror panel integration',
+      'TV slot ready for entertainment systems',
+      'Sliding door with ergonomic ladder',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide sleeping space for comfort',
+      'Adjustable ventilation system',
+      'Model codes: COD-H991/992/993'
+    ],
+    specifications: {
+      dimensions: '2060 × 1580 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'future-horizontal-single',
+    name: 'BACK TO FUTURE 2047 Series - Horizontal Single',
+    description: 'Futuristic design with sliding door, rolling-door style option, backrest feature, and advanced controls for next-generation hospitality.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed main.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed details.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more1.png'
+    ],
+    features: [
+      'Futuristic capsule design',
+      'Capsule number LED with advanced display',
+      'Internal security lock with stainless-steel handle',
+      'Backrest feature for comfort',
+      'Rolling door curtain option',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door system',
+      'Fire-retardant ABS shell construction',
+      'Advanced ventilation controls',
+      'Model codes: TWS-118H/128H'
+    ],
+    specifications: {
+      dimensions: '2060 × 1140 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'future-horizontal-double',
+    name: 'BACK TO FUTURE 2047 Series - Horizontal Double',
+    description: 'Spacious double variant with futuristic design, sliding door, rolling-door style option, and backrest feature for premium comfort.',
+    price: '₹4,99,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more2.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more3.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more4.png'
+    ],
+    features: [
+      'Futuristic capsule design',
+      'Capsule number LED with advanced display',
+      'Internal security lock with stainless-steel handle',
+      'Backrest feature for comfort',
+      'Rolling door curtain option',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door system',
+      'Fire-retardant ABS shell construction',
+      'Extra-wide sleeping space for comfort',
+      'Model codes: TWD-118H/128H'
+    ],
+    specifications: {
+      dimensions: '2060 × 1580 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'future-vertical-single',
+    name: 'BACK TO FUTURE 2047 Series - Vertical Single',
+    description: 'Vertical space-saving variant with futuristic design, sliding door, rolling-door style option, and backrest feature for high-density installations.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more1.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed more2.png',
+      '/Pods_Images/BACK TO FUTURE 2047 series/"BACK TO FUTURE 2047"series -Horizontal:Verticalsingle bed details.png'
+    ],
+    features: [
+      'Vertical space-saving design',
+      'Capsule number LED with advanced display',
+      'Internal security lock with stainless-steel handle',
+      'Backrest feature for comfort',
+      'Rolling door curtain option',
+      'TV slot ready for entertainment systems',
+      'Smart sliding door system',
+      'Fire-retardant ABS shell construction',
+      'Optimized for high-density installations',
+      'Model codes: TWS-118V/128V/138V'
+    ],
+    specifications: {
+      dimensions: '2060 × 1140 × 2400 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'wooden-vertical-single',
+    name: 'Wooden Series - Vertical Single',
+    description: 'Premium eco multi-layer board construction with metal frame in vertical configuration, offering natural wood-grain aesthetics with space-saving design.',
+    price: '₹4,75,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/wooden series/"wooden"series -Horizontal single bed:Vertical single bed more2.png',
+      '/Pods_Images/wooden series/"wooden"series -Horizontal single bed:Vertical single bed more3.png',
+      '/Pods_Images/wooden series/"wooden"series -Horizontal single bed:Vertical single bed more4.png'
+    ],
+    features: [
+      'Vertical space-saving design',
+      'Eco multi-layer board construction',
+      'Natural wood-grain finish available',
+      'Intelligent LED control system',
+      'Internal security lock with stainless-steel handle',
+      'Reading and ceiling lighting',
+      'Ventilation with adjustable airflow',
+      'Extended ladder design (480mm)',
+      'Environmentally friendly materials',
+      'Model codes: WEH-809V/810V/811V'
+    ],
+    specifications: {
+      dimensions: '2150 × 1100 × 2400 mm (L × W × H)',
+      materials: 'Eco multi-layer board + high-quality metal frame',
+      colors: 'White, Pink, Yellow, Black, Blue, Green, Orange, Grey, Wood-grain',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~60W (no TV) / ~110W (with TV)',
+      freshAirVentilation: '~30 m³/h with adjustable airflow'
+    }
+  },
+  {
+    id: 'lounge-small',
+    name: 'Online Red Studio / Small Room Lounge - Small',
+    description: 'Compact enclosed lounge/booth module with intelligent door lock, perfect for internet bars, livestream studios, and small private spaces.',
+    price: '₹2,99,000 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge main.png',
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge details.png',
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge more1.png'
+    ],
+    features: [
+      'Compact enclosed design',
+      'Intelligent door lock system',
+      'Door blue light indicator',
+      'Advanced control panel',
+      'Decorative blue lighting',
+      'Fire-retardant ABS construction',
+      'Perfect for studios and internet bars',
+      'Space-efficient footprint',
+      'Professional appearance',
+      'Model codes: CS-101/102'
+    ],
+    specifications: {
+      dimensions: '1580 × 2150 × 2450 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'Silvery grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~70W (studio optimized)',
+      freshAirVentilation: 'Integrated ventilation system'
+    }
+  },
+  {
+    id: 'lounge-large',
+    name: 'Online Red Studio / Small Room Lounge - Large',
+    description: 'Spacious enclosed lounge/booth module with intelligent door lock, ideal for larger studios, private offices, and premium lounge applications.',
+    price: '₹3,24,999 per set (2 pods)',
+    origin: 'imported',
+    images: [
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge more2.png',
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge more3.png',
+      '/Pods_Images/Online Red Studio : Small Room Lounge/Online Red Studio : Small Room Lounge more4.png'
+    ],
+    features: [
+      'Spacious enclosed design',
+      'Intelligent door lock system',
+      'Door blue light indicator',
+      'Advanced control panel',
+      'Decorative blue lighting',
+      'Fire-retardant ABS construction',
+      'Perfect for larger studios and offices',
+      'Enhanced space utilization',
+      'Professional premium appearance',
+      'Model codes: CS-201/202'
+    ],
+    specifications: {
+      dimensions: '2180 × 2150 × 2450 mm (L × W × H)',
+      materials: 'Taiwan Chi-Mei V0 Fire-retardant ABS + high-quality metal',
+      colors: 'Silvery grey',
+      ratedVoltage: '110–240V (universal)',
+      lightingPower: '12V low-voltage system',
+      typicalConsumption: '~85W (large studio optimized)',
+      freshAirVentilation: 'Enhanced ventilation system'
+    }
+  }
 ];
 
 // Helper function to get series price display
