@@ -120,9 +120,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   const handleImageClick = (index: number) => {
     // Only open lightbox for images, not videos
     const currentMedia = images[index];
-    const isVideo = currentMedia.toLowerCase().endsWith('.mp4');
+    const isCurrentMediaVideo = currentMedia.toLowerCase().endsWith('.mp4');
     
-    if (!isVideo) {
+    if (!isCurrentMediaVideo) {
       // Filter out videos and get only images for lightbox
       const imageUrls = images.filter(media => !isVideo(media));
       const imageIndex = images.filter((media, i) => i < index && !isVideo(media)).length;
