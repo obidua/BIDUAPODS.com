@@ -169,6 +169,7 @@ const Home: React.FC = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <div className="p-4 bg-gradient-to-br from-cyan-100/80 to-blue-100/80 dark:from-cyan-500/30 dark:to-blue-500/30 backdrop-blur-sm rounded-2xl shadow-lg">
+                    <stat.icon className="h-8 w-8 text-cyan-500 mx-auto" />
                   </div>
                 </motion.div>
                 <motion.div 
