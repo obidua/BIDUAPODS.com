@@ -91,8 +91,8 @@ const Home: React.FC = () => {
         <ImageSlider
           images={homePageImages}
           className="w-full h-full"
-          autoPlay={true}
-          interval={5000}
+          autoPlay={false}
+          interval={6000}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-cyan-50/5 to-blue-50/5 dark:from-gray-950/10 dark:via-blue-900/5 dark:to-cyan-900/5"></div>
       </motion.section>
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
         className="pt-12 pb-20 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-50/30 via-transparent to-blue-50/30 dark:from-transparent dark:to-transparent"></div>
@@ -109,14 +109,12 @@ const Home: React.FC = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 leading-tight"
           >
             Premium Capsule
             <motion.span 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent"
-              animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
-              transition={{ duration: 3, repeat: Infinity }}
             >
               {" "}Beds
             </motion.span>
@@ -124,7 +122,7 @@ const Home: React.FC = () => {
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-4xl mx-auto px-2"
           >
             {heroDescription}
@@ -132,28 +130,28 @@ const Home: React.FC = () => {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-2"
           >
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Link
                 to="/products"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/30 flex items-center justify-center space-x-3 group font-bold text-base sm:text-lg"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 shadow-2xl hover:shadow-cyan-500/30 flex items-center justify-center space-x-3 group font-bold text-base sm:text-lg"
               >
                 <span>Explore Products</span>
-                <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Link
                 to="/features"
-                className="border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 px-8 sm:px-10 py-4 sm:py-5 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300 flex items-center justify-center space-x-3 font-bold text-base sm:text-lg backdrop-blur-sm"
+                className="border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 px-8 sm:px-10 py-4 sm:py-5 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-200 flex items-center justify-center space-x-3 font-bold text-base sm:text-lg backdrop-blur-sm"
               >
                 <span>Learn More</span>
               </Link>
@@ -162,37 +160,16 @@ const Home: React.FC = () => {
         </div>
 
         {/* Floating elements */}
-        <motion.div 
-          className="absolute top-20 left-10 w-24 h-24 bg-cyan-400/20 rounded-full blur-2xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{ duration: 4, repeat: Infinity }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.7, 0.4]
-          }}
-          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-20 w-16 h-16 bg-purple-400/20 rounded-full blur-xl"
-          animate={{ 
-            y: [-20, 20, -20],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{ duration: 6, repeat: Infinity, delay: 2 }}
-        />
+        <div className="absolute top-20 left-10 w-24 h-24 bg-cyan-400/10 rounded-full blur-2xl opacity-30" />
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl opacity-40" />
+        <div className="absolute top-1/2 right-20 w-16 h-16 bg-purple-400/10 rounded-full blur-xl opacity-20" />
       </motion.section>
 
       {/* Stats Section */}
       <motion.section 
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
         className="py-20 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl relative overflow-hidden transition-colors duration-500"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-50/30 to-blue-50/30 dark:from-transparent dark:to-transparent"></div>
@@ -206,26 +183,24 @@ const Home: React.FC = () => {
             ].map((stat, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 30, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                viewport={{ once: true, margin: "-50px" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="text-center group cursor-pointer"
               >
                 <motion.div 
-                      to="/order-now"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="p-4 bg-gradient-to-br from-cyan-100/80 to-blue-100/80 dark:from-cyan-500/30 dark:to-blue-500/30 backdrop-blur-sm rounded-2xl shadow-lg">
                     <stat.icon className="h-8 w-8 text-cyan-500 mx-auto" />
                   </div>
                 </motion.div>
                 <motion.div 
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                  initial={{ opacity: 0.8 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
                   className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2"
                 >
                   {stat.value}
@@ -240,15 +215,15 @@ const Home: React.FC = () => {
       {/* Featured Products */}
       <motion.section 
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
         className="py-24 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -264,8 +239,8 @@ const Home: React.FC = () => {
               <motion.div
                 key={series.id}
                 initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <SeriesCard series={series} />
               </motion.div>
@@ -277,15 +252,15 @@ const Home: React.FC = () => {
       {/* Key Features */}
       <motion.section 
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
         className="py-24 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl transition-colors duration-500"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -301,8 +276,8 @@ const Home: React.FC = () => {
               <motion.div
                 key={feature.id}
                 initial={{ opacity: 0, y: 40, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <FeatureCard feature={feature} />
               </motion.div>
@@ -314,8 +289,8 @@ const Home: React.FC = () => {
       {/* CTA Section */}
       <motion.section 
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
       className="py-24 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-50/30 via-transparent to-blue-50/30 dark:from-transparent dark:to-transparent"></div>
@@ -323,7 +298,7 @@ const Home: React.FC = () => {
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
             className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8"
           >
             Ready to Upgrade Your Facility?
@@ -331,7 +306,7 @@ const Home: React.FC = () => {
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-gray-600 dark:text-gray-400 text-xl mb-12 leading-relaxed max-w-3xl mx-auto"
           >
             Join hotels, hostels, and facilities worldwide who trust BIDUA Pods for premium guest accommodation
@@ -339,16 +314,16 @@ const Home: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
           >
             <Link
               to="/order-now"
-              className="inline-flex items-center space-x-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-6 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/30 group font-bold text-xl"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-6 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 shadow-2xl hover:shadow-cyan-500/30 group font-bold text-xl"
             >
               <span>Order Now</span>
-              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </motion.div>
         </div>

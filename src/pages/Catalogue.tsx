@@ -38,7 +38,7 @@ const Catalogue: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMainContent(true);
-    }, 200);
+    }, 50);
 
     return () => clearTimeout(timer);
   }, []);

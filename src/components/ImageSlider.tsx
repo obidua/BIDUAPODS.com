@@ -12,7 +12,7 @@ interface ImageSliderProps {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ 
   images, 
-  autoPlay = true, 
+  autoPlay = false, 
   interval = 4000,
   className = ""
 }) => {
