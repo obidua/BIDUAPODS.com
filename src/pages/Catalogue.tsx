@@ -56,27 +56,32 @@ const Catalogue: React.FC = () => {
   // Scroll to specific series section or products section when series is selected
   useEffect(() => {
     if (selectedSeries !== 'all') {
-      // First try to scroll to the specific series section
-      const seriesElement = seriesRefs.current.get(selectedSeries);
-      if (seriesElement) {
-        const timer = setTimeout(() => {
-          seriesElement.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }, 100);
-        return () => clearTimeout(timer);
-      }
-      // Fallback to all products section if series element not found
-      else if (allProductsRef.current) {
-        const timer = setTimeout(() => {
-          allProductsRef.current?.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }, 100);
-        return () => clearTimeout(timer);
-      }
+      // Use requestAnimationFrame to ensure elements are properly rendered before scrolling
+      const scrollToElement = () => {
+        const seriesElement = seriesRefs.current.get(selectedSeries);
+        const targetElement = seriesElement || allProductsRef.current;
+        
+        if (targetElement) {
+          // Check if element has been rendered and has layout
+          if (targetElement.offsetHeight > 0 && targetElement.offsetWidth > 0) {
+            // Element is ready, scroll to it
+            targetElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          } else {
+            // Element not ready yet, try again on next frame
+            requestAnimationFrame(scrollToElement);
+          }
+        }
+      };
+      
+      // Start the scroll attempt after a brief delay to allow initial render
+      const timeoutId = setTimeout(() => {
+        requestAnimationFrame(scrollToElement);
+      }, 150);
+      
+      return () => clearTimeout(timeoutId);
     }
   }, [selectedSeries]);
 
