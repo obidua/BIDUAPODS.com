@@ -86,11 +86,11 @@ const OrderNow: React.FC = () => {
       const inquirySent = sessionStorage.getItem('inquirySent');
       if (inquirySent === 'true') {
         setShowSuccessMessage(true);
-        sessionStorage.removeItem('inquirySent');
         
         // Auto-hide success message after 5 seconds
         const timer = setTimeout(() => {
           setShowSuccessMessage(false);
+          sessionStorage.removeItem('inquirySent');
         }, 5000);
         
         return () => clearTimeout(timer);

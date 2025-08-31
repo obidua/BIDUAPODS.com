@@ -23,11 +23,11 @@ const Contact: React.FC = () => {
       const messageSent = sessionStorage.getItem('messageSent');
       if (messageSent === 'true') {
         setShowSuccessMessage(true);
-        sessionStorage.removeItem('messageSent');
         
         // Auto-hide success message after 5 seconds
         const timer = setTimeout(() => {
           setShowSuccessMessage(false);
+          sessionStorage.removeItem('messageSent');
         }, 5000);
         
         return () => clearTimeout(timer);
