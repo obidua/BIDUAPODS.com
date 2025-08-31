@@ -372,7 +372,7 @@ const Products: React.FC = () => {
       </section>
 
       {/* Dimensions Table */}
-      <section className="py-20 bg-white/70 dark:bg-gray-950/70">
+      <section className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -578,7 +578,7 @@ const Products: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+      <section className="py-20 bg-white/70 dark:bg-gray-950/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
