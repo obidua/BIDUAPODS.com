@@ -178,7 +178,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 ref={videoRef}
                 src={images[currentIndex]}
                 className="w-full h-full object-cover block"
-                autoPlay
+                autoPlay={autoPlay}
                 muted
                 playsInline
                 onEnded={handleVideoEnded}
