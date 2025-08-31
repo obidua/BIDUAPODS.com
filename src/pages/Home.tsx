@@ -291,7 +291,7 @@ const Home: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-      className="py-24 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl relative overflow-hidden"
+        className="py-24 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-50/30 via-transparent to-blue-50/30 dark:from-transparent dark:to-transparent"></div>
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
@@ -327,7 +327,8 @@ const Home: React.FC = () => {
             </Link>
           </motion.div>
         </div>
-    </div>
+      </motion.section>
+      </div>
     </>
   );
 };
