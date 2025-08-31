@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
-import Lightbox from './Lightbox';
+import { useLightbox } from '../context/LightboxContext';
 
 interface ImageSliderProps {
   images: string[]; // Can now include both images and videos
@@ -19,10 +19,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { openLightbox } = useLightbox();
 
   const clearAutoPlay = () => {
     if (autoPlayRef.current) {
@@ -113,19 +112,17 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     }
   }, [isUserInteracting, currentIndex]);
 
-  const openLightbox = (index: number) => {
+  const handleImageClick = (index: number) => {
     // Only open lightbox for images, not videos
     const currentMedia = images[index];
     const isVideo = currentMedia.toLowerCase().endsWith('.mp4');
     
     if (!isVideo) {
-      setLightboxInitialIndex(index);
-      setIsLightboxOpen(true);
+      // Filter out videos and get only images for lightbox
+      const imageUrls = images.filter(media => !isVideo(media));
+      const imageIndex = images.filter((media, i) => i < index && !isVideo(media)).length;
+      openLightbox(imageUrls, imageIndex);
     }
-  };
-
-  const closeLightbox = () => {
-    setIsLightboxOpen(false);
   };
 
   const handleVideoClick = async (e: React.MouseEvent) => {
@@ -170,7 +167,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <motion.div
             key={currentIndex}
             className={`w-full h-full ${!isVideo(images[currentIndex]) ? 'cursor-pointer' : ''}`}
-            onClick={() => openLightbox(currentIndex)}
+            onClick={() => handleImageClick(currentIndex)}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
@@ -289,16 +286,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           </>
         )}
       </div>
-
-      {/* Lightbox - only show for images */}
-      {!images.every(media => isVideo(media)) && (
-        <Lightbox
-          images={images.filter(media => !isVideo(media))}
-          initialIndex={Math.max(0, images.filter((media, index) => index < lightboxInitialIndex && !isVideo(media)).length)}
-          isOpen={isLightboxOpen}
-          onClose={closeLightbox}
-        />
-      )}
     </>
   );
 };

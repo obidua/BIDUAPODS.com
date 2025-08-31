@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import Lightbox from '../components/Lightbox';
+import { useLightbox } from '../context/LightboxContext';
 import { useTheme } from '../context/ThemeContext';
 
 const Gallery: React.FC = () => {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
-  const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
   const { theme } = useTheme();
+  const { openLightbox } = useLightbox();
 
   const galleryImages = [
     {
@@ -163,21 +161,14 @@ const Gallery: React.FC = () => {
     ? galleryImages 
     : galleryImages.filter(img => img.category === activeCategory);
 
-  const openLightbox = (imageUrl: string) => {
+  const handleImageClick = (imageUrl: string) => {
     const imageIndex = filteredImages.findIndex(img => img.url === imageUrl);
     const imageUrls = filteredImages.map(img => img.url);
-    setLightboxImages(imageUrls);
-    setLightboxInitialIndex(imageIndex);
-    setIsLightboxOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setIsLightboxOpen(false);
+    openLightbox(imageUrls, imageIndex);
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+    <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
         {/* Header */}
         <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -219,7 +210,7 @@ const Gallery: React.FC = () => {
                 <div
                   key={index}
                   className={`group relative aspect-square overflow-hidden rounded-xl cursor-pointer transform hover:scale-105 transition-all duration-300 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
-                  onClick={() => openLightbox(image.url)}
+                  onClick={() => handleImageClick(image.url)}
                 >
                   <img
                     src={image.url}
@@ -247,16 +238,7 @@ const Gallery: React.FC = () => {
             </div>
           </div>
         </section>
-      </div>
-
-      {/* Lightbox */}
-      <Lightbox
-        images={lightboxImages}
-        initialIndex={lightboxInitialIndex}
-        isOpen={isLightboxOpen}
-        onClose={closeLightbox}
-      />
-    </>
+    </div>
   );
 };
 
