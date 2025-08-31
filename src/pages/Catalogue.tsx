@@ -460,7 +460,6 @@ const Catalogue: React.FC = () => {
                 return (
                   <LazyLoadWrapper
                     key={series.id}
-                    onContentVisible={() => handleContentVisible(series.id)}
                     placeholder={
                       <div className="bg-gray-100 dark:bg-gray-800 rounded-3xl animate-pulse">
                         <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded-t-3xl"></div>
@@ -479,10 +478,10 @@ const Catalogue: React.FC = () => {
                   >
                     <motion.div
                       ref={setSeriesRef(series.id)}
-                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl scroll-margin-top-nav ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: seriesIndex * 0.1 }}
+                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                     >
                       {/* Series Images */}
                       <div className="relative">
@@ -662,12 +661,7 @@ const Catalogue: React.FC = () => {
                               <button
                                 onClick={() => {
                                   setSelectedSeries(series.id);
-                                  setTimeout(() => {
-                                    allProductsRef.current?.scrollIntoView({ 
-                                      behavior: 'smooth', 
-                                      block: 'start' 
-                                    });
-                                  }, 100);
+                                  setScrollTargetId('all-products');
                                 }}
                                 className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 px-6 rounded-lg hover:from-purple-400 hover:to-indigo-500 transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-purple-500/25"
                               >
@@ -710,7 +704,7 @@ const Catalogue: React.FC = () => {
 
       {/* All Products Section */}
       {showMainContent && (
-        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl scroll-margin-top-nav">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
