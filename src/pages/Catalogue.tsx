@@ -168,6 +168,8 @@ const Catalogue: React.FC = () => {
       }, 150);
       
       return () => clearTimeout(timeoutId);
+    }
+  }, [selectedSeries]);
 
   // Function to set series ref
   const setSeriesRef = (seriesId: string) => (element: HTMLDivElement | null) => {
