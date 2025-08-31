@@ -304,7 +304,7 @@ const Catalogue: React.FC = () => {
                       <ImageSlider
                         images={series.images}
                         className="w-full h-64"
-                        autoPlay={true}
+                        autoPlay={false}
                         interval={4000}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none"></div>
