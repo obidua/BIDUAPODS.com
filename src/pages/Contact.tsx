@@ -45,14 +45,14 @@ const Contact: React.FC = () => {
     // Generate email content
     const subject = `Contact Form: ${formData.inquiry.charAt(0).toUpperCase() + formData.inquiry.slice(1).replace(/([A-Z])/g, ' $1')} Inquiry`;
     
-    let emailBody = `Contact Form Submission\n\n`;
-    emailBody += `Name: ${formData.name}\n`;
-    emailBody += `Email: ${formData.email}\n`;
-    emailBody += `Company: ${formData.company || 'Not provided'}\n`;
-    emailBody += `Phone: ${formData.phone || 'Not provided'}\n`;
-    emailBody += `Inquiry Type: ${formData.inquiry.charAt(0).toUpperCase() + formData.inquiry.slice(1).replace(/([A-Z])/g, ' $1')}\n\n`;
-    emailBody += `Message:\n${formData.message}\n\n`;
-    emailBody += `---\nSubmitted via BIDUA Pods Contact Form`;
+    let emailBody = `Contact Form Submission\r\n\r\n`;
+    emailBody += `Name: ${formData.name}\r\n`;
+    emailBody += `Email: ${formData.email}\r\n`;
+    emailBody += `Company: ${formData.company || 'Not provided'}\r\n`;
+    emailBody += `Phone: ${formData.phone || 'Not provided'}\r\n`;
+    emailBody += `Inquiry Type: ${formData.inquiry.charAt(0).toUpperCase() + formData.inquiry.slice(1).replace(/([A-Z])/g, ' $1')}\r\n\r\n`;
+    emailBody += `Message:\r\n${formData.message}\r\n\r\n`;
+    emailBody += `---\r\nSubmitted via BIDUA Pods Contact Form`;
 
     if (method === 'whatsapp') {
       const whatsappNumber = '919512921903';
