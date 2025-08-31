@@ -225,7 +225,7 @@ const OrderNow: React.FC = () => {
   };
 
   const generateMessage = () => {
-    let message = 'Capsule Beds Enquiry\r\n\r\n';
+    let message = 'Capsule Beds Enquiry\n\n';
     
     // Add each cart item
     cartItems.forEach((item, index) => {
@@ -242,26 +242,26 @@ const OrderNow: React.FC = () => {
 
       const displayQty = typeof item.qty === 'number' ? item.qty : 0;
 
-      message += `Product ${index + 1}:\r\n`;
-      message += `Product: ${productName}\r\n`;
-      message += `Qty (sets): ${displayQty}\r\n`;
-      message += `Color: ${item.color}\r\n`;
-      message += `Material: ${item.material}\r\n`;
-      message += `Add-ons: ${selectedOptions.length ? selectedOptions.join(', ') : 'None'}\r\n\r\n`;
+      message += `Product ${index + 1}:\n`;
+      message += `Product: ${productName}\n`;
+      message += `Qty (sets): ${displayQty}\n`;
+      message += `Color: ${item.color}\n`;
+      message += `Material: ${item.material}\n`;
+      message += `Add-ons: ${selectedOptions.length ? selectedOptions.join(', ') : 'None'}\n\n`;
     });
 
-    message += `Total Price (ex-GST): ₹${formatNumber(pricing.taxable)}\r\n`;
-    message += `GST @18%: ₹${formatNumber(pricing.gst)}\r\n`;
-    message += `Total (incl. GST): ₹${formatNumber(pricing.total)}\r\n\r\n`;
+    message += `Total Price (ex-GST): ₹${formatNumber(pricing.taxable)}\n`;
+    message += `GST @18%: ₹${formatNumber(pricing.gst)}\n`;
+    message += `Total (incl. GST): ₹${formatNumber(pricing.total)}\n\n`;
 
-    message += `Buyer:\r\n`;
-    message += `Name: ${customerDetails.custName}\r\n`;
-    message += `Phone: ${customerDetails.custPhone}\r\n`;
-    message += `Email: ${customerDetails.custEmail}\r\n`;
-    message += `Company: ${customerDetails.custCompany || '-'}\r\n`;
-    message += `GSTIN: ${customerDetails.custGST || '-'}\r\n`;
-    message += `City/State: ${customerDetails.custCity}\r\n`;
-    message += `Address: ${customerDetails.custAddr}\r\n`;
+    message += `Buyer:\n`;
+    message += `Name: ${customerDetails.custName}\n`;
+    message += `Phone: ${customerDetails.custPhone}\n`;
+    message += `Email: ${customerDetails.custEmail}\n`;
+    message += `Company: ${customerDetails.custCompany || '-'}\n`;
+    message += `GSTIN: ${customerDetails.custGST || '-'}\n`;
+    message += `City/State: ${customerDetails.custCity}\n`;
+    message += `Address: ${customerDetails.custAddr}\n`;
     message += `Access notes: ${customerDetails.custNotes || '-'}`;
 
     return message;
