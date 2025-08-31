@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle, CheckCircle, X } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useTheme } from '../context/ThemeContext';
 
 const Contact: React.FC = () => {
   const { theme } = useTheme();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +16,22 @@ const Contact: React.FC = () => {
     inquiry: 'general',
     message: ''
   });
+
+  // Check for success message on component mount
+  useEffect(() => {
+    const messageSent = sessionStorage.getItem('messageSent');
+    if (messageSent === 'true') {
+      setShowSuccessMessage(true);
+      sessionStorage.removeItem('messageSent');
+      
+      // Auto-hide success message after 5 seconds
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent, method: 'whatsapp' | 'email') => {
     e.preventDefault();
@@ -40,11 +57,13 @@ const Contact: React.FC = () => {
     if (method === 'whatsapp') {
       const whatsappNumber = '919512921903';
       const whatsappMessage = encodeURIComponent(emailBody);
+      sessionStorage.setItem('messageSent', 'true');
       window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
     } else if (method === 'email') {
       const encodedSubject = encodeURIComponent(subject);
       const encodedBody = encodeURIComponent(emailBody);
       const mailtoUrl = `mailto:support@biduapods.com?cc=obiduatechnology@gmail.com,biduaindustries@gmail.com&subject=${encodedSubject}&body=${encodedBody}`;
+      sessionStorage.setItem('messageSent', 'true');
       window.open(mailtoUrl, '_blank');
     }
   };
@@ -66,6 +85,31 @@ const Contact: React.FC = () => {
         ogDescription="Get quotes and inquiries for premium capsule beds. Phone, email, and WhatsApp support available."
       />
       <div className="min-h-screen bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
+      {/* Success Message */}
+      {showSuccessMessage && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-50">
+          <motion.div
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -50, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 max-w-md"
+          >
+            <CheckCircle className="h-6 w-6 flex-shrink-0" />
+            <div>
+              <p className="font-semibold">Message Sent Successfully!</p>
+              <p className="text-sm opacity-90">We'll get back to you within 24 hours.</p>
+            </div>
+            <button
+              onClick={() => setShowSuccessMessage(false)}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </motion.div>
+        </div>
+      )}
+
       {/* Header */}
       <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
