@@ -414,7 +414,6 @@ export const products: Product[] = [
       typicalConsumption: 'Depends on customer electronics',
       freshAirVentilation: 'Structure ready for ventilation system'
     }
-  }
   },
   {
     id: 'galaxy-big-bed',
@@ -1257,5 +1256,5 @@ export const productSeries: ProductSeriesDetail[] = [
     ],
     availableMaterials: ['Fiberglass (FRP)', 'Mild Steel Structure'],
     origin: 'made-in-india'
-  },
+  }
 ];
