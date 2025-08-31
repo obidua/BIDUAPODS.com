@@ -159,7 +159,8 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, y: 30, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="text-center group cursor-pointer"
               >
                 <motion.div 
@@ -213,8 +214,7 @@ const Home: React.FC = () => {
                 key={series.id}
                 initial={{ opacity: 0, y: 40, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
               >
                 <SeriesCard series={series} />
               </motion.div>
