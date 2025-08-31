@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X } from 'lucide-react';
-import { productSeries } from '../data/products';
+import { products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 interface CartItem {
   id: string;
-  seriesId: string;
+  productId: string;
   qty: number | '';
   color: string;
   material: string;
@@ -57,9 +57,14 @@ const OrderNow: React.FC = () => {
   // Initialize cart with URL parameter or default item
   useEffect(() => {
     const seriesParam = searchParams.get('series');
+    // Find a product from the specified series, or use the first product
+    const defaultProductId = seriesParam 
+      ? products.find(p => p.id.toLowerCase().includes(seriesParam.toLowerCase()))?.id || ''
+      : '';
+    
     const defaultItem: CartItem = {
       id: Date.now().toString(),
-      seriesId: seriesParam && productSeries.find(s => s.id === seriesParam) ? seriesParam : '',
+      productId: defaultProductId,
       qty: 1,
       color: 'White',
       material: 'ABS',
@@ -73,23 +78,24 @@ const OrderNow: React.FC = () => {
     setCartItems([defaultItem]);
   }, [searchParams]);
 
-  // Update material when series changes to ensure compatibility
+  // Update material when product changes to ensure compatibility
   useEffect(() => {
     setCartItems(prevItems => 
       prevItems.map(item => {
-        const selectedSeries = productSeries.find(s => s.id === item.seriesId);
-        if (selectedSeries && selectedSeries.availableMaterials.length > 0) {
-          if (!selectedSeries.availableMaterials.includes(item.material)) {
-            return { ...item, material: selectedSeries.availableMaterials[0] };
+        const selectedProduct = products.find(p => p.id === item.productId);
+        if (selectedProduct) {
+          // For simplicity, set material based on product origin
+          const defaultMaterial = selectedProduct.origin === 'made-in-india' ? 'FRP' : 'ABS';
+          if (item.material !== defaultMaterial) {
+            return { ...item, material: defaultMaterial };
           }
         }
         return item;
       })
     );
-  }, [cartItems.map(item => item.seriesId).join(',')]);
+  }, [cartItems.map(item => item.productId).join(',')]);
 
   const PRICING_CONFIG = {
-    basePerSet: 500000,
     deliveryPerSet: 15000,
     gstRate: 0.18,
     options: {
@@ -99,6 +105,23 @@ const OrderNow: React.FC = () => {
       safe: 8000,
       card: 5000,
       table: 4000
+    }
+  };
+
+  // Helper function to get base price for a product
+  const getProductBasePrice = (productId: string): number => {
+    const product = products.find(p => p.id === productId);
+    if (!product) return 0;
+    
+    if (product.origin === 'imported') {
+      return 499999; // New imported base price
+    } else {
+      // Made in India - parse price from string
+      const priceMatch = product.price.match(/₹([\d,]+)/);
+      if (priceMatch) {
+        return parseInt(priceMatch[1].replace(/,/g, ''));
+      }
+      return 0;
     }
   };
 
@@ -113,7 +136,8 @@ const OrderNow: React.FC = () => {
 
     cartItems.forEach(item => {
       const qty = Math.max(1, typeof item.qty === 'number' ? item.qty : 0);
-      const base = PRICING_CONFIG.basePerSet * qty;
+      const basePrice = getProductBasePrice(item.productId);
+      const base = basePrice * qty;
       const delivery = PRICING_CONFIG.deliveryPerSet * qty;
 
       let options = 0;
@@ -150,10 +174,10 @@ const OrderNow: React.FC = () => {
   const addCartItem = () => {
     const newItem: CartItem = {
       id: Date.now().toString(),
-      seriesId: '',
+      productId: '',
       qty: 1,
       color: 'White',
-      material: 'ABS',
+      material: 'ABS', // Will be updated by useEffect
       optPanels: false,
       optTV: false,
       optBedding: false,
@@ -191,8 +215,8 @@ const OrderNow: React.FC = () => {
     
     // Add each cart item
     cartItems.forEach((item, index) => {
-      const selectedSeries = productSeries.find(s => s.id === item.seriesId);
-      const seriesName = selectedSeries ? selectedSeries.name : 'Unknown Series';
+      const selectedProduct = products.find(p => p.id === item.productId);
+      const productName = selectedProduct ? selectedProduct.name : 'Unknown Product';
       
       const selectedOptions = [];
       if (item.optPanels) selectedOptions.push('Panels');
@@ -205,7 +229,7 @@ const OrderNow: React.FC = () => {
       const displayQty = typeof item.qty === 'number' ? item.qty : 0;
 
       message += `Product ${index + 1}:\n`;
-      message += `Series: ${seriesName}\n`;
+      message += `Product: ${productName}\n`;
       message += `Qty (sets): ${displayQty}\n`;
       message += `Color: ${item.color}\n`;
       message += `Material: ${item.material}\n`;
@@ -335,34 +359,34 @@ const OrderNow: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                           <div>
-                            <label className="block text-gray-900 dark:text-white font-medium mb-2">Series</label>
+                            <label className="block text-gray-900 dark:text-white font-medium mb-2">Product</label>
                             <select
-                              value={item.seriesId}
-                              onChange={(e) => updateCartItem(item.id, 'seriesId', e.target.value)}
+                              value={item.productId}
+                              onChange={(e) => updateCartItem(item.id, 'productId', e.target.value)}
                               className="w-full bg-white dark:bg-gray-600/50 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-cyan-400 transition-colors"
                               required
                             >
                               <option value="" disabled hidden>Select Product</option>
                               {(() => {
-                                const availableOptions = productSeries.filter(series => 
-                                  series.id === item.seriesId || 
-                                  !cartItems.some(cartItem => cartItem.id !== item.id && cartItem.seriesId === series.id)
+                                const availableOptions = products.filter(product => 
+                                  product.id === item.productId || 
+                                  !cartItems.some(cartItem => cartItem.id !== item.id && cartItem.productId === product.id)
                                 );
-                                return availableOptions.map((series) => (
-                                <option key={series.id} value={series.id}>
-                                  {series.name}
+                                return availableOptions.map((product) => (
+                                <option key={product.id} value={product.id}>
+                                  {product.name}
                                 </option>
                                 ));
                               })()}
                             </select>
                             {(() => {
-                              const availableOptions = productSeries.filter(series => 
-                                series.id === item.seriesId || 
-                                !cartItems.some(cartItem => cartItem.id !== item.id && cartItem.seriesId === series.id)
+                              const availableOptions = products.filter(product => 
+                                product.id === item.productId || 
+                                !cartItems.some(cartItem => cartItem.id !== item.id && cartItem.productId === product.id)
                               );
-                              return availableOptions.length === 1 && item.seriesId === '' && (
+                              return availableOptions.length === 1 && item.productId === '' && (
                               <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">
-                                Only this series is available (others already selected)
+                                Only this product is available (others already selected)
                               </p>
                               );
                             })()}
@@ -403,11 +427,19 @@ const OrderNow: React.FC = () => {
                               className="w-full bg-white dark:bg-gray-600/50 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:border-cyan-400 transition-colors"
                               required
                             >
-                              {selectedSeries?.availableMaterials.map((material) => (
-                                <option key={material} value={material}>
-                                  {material === 'Wood' ? 'Wood (eco multi-layer board)' : material}
-                                </option>
-                              )) || [<option key="ABS" value="ABS">ABS</option>]}
+                              {(() => {
+                                const selectedProduct = products.find(p => p.id === item.productId);
+                                if (selectedProduct?.origin === 'made-in-india') {
+                                  return [
+                                    <option key="FRP" value="FRP">FRP (Fiberglass)</option>
+                                  ];
+                                } else {
+                                  return [
+                                    <option key="ABS" value="ABS">ABS V0 Fire-retardant</option>,
+                                    <option key="Wood" value="Wood">Wood (eco multi-layer board)</option>
+                                  ];
+                                }
+                              })()}
                             </select>
                           </div>
                         </div>
@@ -442,15 +474,15 @@ const OrderNow: React.FC = () => {
 
                   {/* Add Product Button */}
                   {(() => {
-                    const allSeriesSelected = cartItems.length >= productSeries.length;
+                    const allProductsSelected = cartItems.length >= products.length;
                     return (
                       <div>
                         <button
                           type="button"
                           onClick={addCartItem}
-                          disabled={allSeriesSelected}
+                          disabled={allProductsSelected}
                           className={`w-full py-4 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 font-semibold shadow-lg ${
-                            allSeriesSelected
+                            allProductsSelected
                               ? 'bg-gray-400 dark:bg-gray-600 text-gray-200 dark:text-gray-400 cursor-not-allowed'
                               : 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white hover:from-purple-400 hover:to-indigo-500 hover:shadow-purple-500/25'
                           }`}
@@ -458,9 +490,9 @@ const OrderNow: React.FC = () => {
                           <Plus className="h-5 w-5" />
                           <span>Add Another Product</span>
                         </button>
-                        {allSeriesSelected && (
+                        {allProductsSelected && (
                           <p className="text-center text-gray-500 dark:text-gray-400 text-sm mt-2">
-                            All available product series have been added to your inquiry
+                            All available products have been added to your inquiry
                           </p>
                         )}
                       </div>
@@ -605,7 +637,7 @@ const OrderNow: React.FC = () => {
                     </div>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-4">
-                    GST 18% on (Base + Delivery + Options). Lead time: 25–35 days after deposit.
+                    Imported: ₹4,99,999/set + ₹15,000 delivery + GST 18%. Made in India: As per model pricing + ₹15,000 delivery + GST 18%. Lead time: 25–35 days after deposit.
                   </p>
                 </div>
 
@@ -632,13 +664,14 @@ const OrderNow: React.FC = () => {
       {/* Pricing Note */}
       <section className="py-12 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Pricing Note (India)</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Pricing Structure (India)</h3>
           <div className={`bg-white dark:bg-gray-900/60 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
             <div className="space-y-2 text-gray-600 dark:text-gray-300">
-              <p>• Base price: <strong className="text-gray-900 dark:text-white">₹5,00,000 per set (ex-GST)</strong> - Factory Direct</p>
+              <p>• <strong className="text-gray-900 dark:text-white">Imported Products:</strong> ₹4,99,999 per set (includes product, factory-to-port, shipping, customs, import taxes)</p>
+              <p>• <strong className="text-gray-900 dark:text-white">Made in India:</strong> Fully Loaded ₹3,00,000 | Mid-tier ₹2,50,000 | Basic ₹2,00,000 per set</p>
               <p>• Delivery: <strong className="text-gray-900 dark:text-white">₹15,000 per set</strong> (added before GST)</p>
               <p>• <strong className="text-gray-900 dark:text-white">GST 18%</strong> on (base + delivery + options)</p>
-              <p>• Lead time: <strong className="text-gray-900 dark:text-white">25–35 days</strong> after deposit (direct from manufacturing facility)</p>
+              <p>• Lead time: <strong className="text-gray-900 dark:text-white">25–35 days</strong> after deposit</p>
             </div>
           </div>
         </div>
