@@ -31,6 +31,7 @@ const Catalogue: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMainContent, setShowMainContent] = useState(false);
   const [scrollTargetId, setScrollTargetId] = useState<string | null>(null);
+  const [scrollPendingSeries, setScrollPendingSeries] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const allProductsRef = useRef<HTMLElement>(null);
   const seriesRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -99,7 +100,7 @@ const Catalogue: React.FC = () => {
     if (scrollTargetId === 'all-products') {
       targetElement = allProductsRef.current;
     } else {
-      const seriesElement = seriesRefs.current.get(seriesId);
+      const seriesElement = seriesRefs.current.get(scrollTargetId);
       targetElement = seriesElement;
     }
     
@@ -163,6 +164,11 @@ const Catalogue: React.FC = () => {
     }
   }, [selectedSeries]);
   */
+
+  const handleScrollToSeries = () => {
+    if (scrollPendingSeries) {
+      const seriesElement = seriesRefs.current.get(scrollPendingSeries);
+      if (seriesElement && seriesElement.offsetHeight > 0) {
         setTimeout(() => {
           seriesElement.scrollIntoView({ 
             behavior: 'smooth', 
@@ -661,7 +667,12 @@ const Catalogue: React.FC = () => {
                               <button
                                 onClick={() => {
                                   setSelectedSeries(series.id);
-                                  setScrollTargetId('all-products');
+                                  setTimeout(() => {
+                                    allProductsRef.current?.scrollIntoView({ 
+                                      behavior: 'smooth', 
+                                      block: 'start' 
+                                    });
+                                  }, 100);
                                 }}
                                 className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 px-6 rounded-lg hover:from-purple-400 hover:to-indigo-500 transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-purple-500/25"
                               >
@@ -704,7 +715,7 @@ const Catalogue: React.FC = () => {
 
       {/* All Products Section */}
       {showMainContent && (
-        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl scroll-margin-top-nav">
+        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
