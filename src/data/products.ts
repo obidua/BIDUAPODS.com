@@ -415,6 +415,7 @@ export const products: Product[] = [
       freshAirVentilation: 'Structure ready for ventilation system'
     }
   }
+  },
   {
     id: 'galaxy-big-bed',
     name: 'GALAXY Series - Horizontal Double Big Bed',
