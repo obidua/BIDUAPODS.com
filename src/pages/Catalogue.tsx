@@ -30,7 +30,7 @@ const Catalogue: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMainContent, setShowMainContent] = useState(false);
-  const [scrollTargetId, setScrollTargetId] = useState<string | null>(null);
+  const [scrollPendingSeries, setScrollPendingSeries] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const allProductsRef = useRef<HTMLElement>(null);
   const seriesRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -50,7 +50,7 @@ const Catalogue: React.FC = () => {
     const seriesParam = searchParams.get('series');
     if (seriesParam && productSeries.find(s => s.id === seriesParam)) {
       setSelectedSeries(seriesParam);
-      setScrollTargetId(seriesParam);
+      setScrollPendingSeries(seriesParam);
     }
   }, [searchParams]);
 
@@ -67,102 +67,11 @@ const Catalogue: React.FC = () => {
   const seriesWithProducts = productSeries;
 
   // Handle series content becoming visible for scrolling
-  const handleContentVisible = useCallback((targetId: string) => {
-    if (scrollTargetId === targetId) {
-      let targetElement: HTMLElement | null = null;
-      
-      if (targetId === 'all-products') {
-        targetElement = allProductsRef.current;
-      } else {
-        targetElement = seriesRefs.current.get(targetId) || null;
-      }
-      
-      if (targetElement) {
-        // Add a small delay to ensure content is fully painted
-        setTimeout(() => {
-          targetElement!.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-          setScrollTargetId(null); // Clear the target after scrolling
-        }, 150);
-      }
-    }
-  }, [scrollTargetId]);
-
-  // Dedicated effect for handling scroll targets
-  useEffect(() => {
-    if (!scrollTargetId) return;
-
-    let targetElement: HTMLElement | null = null;
-    
-    if (scrollTargetId === 'all-products') {
-      targetElement = allProductsRef.current;
-    } else {
+  const handleSeriesContentVisible = (seriesId: string) => {
+    if (scrollPendingSeries === seriesId) {
       const seriesElement = seriesRefs.current.get(seriesId);
-      targetElement = seriesElement;
-    }
-    
-    // If element exists and is rendered, scroll immediately
-    if (targetElement && targetElement.offsetHeight > 0) {
-      setTimeout(() => {
-        targetElement!.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-        setScrollTargetId(null);
-      }, 100);
-    }
-    // If element doesn't exist yet, LazyLoadWrapper will handle it via onContentVisible
-  }, [scrollTargetId]);
-
-  // Legacy scroll effects - remove these to prevent conflicts
-  useEffect(() => {
-    return () => {
-      setScrollTargetId(null);
-    };
-  }, []);
-
-  // Remove the old scroll effects that were causing loops
-  /*
-  useEffect(() => {
-    if (selectedSeries !== 'all' && !scrollTargetId) {
-      const seriesElement = seriesRefs.current.get(selectedSeries);
       if (seriesElement) {
-        seriesElement.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-      }
-    }
-  }, [selectedSeries, scrollTargetId]);
-
-  useEffect(() => {
-    if (selectedSeries !== 'all') {
-      const scrollToElement = () => {
-        const seriesElement = seriesRefs.current.get(selectedSeries);
-        const targetElement = seriesElement || allProductsRef.current;
-        
-        if (targetElement) {
-          if (targetElement.offsetHeight > 0 && targetElement.offsetWidth > 0) {
-            targetElement.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
-            });
-          } else {
-            requestAnimationFrame(scrollToElement);
-          }
-        }
-      };
-      
-      const timeoutId = setTimeout(() => {
-        requestAnimationFrame(scrollToElement);
-      }, 150);
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [selectedSeries]);
-  */
+        // Add a small delay to ensure content is fully painted
         setTimeout(() => {
           seriesElement.scrollIntoView({ 
             behavior: 'smooth', 
