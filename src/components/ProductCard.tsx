@@ -74,6 +74,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </motion.h3>
         <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3 leading-relaxed">{product.description}</p>
         
+        {/* Price and SKU Information */}
+        <motion.div 
+          className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-xl p-4 mb-6 border border-cyan-200 dark:border-cyan-500/30"
+          initial={{ opacity: 0.8 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="text-center">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg mb-1">
+              {product.price}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 mb-2">
+              Per set + ₹15,000 delivery + GST 18%
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+              SKU: <span className="font-mono font-bold">{product.id}</span>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div 
           className="space-y-3 mb-8"
           initial={{ opacity: 0.8 }}

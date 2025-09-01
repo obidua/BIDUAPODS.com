@@ -27,6 +27,18 @@ const About: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Pioneering the future of sleep technology through innovative design and cutting-edge engineering
           </p>
+          
+          {/* Quick Pricing Info */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <div className="text-lg font-bold text-cyan-400">9</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">Product Series</div>
+            </div>
+            <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <div className="text-lg font-bold text-green-400">₹2,00,000+</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">Starting Price</div>
+            </div>
+          </div>
         </div>
       </section>
 

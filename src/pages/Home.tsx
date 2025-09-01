@@ -246,6 +246,37 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
+            
+            {/* Pricing Overview */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-16 text-center"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+                Transparent <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Pricing</span>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Imported Series</h4>
+                  <div className="text-cyan-500 font-bold text-2xl mb-2">₹4,99,999</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Per set (2 pods) • Premium Taiwan materials
+                  </div>
+                </div>
+                <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Made in India</h4>
+                  <div className="text-green-500 font-bold text-2xl mb-2">₹2,00,000+</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    Per set (2 pods) • Local manufacturing
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 text-sm text-gray-600 dark:text-gray-400">
+                All prices exclude delivery (₹15,000/set) and GST (18%)
+              </div>
+            </motion.div>
         </div>
       </motion.section>
 

@@ -144,6 +144,11 @@ const SeriesDetail: React.FC = () => {
                 <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg">
                   {getSeriesPriceDisplay(series.id)}
                 </span>
+                <div className="text-center">
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Starting from</div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">{getSeriesPriceDisplay(series.id)}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-500">Per set + delivery + GST</div>
+                </div>
               </div>
             </div>
           </div>
@@ -260,6 +265,16 @@ const SeriesDetail: React.FC = () => {
                         {model}
                       </span>
                     ))}
+                  </div>
+                  <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
+                    <div className="text-center">
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl mb-1">
+                        {getSeriesPriceDisplay(series.id)}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        Base price per set (2 pods) • Delivery ₹15,000 • GST 18%
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

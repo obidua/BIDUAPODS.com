@@ -74,6 +74,22 @@ const Features: React.FC = () => {
             Experience the convergence of cutting-edge technology and sleep science in our revolutionary capsule bed systems. 
             Every feature is designed with safety, comfort, and efficiency in mind.
           </p>
+          
+          {/* Pricing Banner */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <div className="text-lg font-bold text-cyan-400">₹4,99,999</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">Imported Premium</div>
+            </div>
+            <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <div className="text-lg font-bold text-green-400">₹2,00,000+</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">Made in India</div>
+            </div>
+            <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <div className="text-lg font-bold text-orange-400">₹15,000</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">Delivery/Set</div>
+            </div>
+          </div>
         </div>
       </section>
 

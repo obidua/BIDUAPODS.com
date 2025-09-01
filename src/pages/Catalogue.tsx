@@ -336,6 +336,9 @@ const Catalogue: React.FC = () => {
                             <div className="text-center">
                               <div className="text-lg font-bold text-cyan-500 mb-2">{getSeriesPriceDisplay(series.id)}</div>
                               <div className="text-sm text-gray-600 dark:text-gray-400">{seriesProducts.length} Available Models</div>
+                              <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                + ₹15,000 delivery + GST 18%
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -346,6 +349,34 @@ const Catalogue: React.FC = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                           {/* Left Column */}
                           <div className="space-y-6">
+                            {/* Pricing Information */}
+                            <div>
+                              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                                <Package className="h-5 w-5 text-cyan-400 mr-2" />
+                                Pricing Information
+                              </h4>
+                              <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-lg p-6 border border-cyan-200 dark:border-cyan-500/30">
+                                <div className="text-center">
+                                  <div className="text-cyan-600 dark:text-cyan-400 font-bold text-2xl mb-2">
+                                    {getSeriesPriceDisplay(series.id)}
+                                  </div>
+                                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                                    Base price per set (2 pods)
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                      <div className="font-semibold text-gray-900 dark:text-white">Delivery</div>
+                                      <div className="text-cyan-500">₹15,000/set</div>
+                                    </div>
+                                    <div>
+                                      <div className="font-semibold text-gray-900 dark:text-white">GST</div>
+                                      <div className="text-cyan-500">18%</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                             {/* Material */}
                             <div>
                               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
@@ -439,6 +470,14 @@ const Catalogue: React.FC = () => {
                             Model Codes
                           </h4>
                           <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
+                            <div className="mb-4 text-center">
+                              <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">
+                                {getSeriesPriceDisplay(series.id)}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Starting price per set + delivery + GST
+                              </div>
+                            </div>
                             <div className="flex flex-wrap gap-2">
                               {series.models.map((model, modelIndex) => (
                                 <span 

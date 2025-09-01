@@ -102,6 +102,45 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
           </div>
         </motion.div>
 
+        {/* Pricing Information */}
+        <motion.div 
+          className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-xl p-4 mb-6 border border-cyan-200 dark:border-cyan-500/30"
+          initial={{ opacity: 0.8 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="text-center">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl mb-1">
+              {getSeriesPriceDisplay(series.id)}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">
+              Per set (2 pods) + ₹15,000 delivery + GST 18%
+            </div>
+          </div>
+        </motion.div>
+
+        {/* SKU/Model Codes */}
+        <motion.div 
+          className="mb-6"
+          initial={{ opacity: 0.8 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Model Codes (SKU)</h4>
+          <div className="flex flex-wrap gap-1">
+            {series.models.slice(0, 3).map((model, modelIndex) => (
+              <span key={modelIndex} className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-mono">
+                {model}
+              </span>
+            ))}
+            {series.models.length > 3 && (
+              <span className="text-gray-500 dark:text-gray-400 text-xs">
+                +{series.models.length - 3} more
+              </span>
+            )}
+          </div>
+        </motion.div>
+
         {/* Key Features */}
         <motion.div 
           className="space-y-3 mb-8"

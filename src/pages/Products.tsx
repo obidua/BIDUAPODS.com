@@ -106,6 +106,13 @@ const Products: React.FC = () => {
                   </div>
                 </div>
                 
+                {/* Price Display */}
+                <div className="mt-3">
+                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {getSeriesPriceDisplay(series.id)}
+                  </span>
+                </div>
+                
                 {/* Models */}
                 <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="text-xs text-cyan-400 font-mono">
@@ -327,6 +334,20 @@ const Products: React.FC = () => {
                         </div>
                       </div>
 
+                      {/* Pricing Information */}
+                      <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
+                        <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 flex items-center">
+                          <Package className="h-4 w-4 mr-1" />
+                          Pricing
+                        </h4>
+                        <div className="text-cyan-500 font-bold text-lg">
+                          {getSeriesPriceDisplay(selectedSeries.id)}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          Price per set (2 pods) + delivery + GST
+                        </div>
+                      </div>
+
                       {/* Applications */}
                       <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
                         <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 flex items-center">
@@ -460,6 +481,15 @@ const Products: React.FC = () => {
                           {model}
                         </span>
                       ))}
+                    </div>
+                  </div>
+
+                  {/* Pricing */}
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
+                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg text-center">
+                      <div className="font-bold text-lg">{getSeriesPriceDisplay(series.id)}</div>
+                      <div className="text-xs opacity-90">Per set + delivery + GST 18%</div>
                     </div>
                   </div>
 

@@ -209,6 +209,32 @@ const ProductDetail: React.FC = () => {
                     </div>
                     </div>
                   </div>
+                  
+                  {/* Additional Pricing Info */}
+                  <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                      <div>
+                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">{product.price}</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">Base Price</div>
+                      </div>
+                      <div>
+                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">₹15,000</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">Delivery</div>
+                      </div>
+                      <div>
+                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">18%</div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400">GST</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* SKU Information */}
+                  <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-700/30 rounded-lg">
+                    <div className="text-center">
+                      <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Product SKU</div>
+                      <div className="font-mono text-sm text-gray-900 dark:text-white font-bold">{product.id}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
