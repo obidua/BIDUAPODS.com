@@ -91,13 +91,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           transition={{ duration: 0.2 }}
         >
           <div className="text-center">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1 whitespace-nowrap">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1">
               Starting @ {extractPrice(product.price)}
             </div>
-            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
+            <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
               Note : 1 Set = 1 lower , 1 upper box
             </div>
-            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
+            <div className="text-xs text-gray-600 dark:text-gray-400">
               + delivery + GST
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">

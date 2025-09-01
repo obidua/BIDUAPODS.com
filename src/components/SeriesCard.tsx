@@ -61,7 +61,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         >
           <motion.span 
             whileHover={{ scale: 1.05 }}
-            className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-2 py-1 rounded-full text-[0.6rem] sm:text-xs font-bold shadow-xl backdrop-blur-sm"
+            className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold shadow-xl backdrop-blur-sm"
           >
             Starting @ {(() => {
               const priceMatch = getSeriesPriceDisplay(series.id).match(/₹([\d,]+)/);
@@ -130,10 +130,10 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
                 return priceMatch ? `₹${priceMatch[1]}` : 'Price on Request';
               })()} per set
             </div>
-            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
+            <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
               Note : 1 Set = 1 lower , 1 upper box
             </div>
-            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
+            <div className="text-xs text-gray-600 dark:text-gray-400">
               + delivery + GST
             </div>
           </div>

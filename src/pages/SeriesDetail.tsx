@@ -378,7 +378,7 @@ const SeriesDetail: React.FC = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
                       <ProductCard product={product} />
                     </motion.div>
