@@ -248,7 +248,7 @@ const Products: React.FC = () => {
                       to="/order-now"
                       className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap" // Removed "Starting @"
                     >
-                      {getSeriesPriceDisplay(selectedSeries.id)}
+                      <span className="text-[0.6rem]">{getSeriesPriceDisplay(selectedSeries.id)}</span>
                     </Link>
                   </div>
                 </div>
@@ -493,7 +493,7 @@ const Products: React.FC = () => {
                   {/* Pricing */}
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
-                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-lg text-center">
+                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-lg text-center text-xs">
                       <div className="font-bold text-sm whitespace-nowrap">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
                       <div className="text-[0.5rem] opacity-90 whitespace-nowrap">
                         Note : 1 Set = 1 lower , 1 upper box

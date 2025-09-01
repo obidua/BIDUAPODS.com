@@ -4,14 +4,8 @@ import { motion } from 'framer-motion';
 import { ProductSeriesDetail } from '../types';
 import { ChevronRight, Package, Palette, Building } from 'lucide-react';
 import ImageSlider from './ImageSlider';
-import { getSeriesPriceDisplay } from '../data/products';
+import { getSeriesPriceDisplay, products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
-
-// Helper function to extract price from price display string
-const extractPrice = (priceDisplay: string): string => {
-  const match = priceDisplay.match(/₹([\d,]+)/);
-  return match ? `₹${match[1]}` : priceDisplay;
-};
 
 interface SeriesCardProps {
   series: ProductSeriesDetail;
@@ -63,7 +57,10 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
             whileHover={{ scale: 1.05 }}
             className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-xl backdrop-blur-sm whitespace-nowrap"
           >
-            Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
+            Starting @ {(() => {
+              const priceMatch = getSeriesPriceDisplay(series.id).match(/₹([\d,]+)/);
+              return priceMatch ? `₹${priceMatch[1]}` : 'Price on Request';
+            })()} per set
           </motion.span>
         </motion.div>
       </div>
@@ -122,7 +119,10 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         >
           <div className="text-center">
             <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1 whitespace-nowrap">
-              Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
+              Starting @ {(() => {
+                const priceMatch = getSeriesPriceDisplay(series.id).match(/₹([\d,]+)/);
+                return priceMatch ? `₹${priceMatch[1]}` : 'Price on Request';
+              })()} per set
             </div>
             <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
               Note : 1 Set = 1 lower , 1 upper box
