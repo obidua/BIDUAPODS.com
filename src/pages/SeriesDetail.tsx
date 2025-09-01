@@ -467,7 +467,7 @@ const SeriesDetail: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   className={`text-center group bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/80 transition-all duration-300 border border-gray-200 dark:border-cyan-500/30 hover:border-cyan-400/60 shadow-lg hover:shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                 >
-                      Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
+                  <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="h-8 w-8 text-cyan-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{item.title}</h3>

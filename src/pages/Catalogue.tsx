@@ -650,7 +650,6 @@ const Catalogue: React.FC = () => {
                           </div>
                           <div className="text-gray-600 dark:text-gray-300 text-[0.6rem] mb-6">
                             <span className="whitespace-nowrap">+ delivery + GST</span>
-                            </span>
                           </div>
                           <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{product.description}</p>
                           
