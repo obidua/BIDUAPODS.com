@@ -108,7 +108,7 @@ const Products: React.FC = () => {
                 
                 {/* Price Display */}
                 <div className="mt-3">
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.6rem] font-bold whitespace-nowrap inline-flex items-center justify-center">
                     {getSeriesPriceDisplay(series.id)}
                   </span>
                 </div>
