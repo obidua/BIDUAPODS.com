@@ -255,7 +255,7 @@ const Catalogue: React.FC = () => {
                       <div className="relative">
                         <ImageSlider
                           images={series.images}
-                          className="w-full h-64"
+                          className="w-full h-48 sm:h-56 md:h-64"
                           autoPlay={false}
                           interval={4000}
                         />
@@ -322,19 +322,19 @@ const Catalogue: React.FC = () => {
                               </h4>
                               <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-lg p-6 border border-cyan-200 dark:border-cyan-500/30">
                                 <div className="text-center">
-                                  <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">
+                                  <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1">
                                     Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                                   </div>
-                                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
+                                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
                                     Note : 1 Set = 1 lower , 1 upper box
                                   </div>
-                                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-2 whitespace-nowrap">
+                                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-2">
                                     + delivery + GST
                                   </div>
                                   <div className="flex justify-between text-xs">
                                     <div>
                                       <div className="font-semibold text-gray-900 dark:text-white">Delivery</div>
-                                      <div className="text-cyan-500 whitespace-nowrap">₹15,000/set</div>
+                                      <div className="text-cyan-500">₹15,000/set</div>
                                     </div>
                                     <div>
                                       <div className="font-semibold text-gray-900 dark:text-white">GST</div>
@@ -442,11 +442,11 @@ const Catalogue: React.FC = () => {
                               <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">
                                 Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                               </div>
-                              <div className="text-xs text-gray-500 dark:text-gray-400">
-                                <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                              <div className="text-[0.6rem] sm:text-xs text-gray-500 dark:text-gray-400">
+                                Note : 1 Set = 1 lower , 1 upper box
                               </div>
-                              <div className="text-xs text-gray-500 dark:text-gray-400">
-                                <span className="whitespace-nowrap">+ delivery + GST</span>
+                              <div className="text-[0.6rem] sm:text-xs text-gray-500 dark:text-gray-400">
+                                + delivery + GST
                               </div>
                             </div>
                             <div className="flex flex-wrap gap-2">
