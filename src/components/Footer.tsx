@@ -167,9 +167,9 @@ const Footer: React.FC = () => {
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
               <span className="text-center lg:text-left">© 2025 BIDUA Pods. All rights reserved.</span>
-              <span className="hidden sm:inline">•</span>
-              <span className="hidden sm:inline flex items-center">
-                Made with <Heart className="h-3 w-3 text-red-400 mx-1" /> in India
+              <span className="sm:inline">•</span>
+              <span className="flex items-center">
+                Made with <Heart className="h-3 w-3 text-red-400 mx-1 animate-pulse" /> in India
               </span>
             </div>
 
