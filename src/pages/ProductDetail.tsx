@@ -192,9 +192,7 @@ const ProductDetail: React.FC = () => {
                 />
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg">
                     <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg whitespace-nowrap">
-                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full font-bold whitespace-nowrap">
                       {product.price}
                     </span>
                     <div className="flex items-center space-x-3">
@@ -205,10 +203,10 @@ const ProductDetail: React.FC = () => {
                       }`}>
                         {product.origin === 'made-in-india' ? 'Made in India' : 'Imported'}
                       </span>
-                    <div className="flex items-center space-x-2">
-                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                      <span className="text-gray-600 dark:text-gray-400">Premium Quality</span>
-                    </div>
+                      <div className="flex items-center space-x-2">
+                        <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                        <span className="text-gray-600 dark:text-gray-400">Premium Quality</span>
+                      </div>
                     </div>
                   </div>
                   
@@ -216,17 +214,14 @@ const ProductDetail: React.FC = () => {
                   <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                       <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">{product.price}</div>
                         <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg whitespace-nowrap">{product.price}</div>
                         <div className="text-xs text-gray-600 dark:text-gray-400">Base Price</div>
                       </div>
                       <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">₹15,000</div>
                         <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg whitespace-nowrap">₹15,000</div>
                         <div className="text-xs text-gray-600 dark:text-gray-400">Delivery</div>
                       </div>
                       <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">18%</div>
                         <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg whitespace-nowrap">18%</div>
                         <div className="text-xs text-gray-600 dark:text-gray-400">GST</div>
                       </div>
