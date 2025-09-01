@@ -488,7 +488,7 @@ const Products: React.FC = () => {
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
                     <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg text-center">
-                      <div className="font-bold text-lg">{getSeriesPriceDisplay(series.id)}</div>
+                      <div className="font-bold text-base whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
                       <div className="text-xs opacity-90">Per set + delivery + GST 18%</div>
                     </div>
                   </div>
