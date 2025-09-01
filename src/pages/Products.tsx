@@ -108,7 +108,7 @@ const Products: React.FC = () => {
                 
                 {/* Price Display */}
                 <div className="mt-3">
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
                     {getSeriesPriceDisplay(series.id)}
                   </span>
                 </div>
@@ -240,7 +240,7 @@ const Products: React.FC = () => {
                     </div>
                     <Link
                       to="/order-now"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
                     >
                       {getSeriesPriceDisplay(selectedSeries.id)}
                     </Link>
