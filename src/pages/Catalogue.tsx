@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import { 
@@ -30,11 +30,9 @@ const Catalogue: React.FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
   const [showMainContent, setShowMainContent] = useState(false);
-  const [scrollTargetId, setScrollTargetId] = useState<string | null>(null);
-  const [scrollPendingSeries, setScrollPendingSeries] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const allProductsRef = useRef<HTMLElement>(null);
-  const seriesRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const { theme } = useTheme();
 
   // Delayed rendering to prevent crashes during rapid navigation
@@ -51,7 +49,6 @@ const Catalogue: React.FC = () => {
     const seriesParam = searchParams.get('series');
     if (seriesParam && productSeries.find(s => s.id === seriesParam)) {
       setSelectedSeries(seriesParam);
-      setScrollTargetId(seriesParam);
     }
   }, [searchParams]);
 
@@ -67,213 +64,13 @@ const Catalogue: React.FC = () => {
   // Show all series in filter (not just those with products)
   const seriesWithProducts = productSeries;
 
-  // Handle series content becoming visible for scrolling
-  const handleContentVisible = useCallback((targetId: string) => {
-    if (scrollTargetId === targetId) {
-      let targetElement: HTMLElement | null = null;
-      
-      if (targetId === 'all-products') {
-        targetElement = allProductsRef.current;
-      } else {
-        targetElement = seriesRefs.current.get(targetId) || null;
-      }
-      
-      if (targetElement) {
-        // Add a small delay to ensure content is fully painted
-        setTimeout(() => {
-          targetElement!.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-          setScrollTargetId(null); // Clear the target after scrolling
-        }, 150);
-      }
-    }
-  }, [scrollTargetId]);
-
-  // Dedicated effect for handling scroll targets
-  useEffect(() => {
-    if (!scrollTargetId) return;
-
-    let targetElement: HTMLElement | null = null;
-    
-    if (scrollTargetId === 'all-products') {
-      targetElement = allProductsRef.current;
+  // Handle series filter change - navigate to dedicated series page
+  const handleSeriesFilterChange = (seriesId: string) => {
+    if (seriesId === 'all') {
+      setSelectedSeries('all');
     } else {
-      const seriesElement = seriesRefs.current.get(scrollTargetId);
-      targetElement = seriesElement;
-    }
-    
-    // If element exists and is rendered, scroll immediately
-    if (targetElement && targetElement.offsetHeight > 0) {
-      setTimeout(() => {
-        targetElement!.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-        setScrollTargetId(null);
-      }, 100);
-    }
-    // If element doesn't exist yet, LazyLoadWrapper will handle it via onContentVisible
-  }, [scrollTargetId]);
-
-  // Legacy scroll effects - remove these to prevent conflicts
-  useEffect(() => {
-    return () => {
-      setScrollTargetId(null);
-    };
-  }, []);
-
-  // Remove the old scroll effects that were causing loops
-  /*
-  useEffect(() => {
-    if (selectedSeries !== 'all' && !scrollTargetId) {
-      const seriesElement = seriesRefs.current.get(selectedSeries);
-      if (seriesElement) {
-        seriesElement.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-      }
-    }
-  }, [selectedSeries, scrollTargetId]);
-
-  useEffect(() => {
-    if (selectedSeries !== 'all') {
-      const scrollToElement = () => {
-        const seriesElement = seriesRefs.current.get(selectedSeries);
-        const targetElement = seriesElement || allProductsRef.current;
-        
-        if (targetElement) {
-          if (targetElement.offsetHeight > 0 && targetElement.offsetWidth > 0) {
-            targetElement.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
-            });
-          } else {
-            requestAnimationFrame(scrollToElement);
-          }
-        }
-      };
-      
-      const timeoutId = setTimeout(() => {
-        requestAnimationFrame(scrollToElement);
-      }, 150);
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [selectedSeries]);
-  */
-
-  const handleScrollToSeries = () => {
-    if (scrollPendingSeries) {
-      const seriesElement = seriesRefs.current.get(scrollPendingSeries);
-      if (seriesElement && seriesElement.offsetHeight > 0) {
-        setTimeout(() => {
-          seriesElement.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-          setScrollPendingSeries(null);
-        }, 150);
-      }
-    }
-  };
-
-  // Scroll to specific series section or products section when series is selected
-  useEffect(() => {
-    if (selectedSeries !== 'all') {
-      setScrollPendingSeries(selectedSeries);
-      
-      // Try immediate scroll if element is already rendered
-      const seriesElement = seriesRefs.current.get(selectedSeries);
-      if (seriesElement && seriesElement.offsetHeight > 0) {
-        // Element is already rendered, scroll immediately
-        setTimeout(() => {
-          seriesElement.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-          setScrollPendingSeries(null);
-        }, 100);
-      } else {
-        // Element not rendered yet, will be handled by onContentVisible callback
-        const fallbackTimer = setTimeout(() => {
-          // Fallback: scroll to all products section if series element never loads
-          if (scrollPendingSeries === selectedSeries && allProductsRef.current) {
-            allProductsRef.current.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
-            });
-            setScrollPendingSeries(null);
-          }
-        }, 3000);
-        
-        return () => clearTimeout(fallbackTimer);
-      }
-    } else {
-      setScrollPendingSeries(null);
-    }
-  }, [selectedSeries, scrollPendingSeries]);
-
-  // Clear scroll pending when component unmounts
-  useEffect(() => {
-    return () => {
-      setScrollPendingSeries(null);
-    };
-  }, []);
-
-  // Original scroll effect - simplified
-  useEffect(() => {
-    if (selectedSeries !== 'all' && !scrollPendingSeries) {
-      const seriesElement = seriesRefs.current.get(selectedSeries);
-      if (seriesElement) {
-        seriesElement.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-      }
-    }
-  }, [selectedSeries, scrollPendingSeries]);
-
-  // Legacy scroll effect - remove this entire block
-  useEffect(() => {
-    if (selectedSeries !== 'all') {
-      // Use requestAnimationFrame to ensure elements are properly rendered before scrolling
-      const scrollToElement = () => {
-        const seriesElement = seriesRefs.current.get(selectedSeries);
-        const targetElement = seriesElement || allProductsRef.current;
-        
-        if (targetElement) {
-          // Check if element has been rendered and has layout
-          if (targetElement.offsetHeight > 0 && targetElement.offsetWidth > 0) {
-            // Element is ready, scroll to it
-            targetElement.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
-            });
-          } else {
-            // Element not ready yet, try again on next frame
-            requestAnimationFrame(scrollToElement);
-          }
-        }
-      };
-      
-      // Start the scroll attempt after a brief delay to allow initial render
-      const timeoutId = setTimeout(() => {
-        requestAnimationFrame(scrollToElement);
-      }, 150);
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [selectedSeries]);
-
-  // Function to set series ref
-  const setSeriesRef = (seriesId: string) => (element: HTMLDivElement | null) => {
-    if (element) {
-      seriesRefs.current.set(seriesId, element);
-    } else {
-      seriesRefs.current.delete(seriesId);
+      // Navigate to dedicated series page
+      navigate(`/series/${seriesId}`);
     }
   };
 
@@ -366,7 +163,7 @@ const Catalogue: React.FC = () => {
               <Filter className="h-5 w-5 text-gray-500" />
               <select
                 value={selectedSeries}
-                onChange={(e) => setSelectedSeries(e.target.value)}
+                onChange={(e) => handleSeriesFilterChange(e.target.value)}
                 className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-white focus:outline-none focus:border-cyan-400 transition-colors"
               >
                 <option value="all">All Series</option>
@@ -483,11 +280,10 @@ const Catalogue: React.FC = () => {
                     }
                   >
                     <motion.div
-                      ref={setSeriesRef(series.id)}
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: seriesIndex * 0.1 }}
-                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
+                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl scroll-margin-top-nav ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                     >
                       {/* Series Images */}
                       <div className="relative">
@@ -664,20 +460,15 @@ const Catalogue: React.FC = () => {
                               Available Models in This Series
                             </h4>
                             <div className="mb-6">
-                              <button
-                                onClick={() => {
-                                  setSelectedSeries(series.id);
-                                  setTimeout(() => {
-                                    allProductsRef.current?.scrollIntoView({ 
-                                      behavior: 'smooth', 
-                                      block: 'start' 
-                                    });
-                                  }, 100);
-                                }}
-                                className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 px-6 rounded-lg hover:from-purple-400 hover:to-indigo-500 transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-purple-500/25"
+                              <Link
+                                to={`/series/${series.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 px-6 rounded-lg hover:from-purple-400 hover:to-indigo-500 transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-purple-500/25 inline-flex items-center space-x-2"
                               >
-                                View All {series.name} Models Below
-                              </button>
+                                <span>View All {series.name} Models</span>
+                                <ChevronRight className="h-4 w-4" />
+                              </Link>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                               {seriesProducts.map((product, productIndex) => (
@@ -715,7 +506,7 @@ const Catalogue: React.FC = () => {
 
       {/* All Products Section */}
       {showMainContent && (
-        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl">
+        <section ref={allProductsRef} className="py-20 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl scroll-margin-top-nav">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

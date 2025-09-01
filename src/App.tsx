@@ -18,6 +18,7 @@ import OrderNow from './pages/OrderNow';
 import ProductDetail from './pages/ProductDetail';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import SeriesDetail from './pages/SeriesDetail';
 
 // Preload all images when app starts
 const PreloadImages: React.FC = () => {
@@ -73,6 +74,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/catalogue" element={<Catalogue />} />
               <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/series/:seriesId" element={<SeriesDetail />} />
               <Route path="/features" element={<Features />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/about" element={<About />} />

@@ -130,7 +130,9 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
           whileTap={{ scale: 0.99 }}
         >
           <Link
-            to={`/catalogue?series=${series.id}`}
+            to={`/series/${series.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-4 rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 flex items-center justify-center space-x-2 shadow-xl hover:shadow-cyan-500/30 font-semibold text-lg group/btn"
           >
             <span>Explore Series</span>
