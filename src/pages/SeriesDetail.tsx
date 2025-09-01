@@ -142,12 +142,12 @@ const SeriesDetail: React.FC = () => {
                   {series.origin === 'made-in-india' ? 'Made in India' : 'Imported'}
                 </span>
                 <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg">
-                  {getSeriesPriceDisplay(series.id)}
+                  <span className="whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</span>
                 </span>
                 <div className="text-center">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Starting from</div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">{getSeriesPriceDisplay(series.id)}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500">Per set + delivery + GST</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">Starting from</div>
+                  <div className="text-base font-bold text-gray-900 dark:text-white whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">Per set + delivery + GST</div>
                 </div>
               </div>
             </div>

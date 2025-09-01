@@ -668,39 +668,39 @@ const OrderNow: React.FC = () => {
                   <div className="space-y-2 font-mono text-sm text-gray-600 dark:text-gray-300">
                     <div className="flex justify-between">
                       <span>Products:</span>
-                      <span>{cartItems.length} configuration{cartItems.length !== 1 ? 's' : ''}</span>
+                      <span className="whitespace-nowrap">{cartItems.length} configuration{cartItems.length !== 1 ? 's' : ''}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Total Quantity:</span>
-                      <span>{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''} (1 set = 2 pods)</span>
+                      <span className="whitespace-nowrap">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''} (1 set = 2 pods)</span>
                     </div>
                     <hr className="border-gray-300 dark:border-gray-600 my-3" />
                     <div className="flex justify-between">
                       <span>Base:</span>
-                      <span>₹{formatNumber(pricing.base)}</span>
+                      <span className="whitespace-nowrap">₹{formatNumber(pricing.base)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Delivery:</span>
-                      <span>₹{formatNumber(pricing.delivery)}</span>
+                      <span className="whitespace-nowrap">₹{formatNumber(pricing.delivery)}</span>
                     </div>
                     {pricing.options > 0 && (
                       <div className="flex justify-between">
                         <span>Options:</span>
-                        <span>₹{formatNumber(pricing.options)}</span>
+                        <span className="whitespace-nowrap">₹{formatNumber(pricing.options)}</span>
                       </div>
                     )}
                     <hr className="border-gray-300 dark:border-gray-600 my-3" />
                     <div className="flex justify-between">
                       <span>Taxable:</span>
-                      <span>₹{formatNumber(pricing.taxable)}</span>
+                      <span className="whitespace-nowrap">₹{formatNumber(pricing.taxable)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>GST @18%:</span>
-                      <span>₹{formatNumber(pricing.gst)}</span>
+                      <span className="whitespace-nowrap">₹{formatNumber(pricing.gst)}</span>
                     </div>
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
                       <span>Total:</span>
-                      <span>₹{formatNumber(pricing.total)}</span>
+                      <span className="whitespace-nowrap">₹{formatNumber(pricing.total)}</span>
                     </div>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-4">
