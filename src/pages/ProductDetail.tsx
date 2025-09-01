@@ -157,11 +157,11 @@ const ProductDetail: React.FC = () => {
       <section className="py-12 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
-            to="/products"
+            to="/catalogue"
             className="inline-flex items-center space-x-2 text-cyan-500 hover:text-cyan-400 transition-colors mb-6 group"
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to All Products</span>
+            <span>Back to Catalogue</span>
           </Link>
           
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
