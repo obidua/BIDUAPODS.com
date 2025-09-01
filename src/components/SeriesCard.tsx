@@ -16,6 +16,12 @@ const extractPrice = (priceString: string): string => {
   const match = priceString.match(/₹([\d,]+)/);
   return match ? `₹${match[1]}` : 'Price on Request';
 };
+
+const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
+  const { theme } = useTheme();
+
+  return (
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, scale: 1.01 }}
