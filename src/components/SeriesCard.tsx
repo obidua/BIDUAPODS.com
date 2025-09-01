@@ -104,17 +104,17 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
 
         {/* Pricing Information */}
         <motion.div 
-          className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-xl p-3 mb-6 border border-cyan-200 dark:border-cyan-500/30"
+          className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-xl p-2 mb-6 border border-cyan-200 dark:border-cyan-500/30"
           initial={{ opacity: 0.8 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
         >
           <div className="text-center">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-base mb-1 whitespace-nowrap">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1 whitespace-nowrap overflow-hidden">
               {getSeriesPriceDisplay(series.id)}
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400 mb-2 whitespace-nowrap">
-              Per set (2 pods) + ₹15,000 delivery + GST 18%
+            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap overflow-hidden">
+              Per set + delivery + GST
             </div>
           </div>
         </motion.div>
