@@ -33,8 +33,6 @@ import { useTheme } from '../context/ThemeContext';
 const Catalogue: React.FC = () => {
   const [selectedSeries, setSelectedSeries] = useState<string>('all');
   const [selectedOrigin, setSelectedOrigin] = useState<string>('all');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [searchTerm, setSearchTerm] = useState('');
   const [showMainContent, setShowMainContent] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -62,9 +60,7 @@ const Catalogue: React.FC = () => {
   const filteredProducts = products.filter(product => {
     const matchesSeries = selectedSeries === 'all' || product.id.toLowerCase().includes(selectedSeries.toLowerCase());
     const matchesOrigin = selectedOrigin === 'all' || product.origin === selectedOrigin;
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesSeries && matchesOrigin && matchesSearch;
+    return matchesSeries && matchesOrigin;
   });
 
   // Show all series in filter (not just those with products)
@@ -151,19 +147,7 @@ const Catalogue: React.FC = () => {
       {/* Filters and Controls */}
       <section className="py-8 bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg pl-10 pr-4 py-2 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-cyan-400 transition-colors"
-              />
-            </div>
-
+          <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
             {/* Series Filter */}
             <div className="flex items-center space-x-2">
               <Filter className="h-5 w-5 text-gray-500" />
@@ -192,30 +176,6 @@ const Catalogue: React.FC = () => {
                 <option value="imported">Imported</option>
                 <option value="made-in-india">Made in India</option>
               </select>
-            </div>
-
-            {/* View Mode Toggle */}
-            <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'grid'
-                    ? 'bg-cyan-500 text-white'
-                    : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-                }`}
-              >
-                <Grid className="h-4 w-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'list'
-                    ? 'bg-cyan-500 text-white'
-                    : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
-                }`}
-              >
-                <List className="h-4 w-4" />
-              </button>
             </div>
 
             {/* Download Catalogue */}
@@ -571,7 +531,6 @@ const Catalogue: React.FC = () => {
                 {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} 
                 {selectedSeries !== 'all' && ` in ${productSeries.find(s => s.id === selectedSeries)?.name || 'selected series'}`}
                 {selectedOrigin !== 'all' && ` (${selectedOrigin === 'made-in-india' ? 'Made in India' : 'Imported'})`}
-                {searchTerm && ` matching "${searchTerm}"`}
               </p>
               {selectedSeries !== 'all' && filteredProducts.length === 0 && (
                 <p className="text-amber-600 dark:text-amber-400 text-sm max-w-2xl mx-auto">
@@ -581,109 +540,22 @@ const Catalogue: React.FC = () => {
             </motion.div>
 
             {/* Products Grid/List */}
-            {viewMode === 'grid' ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProducts.map((product, index) => (
-                  <LazyLoadWrapper
-                    key={product.id}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <ProductCard product={product} />
-                    </motion.div>
-                  </LazyLoadWrapper>
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-6">
-                {filteredProducts.map((product, index) => (
-                  <LazyLoadWrapper
-                    key={product.id}
-                    placeholder={
-                      <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl animate-pulse">
-                        <div className="flex flex-col lg:flex-row">
-                          <div className="lg:w-1/3 h-64 bg-gray-200 dark:bg-gray-700 rounded-l-2xl"></div>
-                          <div className="lg:w-2/3 p-8 space-y-4">
-                            <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
-                            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                            <div className="grid grid-cols-2 gap-2 mt-4">
-                              <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                              <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded"></div>
-                            </div>
-                            <div className="flex gap-3 mt-6">
-                              <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded flex-1"></div>
-                              <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded flex-1"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    }
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
-                    >
-                      <div className="flex flex-col lg:flex-row">
-                        <div className="lg:w-1/3">
-                          <ImageSlider
-                            images={product.images}
-                            className="w-full h-64 lg:h-full"
-                            autoPlay={false}
-                            interval={4000}
-                          />
-                        </div>
-                        <div className="lg:w-2/3 p-8">
-                          <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{product.name}</h3>
-                            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full font-bold text-sm whitespace-nowrap">
-                              Starting @ {extractPrice(product.price)} per set
-                            </span>
-                          </div>
-                          <div className="text-gray-600 dark:text-gray-300 text-[0.6rem] mb-2">
-                            <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
-                          </div>
-                          <div className="text-gray-600 dark:text-gray-300 text-[0.6rem] mb-6">
-                            <span className="whitespace-nowrap">+ delivery + GST</span>
-                          </div>
-                          <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{product.description}</p>
-                          
-                          {/* Features Grid */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                            {product.features.slice(0, 6).map((feature, featureIndex) => (
-                              <div key={featureIndex} className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full flex-shrink-0"></div>
-                                <span className="text-gray-600 dark:text-gray-300 text-sm">{feature}</span>
-                              </div>
-                            ))}
-                          </div>
 
-                          <div className="flex flex-col sm:flex-row gap-3">
-                            <Link
-                              to={`/products/${product.id}`}
-                              className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 px-6 rounded-xl hover:from-purple-400 hover:to-indigo-500 transition-all duration-200 font-semibold text-center"
-                            >
-                              View Details
-                            </Link>
-                            <Link
-                              to="/order-now"
-                              className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 px-6 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 font-semibold text-center"
-                            >
-                              Order Now
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </LazyLoadWrapper>
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((product, index) => (
+                <LazyLoadWrapper
+                  key={product.id}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <ProductCard product={product} />
+                  </motion.div>
+                </LazyLoadWrapper>
+              ))}
+            </div>
 
             {/* No Results */}
             {filteredProducts.length === 0 && (
@@ -706,13 +578,12 @@ const Catalogue: React.FC = () => {
                 </p>
                 <button
                   onClick={() => {
-                    setSearchTerm('');
                     setSelectedSeries('all');
                     setSelectedOrigin('all');
                   }}
                   className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 font-semibold"
                 >
-                  {selectedSeries !== 'all' || selectedOrigin !== 'all' ? 'View All Products' : 'Clear Filters'}
+                  View All Products
                 </button>
               </motion.div>
             )}
