@@ -334,9 +334,9 @@ const Catalogue: React.FC = () => {
                           {/* Series Stats */}
                           <div className="bg-white/50 dark:bg-gray-700/50 rounded-xl p-6 min-w-[200px]">
                             <div className="text-center">
-                              <div className="text-lg font-bold text-cyan-500 mb-2">{getSeriesPriceDisplay(series.id)}</div>
+                              <div className="text-base font-bold text-cyan-500 mb-2 whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
                               <div className="text-sm text-gray-600 dark:text-gray-400">{seriesProducts.length} Available Models</div>
-                              <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                              <div className="text-xs text-gray-500 dark:text-gray-500 mt-1 whitespace-nowrap">
                                 + ₹15,000 delivery + GST 18%
                               </div>
                             </div>
