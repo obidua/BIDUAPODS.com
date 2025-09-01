@@ -198,14 +198,16 @@ const Gallery: React.FC = () => {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                 <div className="text-base font-bold text-cyan-400 whitespace-nowrap">Starting @ ₹4,99,999 per set</div>
-              <div className="text-sm font-bold text-cyan-400 whitespace-nowrap">Starting @ ₹4,99,999 per set</div>
-              <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
-              <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">+ delivery + GST</div>
+                <div className="text-sm font-bold text-cyan-400 whitespace-nowrap">Starting @ ₹4,99,999 per set</div>
+                <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
+                <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">+ delivery + GST</div>
+              </div>
               <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                 <div className="text-base font-bold text-green-400 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
-              <div className="text-sm font-bold text-green-400 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
-              <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
-              <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">+ delivery + GST</div>
+                <div className="text-sm font-bold text-green-400 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
+                <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
+                <div className="text-[0.5rem] text-gray-600 dark:text-gray-300 whitespace-nowrap">+ delivery + GST</div>
+              </div>
             </div>
           </div>
         </section>
@@ -267,7 +269,7 @@ const Gallery: React.FC = () => {
             </div>
           </div>
         </section>
-    </div>
+      </div>
     </>
   );
 };
