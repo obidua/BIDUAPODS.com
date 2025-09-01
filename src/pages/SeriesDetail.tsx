@@ -148,16 +148,16 @@ const SeriesDetail: React.FC = () => {
                   {series.origin === 'made-in-india' ? 'Made in India' : 'Imported'}
                 </span>
                 <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg">
-                  <span className="whitespace-nowrap">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</span>
+                  <span className="text-sm sm:text-lg md:text-xl">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</span>
                 </span>
                 <div className="text-center">
-                  <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                     Note : 1 Set = 1 lower , 1 upper box
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  <div className="text-[0.6rem] sm:text-xs text-gray-500 dark:text-gray-500">
                     + delivery + GST
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  <div className="text-[0.6rem] sm:text-xs text-gray-500 dark:text-gray-500">
                     18% GST applies
                   </div>
                 </div>
@@ -177,7 +177,7 @@ const SeriesDetail: React.FC = () => {
             >
               <ImageSlider
                 images={series.images}
-                className="w-full h-96"
+                className="w-full h-64 sm:h-80 md:h-96"
                 autoPlay={true}
                 interval={5000}
               />
@@ -280,13 +280,13 @@ const SeriesDetail: React.FC = () => {
                   </div>
                   <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
                     <div className="text-center">
-                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1">
                         Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                       </div>
-                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
+                      <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
                         Note : 1 Set = 1 lower , 1 upper box
                       </div>
-                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                      <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
                         + delivery + GST
                       </div>
                     </div>

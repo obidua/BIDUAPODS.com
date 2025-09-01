@@ -31,7 +31,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
       <div className="relative overflow-hidden">
         <ImageSlider
           images={series.images}
-          className="w-full h-64"
+          className="w-full h-48 sm:h-56 md:h-64"
           autoPlay={false}
           interval={6000}
         />
@@ -61,7 +61,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         >
           <motion.span 
             whileHover={{ scale: 1.05 }}
-            className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-xl backdrop-blur-sm whitespace-nowrap"
+            className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-2 py-1 rounded-full text-[0.6rem] sm:text-xs font-bold shadow-xl backdrop-blur-sm"
           >
             Starting @ {(() => {
               const priceMatch = getSeriesPriceDisplay(series.id).match(/₹([\d,]+)/);
@@ -78,7 +78,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         transition={{ duration: 0.2 }}
       >
         {/* Note for 1 Set */}
-        <p className="text-gray-600 dark:text-gray-400 text-[0.6rem] mb-1 whitespace-nowrap">
+        <p className="text-gray-600 dark:text-gray-400 text-[0.65rem] mb-1">
           Note : 1 Set = 1 lower , 1 upper box
         </p>
 
@@ -124,16 +124,16 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
           transition={{ duration: 0.2 }}
         >
           <div className="text-center">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1 whitespace-nowrap">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1">
               Starting @ {(() => {
                 const priceMatch = getSeriesPriceDisplay(series.id).match(/₹([\d,]+)/);
                 return priceMatch ? `₹${priceMatch[1]}` : 'Price on Request';
               })()} per set
             </div>
-            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
+            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
               Note : 1 Set = 1 lower , 1 upper box
             </div>
-            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">
+            <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
               + delivery + GST
             </div>
           </div>

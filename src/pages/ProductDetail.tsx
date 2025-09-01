@@ -114,7 +114,7 @@ const ProductDetail: React.FC = () => {
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "BIDUA Industries Pvt Ltd"
+      "name": "BIDUA Industries PvLtd"
     },
     "offers": {
       "@type": "Offer",
@@ -192,13 +192,13 @@ const ProductDetail: React.FC = () => {
               <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                 <ImageSlider
                   images={product.images}
-                  className="w-full h-96"
+                  className="w-full h-64 sm:h-80 md:h-96"
                   autoPlay={false}
                   interval={5000}
                 />
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap">Starting @ {extractPrice(product.price)} per set
+                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">Starting @ {extractPrice(product.price)} per set
                     </span>
                     <div className="flex items-center space-x-3">
                       <span className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
@@ -218,9 +218,9 @@ const ProductDetail: React.FC = () => {
                   {/* Additional Pricing Info */}
                   <div className="mt-4 p-3 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
                     <div className="text-center">
-                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">Starting @ {extractPrice(product.price)} per set</div>
-                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
-                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">+ delivery + GST</div>
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1">Starting @ {extractPrice(product.price)} per set</div>
+                      <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">Note : 1 Set = 1 lower , 1 upper box</div>
+                      <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">+ delivery + GST</div>
                     </div>
                   </div>
                   

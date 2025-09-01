@@ -228,7 +228,7 @@ const Products: React.FC = () => {
                 <div className="relative">
                   <ImageSlider
                     images={selectedSeries.images}
-                    className="w-full h-80"
+                    className="w-full h-64 sm:h-72 md:h-80"
                     autoPlay={true}
                     interval={4000}
                   />
@@ -246,9 +246,9 @@ const Products: React.FC = () => {
                     </div>
                     <Link
                       to="/order-now"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-[0.6rem] font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.6rem] sm:text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block"
                     >
-                      <span>Starting @ {extractPrice(getSeriesPriceDisplay(selectedSeries.id))} per set</span>
+                      Starting @ {extractPrice(getSeriesPriceDisplay(selectedSeries.id))} per set
                     </Link>
                   </div>
                 </div>
@@ -313,11 +313,11 @@ const Products: React.FC = () => {
                       <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
                         <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 flex items-center">
                           <Package className="h-4 w-4 mr-1" />
-                          Available Sizes
-                        </h4>
+                              <div className="font-bold text-xs">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
+                              <div className="text-[0.6rem] opacity-90">
                         <div className="space-y-2">
                           {selectedSeries.sizes.map((size, sizeIndex) => (
-                            <div key={sizeIndex} className="flex justify-between items-center">
+                              <div className="text-[0.6rem] opacity-90">
                               <span className="text-gray-700 dark:text-gray-300 font-medium">{size.variant}</span>
                               <span className="text-cyan-400 font-mono text-sm">{size.dimensions}</span>
                             </div>
