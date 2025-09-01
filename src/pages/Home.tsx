@@ -269,21 +269,21 @@ const Home: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Imported Series</h4>
-                  <div className="text-cyan-500 font-bold text-sm mb-1 whitespace-nowrap">Starting @ ₹4,99,999 per set</div>
-                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
+                  <div className="text-cyan-500 font-bold text-sm mb-1">Starting @ ₹4,99,999 per set</div>
+                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
                     Note : 1 Set = 1 lower , 1 upper box
                   </div>
-                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
                     + delivery + GST
                   </div>
                 </div>
                 <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Made in India</h4>
-                  <div className="text-green-500 font-bold text-sm mb-1 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
-                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
+                  <div className="text-green-500 font-bold text-sm mb-1">Starting @ ₹2,00,000+ per set</div>
+                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
                     Note : 1 Set = 1 lower , 1 upper box
                   </div>
-                  <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
                     + delivery + GST
                   </div>
                 </div>

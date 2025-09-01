@@ -371,15 +371,15 @@ const OrderNow: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
               <Package className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold">1 set = 2 pods (upper + lower)</span>
+              <span className="text-gray-900 dark:text-white font-semibold text-sm">1 set = 2 pods (upper + lower)</span>
             </div>
             <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
               <Shield className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold">GST 18% applies</span>
+              <span className="text-gray-900 dark:text-white font-semibold text-sm">GST 18% applies</span>
             </div>
             <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
               <Truck className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold">Delivery ₹15,000 / set (India)</span>
+              <span className="text-gray-900 dark:text-white font-semibold text-sm">Delivery ₹15,000 / set (India)</span>
             </div>
           </div>
         </div>
