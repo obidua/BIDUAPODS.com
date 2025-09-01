@@ -114,8 +114,8 @@ const Products: React.FC = () => {
                 
                 {/* Price Display */}
                 <div className="mt-3">
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.55rem] font-bold whitespace-nowrap inline-flex items-center justify-center max-w-full overflow-hidden">Starting @ 
-                    {getSeriesPriceDisplay(series.id)}
+                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.55rem] font-bold whitespace-nowrap inline-flex items-center justify-center max-w-full overflow-hidden">
+                    Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                   </span>
                 </div>
                 
@@ -493,15 +493,14 @@ const Products: React.FC = () => {
                   {/* Pricing */}
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
-                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg text-center">
-                      <div className="font-bold text-base whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
-                      <div className="text-xs opacity-90">
-                        <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-lg text-center">
+                      <div className="font-bold text-sm whitespace-nowrap">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
+                      <div className="text-[0.5rem] opacity-90 whitespace-nowrap">
+                        Note : 1 Set = 1 lower , 1 upper box
                       </div>
-                      <div className="text-xs opacity-90">
-                        <span className="whitespace-nowrap">+ delivery + GST</span>
+                      <div className="text-[0.5rem] opacity-90 whitespace-nowrap">
+                        + delivery + GST
                       </div>
-
                     </div>
                   </div>
 
