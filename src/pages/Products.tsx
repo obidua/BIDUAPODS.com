@@ -318,7 +318,7 @@ const Products: React.FC = () => {
                         <div className="space-y-2">
                           {selectedSeries.sizes.map((size, sizeIndex) => (
                             <div key={sizeIndex} className="flex justify-between items-center">
-                              <span className="text-gray-700 dark:text-gray-300 font-medium">{size.variant}</span>
+                            <div className="text-[0.6rem] opacity-90">
                               <span className="text-cyan-400 font-mono text-sm">{size.dimensions}</span>
                             </div>
                           ))}
