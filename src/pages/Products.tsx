@@ -246,9 +246,9 @@ const Products: React.FC = () => {
                     </div>
                     <Link
                       to="/order-now"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap" // Removed "Starting @"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-[0.6rem] font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
                     >
-                      <span className="text-[0.6rem]">{getSeriesPriceDisplay(selectedSeries.id)}</span>
+                      <span>Starting @ {extractPrice(getSeriesPriceDisplay(selectedSeries.id))} per set</span>
                     </Link>
                   </div>
                 </div>
