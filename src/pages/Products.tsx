@@ -313,11 +313,11 @@ const Products: React.FC = () => {
                       <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
                         <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 flex items-center">
                           <Package className="h-4 w-4 mr-1" />
-                              <div className="font-bold text-xs">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
-                              <div className="text-[0.6rem] opacity-90">
+                          Available Sizes
+                        </h4>
                         <div className="space-y-2">
                           {selectedSeries.sizes.map((size, sizeIndex) => (
-                              <div className="text-[0.6rem] opacity-90">
+                            <div key={sizeIndex} className="flex justify-between items-center">
                               <span className="text-gray-700 dark:text-gray-300 font-medium">{size.variant}</span>
                               <span className="text-cyan-400 font-mono text-sm">{size.dimensions}</span>
                             </div>
@@ -497,11 +497,11 @@ const Products: React.FC = () => {
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
                     <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-lg text-center text-xs">
-                      <div className="font-bold text-xs whitespace-nowrap">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
-                      <div className="text-[0.5rem] opacity-90 whitespace-nowrap">
+                      <div className="font-bold text-xs">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
+                      <div className="text-[0.6rem] opacity-90">
                         Note : 1 Set = 1 lower , 1 upper box
                       </div>
-                      <div className="text-[0.5rem] opacity-90 whitespace-nowrap">
+                      <div className="text-[0.6rem] opacity-90">
                         + delivery + GST
                       </div>
                     </div>
