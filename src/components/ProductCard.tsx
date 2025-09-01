@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { getSeriesPricePrice } from '../data/products'; // Assuming this function exists or will be created
 import { Product } from '../types';
 import { ChevronRight } from 'lucide-react';
 import ImageSlider from './ImageSlider';
@@ -9,6 +10,14 @@ import { useTheme } from '../context/ThemeContext';
 interface ProductCardProps {
   product: Product;
 }
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
+
+
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { theme } = useTheme();
@@ -56,7 +65,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             whileHover={{ scale: 1.05 }}
             className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl backdrop-blur-sm whitespace-nowrap"
           >
-            {product.price}
+            Starting @ {extractPrice(product.price)} per set
           </motion.span>
         </motion.div>
       </div>
@@ -82,8 +91,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           transition={{ duration: 0.2 }}
         >
           <div className="text-center">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">
-              {product.price}
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap overflow-hidden">
+              Starting @ {extractPrice(product.price)} per set
+            </div>
+            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap overflow-hidden">
+              Note : 1 Set = 1 lower , 1 upper box
+            </div>
+            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap overflow-hidden">
+              + delivery + GST
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400 mb-2">
               <span className="whitespace-nowrap">Per set + ₹15,000 delivery + GST 18%</span>

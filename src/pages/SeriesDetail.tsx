@@ -1,6 +1,12 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
 import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import ProductCard from '../components/ProductCard';
@@ -142,12 +148,18 @@ const SeriesDetail: React.FC = () => {
                   {series.origin === 'made-in-india' ? 'Made in India' : 'Imported'}
                 </span>
                 <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg">
-                  <span className="whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</span>
+                  <span className="whitespace-nowrap">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</span>
                 </span>
                 <div className="text-center">
-                  <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">Starting from</div>
-                  <div className="text-base font-bold text-gray-900 dark:text-white whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">Per set + delivery + GST</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    Note : 1 Set = 1 lower , 1 upper box
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                    + delivery + GST
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                    18% GST applies
+                  </div>
                 </div>
               </div>
             </div>
@@ -268,11 +280,14 @@ const SeriesDetail: React.FC = () => {
                   </div>
                   <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
                     <div className="text-center">
-                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl mb-1">
-                        {getSeriesPriceDisplay(series.id)}
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl mb-1 whitespace-nowrap overflow-hidden">
+                        Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                        Note : 1 Set = 1 lower , 1 upper box
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">
-                        Base price per set (2 pods) • Delivery ₹15,000 • GST 18%
+                        + delivery + GST
                       </div>
                     </div>
                   </div>

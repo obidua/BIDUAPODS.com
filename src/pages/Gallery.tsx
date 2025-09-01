@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
 import { useLightbox } from '../context/LightboxContext';
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
 import { useTheme } from '../context/ThemeContext';
 
 const Gallery: React.FC = () => {
@@ -191,12 +197,22 @@ const Gallery: React.FC = () => {
             {/* Quick Pricing Reference */}
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-                <div className="text-base font-bold text-cyan-400 whitespace-nowrap">₹4,99,999</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">Imported Series</div>
+                <div className="text-base font-bold text-cyan-400 whitespace-nowrap">Starting @ ₹4,99,999 per set</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                  <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                </div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                  <span className="whitespace-nowrap">+ delivery + GST</span>
+                </div>
               </div>
               <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-                <div className="text-base font-bold text-green-400 whitespace-nowrap">₹2,00,000+</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">Made in India</div>
+                <div className="text-base font-bold text-green-400 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                  <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                </div>
+                <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                  <span className="whitespace-nowrap">+ delivery + GST</span>
+                </div>
               </div>
             </div>
           </div>

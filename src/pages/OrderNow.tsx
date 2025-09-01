@@ -672,7 +672,11 @@ const OrderNow: React.FC = () => {
                     </div>
                     <div className="flex justify-between">
                       <span>Total Quantity:</span>
-                      <span className="whitespace-nowrap">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''} (1 set = 2 pods)</span>
+                      <span className="whitespace-nowrap">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Note:</span>
+                      <span className="whitespace-nowrap">1 Set = 1 lower, 1 upper box</span>
                     </div>
                     <hr className="border-gray-300 dark:border-gray-600 my-3" />
                     <div className="flex justify-between">

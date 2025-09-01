@@ -1,6 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
 import { Users, Target, Lightbulb, Award } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -35,8 +41,13 @@ const About: React.FC = () => {
               <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">Product Series</div>
             </div>
             <div className={`bg-white/20 dark:bg-gray-900/40 backdrop-blur-sm rounded-xl px-6 py-3 border border-cyan-400/40 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-              <div className="text-lg font-bold text-green-400 whitespace-nowrap">₹2,00,000+</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">Starting Price</div>
+              <div className="text-lg font-bold text-green-400 whitespace-nowrap">Starting @ ₹2,00,000+ per set</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                <span className="whitespace-nowrap">+ delivery + GST</span>
+              </div>
             </div>
           </div>
         </div>

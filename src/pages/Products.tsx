@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
 import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import { productSeries, getSeriesPriceDisplay } from '../data/products';
@@ -108,7 +114,7 @@ const Products: React.FC = () => {
                 
                 {/* Price Display */}
                 <div className="mt-3">
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.55rem] font-bold whitespace-nowrap inline-flex items-center justify-center max-w-full overflow-hidden">
+                  <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-2 py-1 rounded-full text-[0.55rem] font-bold whitespace-nowrap inline-flex items-center justify-center max-w-full overflow-hidden">Starting @ 
                     {getSeriesPriceDisplay(series.id)}
                   </span>
                 </div>
@@ -230,7 +236,7 @@ const Products: React.FC = () => {
                   <div className="absolute bottom-6 left-6 pointer-events-none">
                     <h2 className="text-3xl font-bold text-white dark:text-white mb-2">{selectedSeries.name}</h2>
                     <div className="mb-3">
-                      <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm ${
+                      <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm whitespace-nowrap ${
                         selectedSeries.origin === 'made-in-india' 
                           ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white' 
                           : 'bg-gradient-to-r from-orange-500 to-red-600 text-white'
@@ -240,7 +246,7 @@ const Products: React.FC = () => {
                     </div>
                     <Link
                       to="/order-now"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap" // Removed "Starting @"
                     >
                       {getSeriesPriceDisplay(selectedSeries.id)}
                     </Link>
@@ -489,7 +495,13 @@ const Products: React.FC = () => {
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Pricing</h4>
                     <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-lg text-center">
                       <div className="font-bold text-base whitespace-nowrap">{getSeriesPriceDisplay(series.id)}</div>
-                      <div className="text-xs opacity-90">Per set + delivery + GST 18%</div>
+                      <div className="text-xs opacity-90">
+                        <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                      </div>
+                      <div className="text-xs opacity-90">
+                        <span className="whitespace-nowrap">+ delivery + GST</span>
+                      </div>
+
                     </div>
                   </div>
 

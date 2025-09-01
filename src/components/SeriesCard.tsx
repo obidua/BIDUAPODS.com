@@ -57,7 +57,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
             whileHover={{ scale: 1.05 }}
             className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl backdrop-blur-sm whitespace-nowrap"
           >
-            {getSeriesPriceDisplay(series.id)}
+            Starting @ {getSeriesPricePrice(series.id)} per set
           </motion.span>
         </motion.div>
       </div>
@@ -68,6 +68,11 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
       >
+        {/* Note for 1 Set */}
+        <p className="text-gray-600 dark:text-gray-400 text-[0.6rem] mb-1 whitespace-nowrap">
+          Note : 1 Set = 1 lower , 1 upper box
+        </p>
+
         <motion.h3 
           className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300"
         >
@@ -110,8 +115,11 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
           transition={{ duration: 0.2 }}
         >
           <div className="text-center">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xs mb-1 whitespace-nowrap overflow-hidden">
-              {getSeriesPriceDisplay(series.id)}
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap overflow-hidden">
+              Starting @ {getSeriesPricePrice(series.id)} per set
+            </div>
+            <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap overflow-hidden">
+              Note : 1 Set = 1 lower , 1 upper box
             </div>
             <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap overflow-hidden">
               Per set + delivery + GST

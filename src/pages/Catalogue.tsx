@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
+// Helper to extract price from product.price string
+const extractPrice = (priceString: string): string => {
+  const match = priceString.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : 'Price on Request';
+};
 import SEO from '../components/SEO';
 import { 
   BookOpen, 
@@ -334,10 +340,16 @@ const Catalogue: React.FC = () => {
                           {/* Series Stats */}
                           <div className="bg-white/50 dark:bg-gray-700/50 rounded-xl p-6 min-w-[200px]">
                             <div className="text-center">
-                              <div className="text-lg font-bold text-cyan-500 mb-2">{getSeriesPriceDisplay(series.id)}</div>
+                              <div className="text-lg font-bold text-cyan-500 mb-2">Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set</div>
                               <div className="text-sm text-gray-600 dark:text-gray-400">{seriesProducts.length} Available Models</div>
                               <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                                + ₹15,000 delivery + GST 18%
+                                <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                <span className="whitespace-nowrap">+ delivery + GST</span>
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                <span className="whitespace-nowrap">18% GST applies</span>
                               </div>
                             </div>
                           </div>
@@ -357,11 +369,14 @@ const Catalogue: React.FC = () => {
                               </h4>
                               <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-500/10 dark:to-blue-500/10 rounded-lg p-6 border border-cyan-200 dark:border-cyan-500/30">
                                 <div className="text-center">
-                                  <div className="text-cyan-600 dark:text-cyan-400 font-bold text-base mb-2 whitespace-nowrap">
-                                    {getSeriesPriceDisplay(series.id)}
+                                  <div className="text-cyan-600 dark:text-cyan-400 font-bold text-base mb-2 whitespace-nowrap overflow-hidden">
+                                    Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                                   </div>
                                   <div className="text-xs text-gray-600 dark:text-gray-400 mb-3">
-                                    Per set (2 pods) • Premium Taiwan materials
+                                    <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                                  </div>
+                                  <div className="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                                    <span className="whitespace-nowrap">+ delivery + GST</span>
                                   </div>
                                   <div className="flex justify-between text-xs">
                                     <div>
@@ -475,10 +490,13 @@ const Catalogue: React.FC = () => {
                           <div className="bg-gray-50 dark:bg-gray-700/30 rounded-lg p-4">
                             <div className="mb-4 text-center">
                               <div className="text-cyan-600 dark:text-cyan-400 font-bold text-lg">
-                                {getSeriesPriceDisplay(series.id)}
+                                Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                               </div>
                               <div className="text-xs text-gray-500 dark:text-gray-400">
-                                Starting price per set + delivery + GST
+                                <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                <span className="whitespace-nowrap">+ delivery + GST</span>
                               </div>
                             </div>
                             <div className="flex flex-wrap gap-2">
@@ -633,8 +651,15 @@ const Catalogue: React.FC = () => {
                         <div className="lg:w-2/3 p-8">
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{product.name}</h3>
-                            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full font-bold">
-                              {product.price}
+                            <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full font-bold text-sm whitespace-nowrap">
+                              Starting @ {extractPrice(product.price)} per set
+                            </span>
+                          </div>
+                          <div className="text-gray-600 dark:text-gray-300 text-[0.6rem] mb-2">
+                            <span className="whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</span>
+                          </div>
+                          <div className="text-gray-600 dark:text-gray-300 text-[0.6rem] mb-6">
+                            <span className="whitespace-nowrap">+ delivery + GST</span>
                             </span>
                           </div>
                           <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{product.description}</p>
