@@ -280,13 +280,13 @@ const SeriesDetail: React.FC = () => {
                   </div>
                   <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
                     <div className="text-center">
-                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl mb-1 whitespace-nowrap overflow-hidden">
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">
                         Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">
                         Note : 1 Set = 1 lower , 1 upper box
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">
                         + delivery + GST
                       </div>
                     </div>
@@ -378,7 +378,7 @@ const SeriesDetail: React.FC = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg pointer-events-auto hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 inline-block whitespace-nowrap"
                     >
                       <ProductCard product={product} />
                     </motion.div>
@@ -467,7 +467,7 @@ const SeriesDetail: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   className={`text-center group bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-gray-900/80 transition-all duration-300 border border-gray-200 dark:border-cyan-500/30 hover:border-cyan-400/60 shadow-lg hover:shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
                 >
-                  <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                      Starting @ {extractPrice(getSeriesPriceDisplay(series.id))} per set
                     <item.icon className="h-8 w-8 text-cyan-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{item.title}</h3>

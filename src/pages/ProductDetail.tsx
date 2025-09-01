@@ -198,16 +198,9 @@ const ProductDetail: React.FC = () => {
                 />
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-full text-xl font-bold shadow-lg whitespace-nowrap">Starting @ {extractPrice(product.price)} per set
+                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap">Starting @ {extractPrice(product.price)} per set
                     </span>
                     <div className="flex items-center space-x-3">
-                      <div className="text-gray-600 dark:text-gray-400 text-sm whitespace-nowrap">
-                        Note : 1 Set = 1 lower , 1 upper box
-                      </div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm whitespace-nowrap">
-                        + delivery + GST
-                      </div>
-
                       <span className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
                         product.origin === 'made-in-india' 
                           ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white' 
@@ -223,20 +216,11 @@ const ProductDetail: React.FC = () => {
                   </div>
                   
                   {/* Additional Pricing Info */}
-                  <div className="mt-4 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-1 text-center">
-                      <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm whitespace-nowrap">Starting @ {extractPrice(product.price)} per set</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">Base Price</div>
-                      </div>
-                      <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm whitespace-nowrap">₹15,000</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">Delivery</div>
-                      </div>
-                      <div>
-                        <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm whitespace-nowrap">18%</div>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">GST</div>
-                      </div>
+                  <div className="mt-4 p-3 bg-cyan-50 dark:bg-cyan-500/10 rounded-lg border border-cyan-200 dark:border-cyan-500/30">
+                    <div className="text-center">
+                      <div className="text-cyan-600 dark:text-cyan-400 font-bold text-sm mb-1 whitespace-nowrap">Starting @ {extractPrice(product.price)} per set</div>
+                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 mb-1 whitespace-nowrap">Note : 1 Set = 1 lower , 1 upper box</div>
+                      <div className="text-[0.5rem] text-gray-600 dark:text-gray-400 whitespace-nowrap">+ delivery + GST</div>
                     </div>
                   </div>
                   
