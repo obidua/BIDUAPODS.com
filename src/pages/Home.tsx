@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import SeriesCard from '../components/SeriesCard';
@@ -10,6 +11,8 @@ import { productSeries } from '../data/products';
 import { features } from '../data/features';
 
 const Home: React.FC = () => {
+  const { theme } = useTheme();
+  
   const heroDescription = 'As a leading manufacturer and importer of hotel-grade sleeping pods, we deliver intelligent lighting, secure locks, fresh-air ventilation and compact footprint solutions—built for hostels, airports, offices, hospitals and more with direct quality control and competitive pricing.';
 
   // Structured data for homepage
