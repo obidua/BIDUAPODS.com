@@ -7,6 +7,12 @@ import ImageSlider from './ImageSlider';
 import { getSeriesPriceDisplay } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
+// Helper function to extract price from price display string
+const extractPrice = (priceDisplay: string): string => {
+  const match = priceDisplay.match(/₹([\d,]+)/);
+  return match ? `₹${match[1]}` : priceDisplay;
+};
+
 interface SeriesCardProps {
   series: ProductSeriesDetail;
 }
