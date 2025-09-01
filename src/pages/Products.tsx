@@ -346,11 +346,14 @@ const Products: React.FC = () => {
                           <Package className="h-4 w-4 mr-1" />
                           Pricing
                         </h4>
-                        <div className="text-cyan-500 font-bold text-lg whitespace-nowrap">
-                          {getSeriesPriceDisplay(selectedSeries.id)}
+                        <div className="text-cyan-500 font-bold text-sm">
+                          Starting @ {extractPrice(getSeriesPriceDisplay(selectedSeries.id))} per set
                         </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          Price per set (2 pods) + delivery + GST
+                        <div className="text-[0.6rem] text-gray-500 dark:text-gray-400 mt-1">
+                          Note : 1 Set = 1 lower , 1 upper box
+                        </div>
+                        <div className="text-[0.6rem] text-gray-500 dark:text-gray-400">
+                          + delivery + GST
                         </div>
                       </div>
 
