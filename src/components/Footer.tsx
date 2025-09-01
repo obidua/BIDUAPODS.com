@@ -163,18 +163,18 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section - Simplified */}
         <div className="border-t border-white/5 mt-8 pt-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
+          <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
             {/* Copyright */}
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
+            <div className="flex flex-col items-center space-y-2 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-2 text-gray-400 text-sm">
               <span className="text-center lg:text-left">© 2025 BIDUA Pods. All rights reserved.</span>
-              <span className="sm:inline">•</span>
-              <span className="flex items-center">
+              <span className="hidden lg:inline">•</span>
+              <span className="flex items-center justify-center">
                 Made with <Heart className="h-3 w-3 text-red-400 mx-1 animate-pulse" /> in India
               </span>
             </div>
 
             {/* Action Links */}
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col items-center space-y-3 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-4">
               <Link 
                 to="/order-now" 
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg hover:shadow-cyan-500/20 text-sm"
