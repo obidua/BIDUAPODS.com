@@ -17,11 +17,10 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import OrderNow from './pages/OrderNow';
 import ProductDetail from './pages/ProductDetail';
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminDashboard from './pages/admin/AdminDashboard';
 import SeriesDetail from './pages/SeriesDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Services from './pages/Services';
 
 // Preload all images when app starts
 const PreloadImages: React.FC = () => {
@@ -84,8 +83,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/order-now" element={<OrderNow />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>

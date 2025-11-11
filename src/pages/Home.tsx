@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     "description": "Leading manufacturer and importer of premium capsule beds and sleeping pods for commercial applications",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "H-77 Sector 63",
+      "streetAddress": "NOIDA",
       "addressLocality": "Noida",
       "addressRegion": "Uttar Pradesh",
       "addressCountry": "IN"

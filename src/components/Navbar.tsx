@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 
   // Close menu when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setMoreMenuOpen(false);
       }
@@ -19,10 +19,12 @@ const Navbar: React.FC = () => {
 
     if (moreMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [moreMenuOpen]);
 
@@ -51,7 +53,7 @@ const Navbar: React.FC = () => {
   // Mobile bottom nav items (main 4 items)
   const mobileBottomNav = [
     { path: '/', label: 'Home', icon: Home },
-    { path: '/products', label: 'Shop', icon: ShoppingBag },
+    { path: '/order-now', label: 'Shop', icon: ShoppingBag },
     { path: '/blog', label: 'Blog', icon: BookOpen },
     { label: 'More', icon: MoreHorizontal }
   ];
@@ -144,7 +146,7 @@ const Navbar: React.FC = () => {
               
               <Link
                 to="/order-now"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-cyan-500/30 font-semibold"
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-1.5 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-cyan-500/30 font-medium text-sm"
               >
                 Get Quote
               </Link>
@@ -162,7 +164,7 @@ const Navbar: React.FC = () => {
 
             if (isMoreMenu) {
               return (
-                <div key={idx} className="relative">
+                <div key={idx} className="relative" ref={menuRef}>
                   <button 
                     onClick={() => setMoreMenuOpen(!moreMenuOpen)}
                     className="w-full flex flex-col items-center justify-center py-3 px-2 rounded-lg text-gray-700 hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400 transition-all"
@@ -171,19 +173,71 @@ const Navbar: React.FC = () => {
                     <span className="text-xs font-medium">More</span>
                   </button>
                   
+                  {/* Backdrop to close menu when clicking outside */}
+                  {moreMenuOpen && (
+                    <div 
+                      className="fixed inset-0 z-30"
+                      onClick={() => setMoreMenuOpen(false)}
+                    />
+                  )}
+                  
                   {/* More Menu Dropdown */}
                   {moreMenuOpen && (
-                    <div className="absolute bottom-full right-0 mb-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-200 dark:border-cyan-500/20 z-50">
-                      {moreMenuItems.map((moreItem, moreidx) => (
-                        <Link
-                          key={moreidx}
-                          to={moreItem.path}
-                          onClick={() => setMoreMenuOpen(false)}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-cyan-400/5 transition-all"
-                        >
-                          {moreItem.label}
-                        </Link>
-                      ))}
+                    <div className="absolute bottom-full right-0 mb-2 w-44 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-200 dark:border-cyan-500/20 z-50">
+                      {moreMenuItems.map((moreItem, moreidx) => {
+                        const isGetQuote = moreItem.label === 'Get Quote';
+                        
+                        if (isGetQuote) {
+                          return (
+                            <div key={moreidx} className="px-2 py-1">
+                              <Link
+                                to={moreItem.path}
+                                onClick={() => setMoreMenuOpen(false)}
+                                className="block px-4 py-2 text-sm font-semibold text-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+                              >
+                                {moreItem.label}
+                              </Link>
+                            </div>
+                          );
+                        }
+                        
+                        return (
+                          <Link
+                            key={moreidx}
+                            to={moreItem.path}
+                            onClick={() => setMoreMenuOpen(false)}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-cyan-400/5 transition-all"
+                          >
+                            {moreItem.label}
+                          </Link>
+                        );
+                      })}
+                      
+                      {/* Divider */}
+                      <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+                      
+                      {/* Theme Toggle Button */}
+                      <button
+                        onClick={() => {
+                          toggleTheme();
+                          setMoreMenuOpen(false);
+                        }}
+                        className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-cyan-400/5 transition-all"
+                      >
+                        <span className="flex items-center gap-2">
+                          {theme === 'light' ? (
+                            <>
+                              <Moon className="h-4 w-4" />
+                              <span>Dark Mode</span>
+                            </>
+                          ) : (
+                            <>
+                              <Sun className="h-4 w-4" />
+                              <span>Light Mode</span>
+                            </>
+                          )}
+                        </span>
+                      </button>
                     </div>
                   )}
                 </div>

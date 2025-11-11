@@ -532,7 +532,7 @@ With **hourly pricing starting at just ₹150**, highway sleeping pod stations o
 📱 **WhatsApp**: +91 9512921903  
 📧 **Email**: biduaindustries@gmail.com  
 🌐 **Website**: https://biduapods.com  
-📍 **Office**: H-77 Sector 63, Noida, UP
+📍 **Office**: NOIDA
 
 **We Provide:**
 ✅ Complete turnkey solutions  

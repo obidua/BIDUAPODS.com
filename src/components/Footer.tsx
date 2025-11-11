@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Bed, Mail, Phone, MapPin, ExternalLink, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import { Bed, Mail, Phone, MapPin, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -95,16 +95,21 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">Services</h3>
             <ul className="space-y-2">
               {[
-                "Manufacturing",
-                "Import Solutions", 
-                "Installation",
-                "Maintenance",
-                "Custom Design",
-                "Global Shipping"
+                { label: "Manufacturing", href: "/services#manufacturing" },
+                { label: "Import Solutions", href: "/services#import" },
+                { label: "Installation", href: "/services#installation" },
+                { label: "Maintenance", href: "/services#maintenance" },
+                { label: "Custom Design", href: "/services#custom" },
+                { label: "Global Shipping", href: "/services#shipping" }
               ].map((service, index) => (
-                <li key={index} className="text-gray-300 text-sm flex items-center hover:text-cyan-400 transition-colors duration-200 cursor-default">
-                  <div className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></div>
-                  {service}
+                <li key={index}>
+                  <Link
+                    to={service.href}
+                    className="text-gray-300 text-sm flex items-center hover:text-cyan-400 transition-colors duration-200 hover:translate-x-1"
+                  >
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full mr-2"></div>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -150,13 +155,12 @@ const Footer: React.FC = () => {
                 <div className="bg-gradient-to-r from-cyan-500/10 to-blue-600/10 p-2 rounded-lg mt-0.5">
                   <MapPin className="h-4 w-4 text-cyan-400" />
                 </div>
-                <div>
-                  <h4 className="text-white font-semibold mb-1 text-sm">Location</h4>
-                  <p className="text-gray-300 text-sm">
-                    H-77 Sector 63<br />
-                    Noida, Uttar Pradesh
-                  </p>
-                </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1 text-sm">Location</h4>
+                    <p className="text-gray-300 text-sm">
+                      NOIDA
+                    </p>
+                  </div>
               </div>
             </div>
           </div>
@@ -181,13 +185,6 @@ const Footer: React.FC = () => {
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg hover:shadow-cyan-500/20 text-sm"
               >
                 Get Quote
-              </Link>
-              <Link 
-                to="/admin/login" 
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-xs flex items-center space-x-1 group"
-              >
-                <span>Developer</span>
-                <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
           </div>

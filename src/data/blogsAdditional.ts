@@ -466,7 +466,7 @@ Buying sleeping pods is a **strategic investment** that requires careful conside
 📱 **WhatsApp**: +91 9512921903  
 📧 **Email**: biduaindustries@gmail.com  
 🌐 **Website**: https://biduapods.com  
-📍 **Showroom**: H-77 Sector 63, Noida, UP
+📍 **Showroom**: NOIDA
 
 **Get Free Consultation + Detailed Quotation + ROI Analysis!**
 

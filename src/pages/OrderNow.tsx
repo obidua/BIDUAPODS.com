@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X, Mail, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ShoppingCart, Package, Truck, Shield, Calculator, MessageCircle, Plus, Trash2, X, Mail, CheckCircle, ArrowRight, ArrowLeft, User, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
 import { products } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
@@ -34,6 +35,7 @@ const OrderNow: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { theme } = useTheme();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [currentStep, setCurrentStep] = useState<number>(1); // 1: Cart, 2: Details, 3: Review
   
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [customerDetails, setCustomerDetails] = useState<CustomerDetails>({
@@ -357,29 +359,31 @@ const OrderNow: React.FC = () => {
       )}
 
       {/* Header */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
+      <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-6">
             Multi-Product <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Inquiry</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-4 sm:mb-6 md:mb-8">
             Select multiple capsule bed configurations and get a comprehensive quote for your entire project. 
             Add different series, quantities, and options to create your perfect solution.
           </p>
           
-          {/* Key Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-              <Package className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold text-sm">1 set = 2 pods (upper + lower)</span>
+          {/* Progress Steps */}
+          <div className="flex items-center justify-center gap-0.5 sm:gap-2 md:gap-4 mb-3 sm:mb-4 md:mb-6 overflow-x-auto px-2 sm:px-4">
+            <div className={`flex items-center space-x-0.5 sm:space-x-1 md:space-x-2 px-1.5 sm:px-3 md:px-4 py-0.5 sm:py-1 md:py-2 rounded-full transition-all whitespace-nowrap text-[10px] sm:text-xs md:text-sm ${currentStep === 1 ? 'bg-cyan-500 text-white' : currentStep > 1 ? 'bg-green-500 text-white' : 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'}`}>
+              <ShoppingCart className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
+              <span className="font-semibold">1. Cart</span>
             </div>
-            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-              <Shield className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold text-sm">GST 18% applies</span>
+            <ArrowRight className={`h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 flex-shrink-0 ${currentStep >= 2 ? 'text-cyan-500' : 'text-gray-400'}`} />
+            <div className={`flex items-center space-x-0.5 sm:space-x-1 md:space-x-2 px-1.5 sm:px-3 md:px-4 py-0.5 sm:py-1 md:py-2 rounded-full transition-all whitespace-nowrap text-[10px] sm:text-xs md:text-sm ${currentStep === 2 ? 'bg-cyan-500 text-white' : currentStep > 2 ? 'bg-green-500 text-white' : 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'}`}>
+              <User className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
+              <span className="font-semibold">2. Details</span>
             </div>
-            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-              <Truck className="h-5 w-5 text-cyan-400" />
-              <span className="text-gray-900 dark:text-white font-semibold text-sm">Delivery ₹15,000 / set (India)</span>
+            <ArrowRight className={`h-2 w-2 sm:h-3 sm:w-3 md:h-4 md:w-4 flex-shrink-0 ${currentStep >= 3 ? 'text-cyan-500' : 'text-gray-400'}`} />
+            <div className={`flex items-center space-x-0.5 sm:space-x-1 md:space-x-2 px-1.5 sm:px-3 md:px-4 py-0.5 sm:py-1 md:py-2 rounded-full transition-all whitespace-nowrap text-[10px] sm:text-xs md:text-sm ${currentStep === 3 ? 'bg-cyan-500 text-white' : 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'}`}>
+              <FileText className="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4" />
+              <span className="font-semibold">3. Review</span>
             </div>
           </div>
         </div>
@@ -389,20 +393,18 @@ const OrderNow: React.FC = () => {
       <section className="py-12 bg-gray-50/70 dark:bg-gray-950/70">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-cyan-500/30 overflow-hidden shadow-2xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <ShoppingCart className="h-8 w-8 text-cyan-400" />
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Product Selection</h2>
-                </div>
-                <div className="bg-cyan-500/20 border border-cyan-400/40 rounded-full px-4 py-2">
-                  <span className="text-cyan-600 dark:text-cyan-400 font-semibold">
-                    {cartItems.length} Product{cartItems.length !== 1 ? 's' : ''} • {getTotalQuantity()} Total Sets
-                  </span>
-                </div>
-              </div>
+            <div className="p-4 sm:p-8">
+              <form className="space-y-8">
+                {/* STEP 1: Product Selection */}
+                {currentStep === 1 && (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <ShoppingCart className="h-6 sm:h-8 w-6 sm:w-8 text-cyan-400" />
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Product Selection</h2>
+                    </div>
+                  </div>
 
-              <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Product Configurations */}
                 <div className="space-y-6">
                   {cartItems.map((item, index) => {
@@ -567,9 +569,37 @@ const OrderNow: React.FC = () => {
                   })()}
                 </div>
 
-                {/* Customer Details */}
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Buyer Details</h3>
+                  {/* Step 1 Navigation */}
+                  <div className="flex justify-end mt-8">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (cartItems.length === 0 || cartItems.some(item => !item.productId || item.qty === '' || item.qty === 0)) {
+                          alert('Please add at least one product with quantity');
+                          return;
+                        }
+                        setCurrentStep(2);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 px-8 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-cyan-500/25"
+                    >
+                      <span>Continue to Buyer Details</span>
+                      <ArrowRight className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+                )}
+
+                {/* STEP 2: Buyer Details & Summary */}
+                {currentStep === 2 && (
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <User className="h-8 w-8 text-cyan-400" />
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Buyer Details</h2>
+                  </div>
+
+                  {/* Customer Details */}
+                  <div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-900 dark:text-white font-medium mb-2">Name</label>
@@ -660,57 +690,227 @@ const OrderNow: React.FC = () => {
                 </div>
 
                 {/* Price Summary */}
-                <div className={`bg-gray-100 dark:bg-gray-800/40 rounded-xl p-6 border border-gray-300 dark:border-cyan-500/30 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                <div className={`bg-gray-100 dark:bg-gray-800/40 rounded-xl p-3 sm:p-6 border border-gray-300 dark:border-cyan-500/30 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
                   <div className="flex items-center space-x-2 mb-4">
-                    <Calculator className="h-6 w-6 text-cyan-400" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Total Price Summary</h3>
+                    <Calculator className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Total Price Summary</h3>
                   </div>
-                  <div className="space-y-2 font-mono text-sm text-gray-600 dark:text-gray-300">
-                    <div className="flex justify-between">
-                      <span>Products:</span>
-                      <span className="whitespace-nowrap">{cartItems.length} configuration{cartItems.length !== 1 ? 's' : ''}</span>
+                  <div className="space-y-2 font-mono text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Products:</span>
+                      <span className="whitespace-nowrap text-right">{cartItems.length} configuration{cartItems.length !== 1 ? 's' : ''}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Total Quantity:</span>
-                      <span className="whitespace-nowrap">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''}</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Total Quantity:</span>
+                      <span className="whitespace-nowrap text-right">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Note:</span>
-                      <span className="whitespace-nowrap">1 Set = 1 lower, 1 upper box</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Note:</span>
+                      <span className="whitespace-nowrap text-right">1 Set = 1 lower, 1 upper box</span>
                     </div>
                     <hr className="border-gray-300 dark:border-gray-600 my-3" />
-                    <div className="flex justify-between">
-                      <span>Base:</span>
-                      <span className="whitespace-nowrap">₹{formatNumber(pricing.base)}</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Base:</span>
+                      <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.base)}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Delivery:</span>
-                      <span className="whitespace-nowrap">₹{formatNumber(pricing.delivery)}</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Delivery:</span>
+                      <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.delivery)}</span>
                     </div>
                     {pricing.options > 0 && (
-                      <div className="flex justify-between">
-                        <span>Options:</span>
-                        <span className="whitespace-nowrap">₹{formatNumber(pricing.options)}</span>
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Options:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.options)}</span>
                       </div>
                     )}
                     <hr className="border-gray-300 dark:border-gray-600 my-3" />
-                    <div className="flex justify-between">
-                      <span>Taxable:</span>
-                      <span className="whitespace-nowrap">₹{formatNumber(pricing.taxable)}</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">Taxable:</span>
+                      <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.taxable)}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>GST @18%:</span>
-                      <span className="whitespace-nowrap">₹{formatNumber(pricing.gst)}</span>
+                    <div className="flex justify-between gap-2">
+                      <span className="flex-shrink-0">GST @18%:</span>
+                      <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.gst)}</span>
                     </div>
-                    <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
-                      <span>Total:</span>
-                      <span className="whitespace-nowrap">₹{formatNumber(pricing.total)}</span>
+                    <div className="flex justify-between gap-2 text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                      <span className="flex-shrink-0">Total:</span>
+                      <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.total)}</span>
                     </div>
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-4">
+                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-4 break-words">
                     Imported: ₹4,99,999/set + ₹15,000 delivery + GST 18%. Made in India: As per model pricing + ₹15,000 delivery + GST 18%. Lead time: 25–35 days after deposit.
                   </p>
                 </div>
+
+                  {/* Step 2 Navigation */}
+                  <div className="flex justify-between mt-8 gap-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCurrentStep(1);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white py-3 px-8 rounded-xl hover:bg-gray-400 dark:hover:bg-gray-600 transition-all duration-200 font-semibold flex items-center space-x-2"
+                    >
+                      <ArrowLeft className="h-5 w-5" />
+                      <span>Back to Cart</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!customerDetails.custName || !customerDetails.custPhone || !customerDetails.custEmail || !customerDetails.custCity || !customerDetails.custAddr) {
+                          alert('Please fill in all required fields');
+                          return;
+                        }
+                        setCurrentStep(3);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 px-8 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-cyan-500/25"
+                    >
+                      <span>Review & Send</span>
+                      <ArrowRight className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+                )}
+
+                {/* STEP 3: Review & Send Inquiry */}
+                {currentStep === 3 && (
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <FileText className="h-8 w-8 text-cyan-400" />
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Review & Send Inquiry</h2>
+                  </div>
+
+                  {/* Order Summary */}
+                  <div className={`bg-gray-50 dark:bg-gray-800/40 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Products ({cartItems.length})</h3>
+                    <div className="space-y-4">
+                      {cartItems.map((item, index) => {
+                        const product = products.find(p => p.id === item.productId);
+                        if (!product) return null;
+                        return (
+                          <div key={item.id} className="flex justify-between items-start pb-4 border-b border-gray-300 dark:border-gray-600 last:border-0">
+                            <div className="flex-1">
+                              <p className="font-semibold text-gray-900 dark:text-white">{index + 1}. {product.name}</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">Quantity: {item.qty} set{item.qty !== 1 ? 's' : ''}</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">Color: {item.color} | Material: {item.material}</p>
+                              {(item.optPanels || item.optTV || item.optBedding || item.optSafe || item.optCard || item.optTable) && (
+                                <p className="text-xs text-cyan-600 dark:text-cyan-400 mt-1">
+                                  Options: {[
+                                    item.optPanels && 'Panels',
+                                    item.optTV && 'TV',
+                                    item.optBedding && 'Bedding',
+                                    item.optSafe && 'Safe',
+                                    item.optCard && 'Card System',
+                                    item.optTable && 'Table'
+                                  ].filter(Boolean).join(', ')}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Customer Information */}
+                  <div className={`bg-gray-50 dark:bg-gray-800/40 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Buyer Information</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <p className="text-gray-500 dark:text-gray-400">Name</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custName}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 dark:text-gray-400">Phone</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custPhone}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 dark:text-gray-400">Email</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custEmail}</p>
+                      </div>
+                      {customerDetails.custCompany && (
+                        <div>
+                          <p className="text-gray-500 dark:text-gray-400">Company</p>
+                          <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custCompany}</p>
+                        </div>
+                      )}
+                      <div>
+                        <p className="text-gray-500 dark:text-gray-400">City</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custCity}</p>
+                      </div>
+                      {customerDetails.custGST && (
+                        <div>
+                          <p className="text-gray-500 dark:text-gray-400">GSTIN</p>
+                          <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custGST}</p>
+                        </div>
+                      )}
+                      <div className="md:col-span-2">
+                        <p className="text-gray-500 dark:text-gray-400">Delivery Address</p>
+                        <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custAddr}</p>
+                      </div>
+                      {customerDetails.custNotes && (
+                        <div className="md:col-span-2">
+                          <p className="text-gray-500 dark:text-gray-400">Notes</p>
+                          <p className="text-gray-900 dark:text-white font-semibold">{customerDetails.custNotes}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Final Price Summary */}
+                  <div className={`bg-gray-100 dark:bg-gray-800/40 rounded-xl p-3 sm:p-6 border border-gray-300 dark:border-cyan-500/30 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Calculator className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Total Price Summary</h3>
+                    </div>
+                    <div className="space-y-2 font-mono text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Products:</span>
+                        <span className="whitespace-nowrap text-right">{cartItems.length} configuration{cartItems.length !== 1 ? 's' : ''}</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Total Quantity:</span>
+                        <span className="whitespace-nowrap text-right">{getTotalQuantity()} set{getTotalQuantity() !== 1 ? 's' : ''}</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Note:</span>
+                        <span className="whitespace-nowrap text-right">1 Set = 1 lower, 1 upper box</span>
+                      </div>
+                      <hr className="border-gray-300 dark:border-gray-600 my-3" />
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Base:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.base)}</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Delivery:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.delivery)}</span>
+                      </div>
+                      {pricing.options > 0 && (
+                        <div className="flex justify-between gap-2">
+                          <span className="flex-shrink-0">Options:</span>
+                          <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.options)}</span>
+                        </div>
+                      )}
+                      <hr className="border-gray-300 dark:border-gray-600 my-3" />
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">Taxable:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.taxable)}</span>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <span className="flex-shrink-0">GST @18%:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.gst)}</span>
+                      </div>
+                      <div className="flex justify-between gap-2 text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                        <span className="flex-shrink-0">Total:</span>
+                        <span className="whitespace-nowrap text-right">₹{formatNumber(pricing.total)}</span>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-4 break-words">
+                      Imported: ₹4,99,999/set + ₹15,000 delivery + GST 18%. Made in India: As per model pricing + ₹15,000 delivery + GST 18%. Lead time: 25–35 days after deposit.
+                    </p>
+                  </div>
 
                 {/* Submit Button */}
                 <div className="flex flex-col gap-4">
@@ -730,11 +930,25 @@ const OrderNow: React.FC = () => {
                     <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
                     <span>Send Inquiry via Email</span>
                   </button>
+                  
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCurrentStep(2);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="w-full bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white py-3 px-6 rounded-xl hover:bg-gray-400 dark:hover:bg-gray-600 transition-all duration-200 font-semibold flex items-center justify-center space-x-2"
+                  >
+                    <ArrowLeft className="h-5 w-5" />
+                    <span>Back to Edit Details</span>
+                  </button>
                 </div>
 
                 <p className="text-gray-500 dark:text-gray-400 text-sm text-center">
                   By submitting you agree to be contacted via WhatsApp/Email for quote and delivery details.
                 </p>
+                </div>
+                )}
               </form>
             </div>
           </div>
@@ -745,6 +959,23 @@ const OrderNow: React.FC = () => {
       <section className="py-12 bg-white/70 dark:bg-gray-900/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Pricing Structure (India)</h3>
+          
+          {/* Key Badges */}
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-6">
+            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-4 sm:px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <Package className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-400" />
+              <span className="text-gray-900 dark:text-white font-semibold text-xs sm:text-sm">1 set = 2 pods (upper + lower)</span>
+            </div>
+            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-4 sm:px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-400" />
+              <span className="text-gray-900 dark:text-white font-semibold text-xs sm:text-sm">GST 18% applies</span>
+            </div>
+            <div className={`bg-cyan-500/20 border border-cyan-400/40 rounded-full px-4 sm:px-6 py-2 flex items-center space-x-2 ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
+              <Truck className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-400" />
+              <span className="text-gray-900 dark:text-white font-semibold text-xs sm:text-sm">Delivery ₹15,000 / set (India)</span>
+            </div>
+          </div>
+          
           <div className={`bg-white dark:bg-gray-900/60 rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
             <div className="space-y-2 text-gray-600 dark:text-gray-300">
               <p>• <strong className="text-gray-900 dark:text-white">Imported Products:</strong> ₹4,99,999 per set (includes product, factory-to-port, shipping, customs, import taxes)</p>

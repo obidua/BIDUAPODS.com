@@ -1,0 +1,35 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /products/*
+Allow: /series/*
+Allow: /catalogue
+Allow: /features
+Allow: /gallery
+Allow: /blog
+Allow: /blog/*
+Allow: /about
+Allow: /contact
+Allow: /order-now
+Disallow: /admin
+Disallow: /admin/*
+
+# Sitemap location
+Sitemap: https://biduapods.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Specific bot directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Googlebot-Image
+Allow: /Pods_Images/
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

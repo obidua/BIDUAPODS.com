@@ -867,7 +867,7 @@ The sleeping pod revolution is here, and the early adopters are already reaping 
 📱 **WhatsApp**: +91 9512921903 (Fastest Response - Available 24/7)  
 📧 **Email**: biduaindustries@gmail.com  
 🌐 **Website**: https://biduapods.com  
-📍 **Head Office**: H-77 Sector 63, Noida, Uttar Pradesh 201301  
+📍 **Head Office**: NOIDA  
 🕒 **Business Hours**: Monday-Saturday, 9:30 AM - 7:00 PM IST  
 
 ### What Happens Next?
@@ -2468,7 +2468,7 @@ Whether you're a:
 📱 **WhatsApp**: +91 9512921903  
 📧 **Email**: biduaindustries@gmail.com  
 🌐 **Website**: https://biduapods.com  
-📍 **Office**: H-77 Sector 63, Noida, UP, India
+📍 **Office**: NOIDA
 
 **Together, let's create a well-rested, productive, and sustainable world!**
 
