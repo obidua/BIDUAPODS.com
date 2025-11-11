@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, Globe } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
+import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import ImageSlider from '../components/ImageSlider';
 import SeriesCard from '../components/SeriesCard';
@@ -10,14 +9,7 @@ import FeatureCard from '../components/FeatureCard';
 import { productSeries } from '../data/products';
 import { features } from '../data/features';
 
-// Helper to extract price from product.price string
-const extractPrice = (priceString: string): string => {
-  const match = priceString.match(/₹([\d,]+)/);
-  return match ? `₹${match[1]}` : 'Price on Request';
-};
-
 const Home: React.FC = () => {
-  const { theme } = useTheme();
   
   const heroDescription = 'As a leading manufacturer and importer of hotel-grade sleeping pods, we deliver intelligent lighting, secure locks, fresh-air ventilation and compact footprint solutions—built for hostels, airports, offices, hospitals and more with direct quality control and competitive pricing.';
 
@@ -256,39 +248,39 @@ const Home: React.FC = () => {
             ))}
           </div>
             
-            {/* Pricing Overview */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-16 text-center"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-                Transparent <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Pricing</span>
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Imported Series</h4>
-                  <div className="text-cyan-500 font-bold text-sm mb-1">Starting @ ₹4,99,999 per set</div>
-                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
-                    Note : 1 Set = 1 lower , 1 upper box
-                  </div>
-                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
-                    + delivery + GST
-                  </div>
+          {/* Pricing Overview */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-16 text-center"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              Transparent <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Pricing</span>
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Imported Series</h4>
+                <div className="text-cyan-500 font-bold text-sm mb-1">Starting @ ₹4,99,999 per set</div>
+                <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
+                  Note : 1 Set = 1 lower , 1 upper box
                 </div>
-                <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Made in India</h4>
-                  <div className="text-green-500 font-bold text-sm mb-1">Starting @ ₹2,00,000+ per set</div>
-                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
-                    Note : 1 Set = 1 lower , 1 upper box
-                  </div>
-                  <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
-                    + delivery + GST
-                  </div>
+                <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
+                  + delivery + GST
                 </div>
               </div>
-            </motion.div>
+              <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-xl">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Made in India</h4>
+                <div className="text-green-500 font-bold text-sm mb-1">Starting @ ₹2,00,000+ per set</div>
+                <div className="text-[0.6rem] text-gray-600 dark:text-gray-400 mb-1">
+                  Note : 1 Set = 1 lower , 1 upper box
+                </div>
+                <div className="text-[0.6rem] text-gray-600 dark:text-gray-400">
+                  + delivery + GST
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 

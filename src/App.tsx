@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
 
 // Import page components directly for faster loading
 import Home from './pages/Home';
@@ -19,6 +20,8 @@ import ProductDetail from './pages/ProductDetail';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import SeriesDetail from './pages/SeriesDetail';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 // Preload all images when app starts
 const PreloadImages: React.FC = () => {
@@ -67,6 +70,7 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <WhatsAppButton />
+        <PWAInstallPrompt />
         <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 transition-colors duration-500 relative z-20">
           <main className="pt-16">
             <Routes>
@@ -82,6 +86,8 @@ function App() {
               <Route path="/order-now" element={<OrderNow />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>
           </main>
           <Footer />
