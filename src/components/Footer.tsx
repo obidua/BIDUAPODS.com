@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Bed, Mail, Phone, MapPin, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import BIDUALogo from './BIDUALogo';
+import { useTheme } from '../context/ThemeContext';
 
 const Footer: React.FC = () => {
+  const { theme } = useTheme();
+  
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white overflow-hidden">
       {/* Subtle Background Pattern */}
@@ -18,9 +22,11 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-4">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-2.5 rounded-xl">
-                <Bed className="h-7 w-7 text-white" />
-              </div>
+              <BIDUALogo 
+                variant="icon" 
+                className="h-12 w-12" 
+                glowEffect={theme === 'dark'}
+              />
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   BIDUA Pods

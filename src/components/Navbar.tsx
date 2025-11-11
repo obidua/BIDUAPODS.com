@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bed, Sun, Moon, ChevronDown, Home, ShoppingBag, BookOpen, MoreHorizontal } from 'lucide-react';
+import { Sun, Moon, ChevronDown, Home, ShoppingBag, BookOpen, MoreHorizontal } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import BIDUALogo from './BIDUALogo';
 
 const Navbar: React.FC = () => {
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
@@ -78,7 +79,11 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2 group">
-              <Bed className="h-8 w-8 text-cyan-500 group-hover:text-cyan-400 transition-all duration-300 group-hover:scale-110" />
+              <BIDUALogo 
+                variant="icon" 
+                className="h-10 w-10 transition-all duration-300 group-hover:scale-110" 
+                glowEffect={theme === 'dark'}
+              />
               <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-all duration-300">
                 BIDUA Pods
               </span>

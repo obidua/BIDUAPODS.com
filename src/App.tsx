@@ -21,6 +21,7 @@ import SeriesDetail from './pages/SeriesDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Services from './pages/Services';
+import LogoShowcase from './pages/LogoShowcase';
 
 // Preload all images when app starts
 const PreloadImages: React.FC = () => {
@@ -86,6 +87,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/logo-showcase" element={<LogoShowcase />} />
             </Routes>
           </main>
           <Footer />
