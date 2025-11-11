@@ -35,10 +35,9 @@ const Footer: React.FC = () => {
             
             {/* Company Info - Simplified */}
             <div className="mb-6">
-              <h4 className="text-cyan-400 font-semibold mb-3 text-sm uppercase tracking-wider">Companies</h4>
+              <h4 className="text-cyan-400 font-semibold mb-3 text-sm uppercase tracking-wider">Company</h4>
               <div className="text-gray-300 space-y-1 text-sm">
                 <p>BIDUA Industries Pvt Ltd</p>
-                <p>Motorsers Pvt Ltd</p>
               </div>
             </div>
 

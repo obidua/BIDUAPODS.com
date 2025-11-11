@@ -84,17 +84,25 @@ const BlogPost: React.FC = () => {
       />
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-        {/* Hero Section - Newspaper Style */}
-        <div className="bg-white dark:bg-gray-900 border-b-4 border-cyan-600">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {/* Navigation Breadcrumb */}
+        {/* Sticky Back Button - Below Navbar */}
+        <div className="fixed top-16 md:top-16 left-0 right-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-md">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <Link
               to="/blog"
-              className="inline-flex items-center space-x-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 mb-6 text-sm font-medium"
+              className="inline-flex items-center space-x-2 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 text-sm font-medium transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to All Articles</span>
             </Link>
+          </div>
+        </div>
+
+        {/* Spacer for fixed button and navbar */}
+        <div className="h-28 md:h-28"></div>
+
+        {/* Hero Section - Newspaper Style */}
+        <div className="bg-white dark:bg-gray-900 border-b-4 border-cyan-600">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
             {/* Category & Tags */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
