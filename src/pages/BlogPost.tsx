@@ -120,7 +120,7 @@ const BlogPost: React.FC = () => {
             </div>
 
             {/* Title - Newspaper Headline Style */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight font-serif">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-gradient mb-6 leading-tight font-serif">
               {blog.title}
             </h1>
 

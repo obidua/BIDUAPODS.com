@@ -362,7 +362,7 @@ const OrderNow: React.FC = () => {
       <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 md:mb-6">
-            Multi-Product <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Inquiry</span>
+            Multi-Product <span className="text-brand-gradient">Inquiry</span>
           </h1>
           <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-4 sm:mb-6 md:mb-8">
             Select multiple capsule bed configurations and get a comprehensive quote for your entire project. 
@@ -792,7 +792,7 @@ const OrderNow: React.FC = () => {
                         return (
                           <div key={item.id} className="flex justify-between items-start pb-4 border-b border-gray-300 dark:border-gray-600 last:border-0">
                             <div className="flex-1">
-                              <p className="font-semibold text-gray-900 dark:text-white">{index + 1}. {product.name}</p>
+                              <p className="font-semibold text-brand-gradient">{index + 1}. {product.name}</p>
                               <p className="text-sm text-gray-600 dark:text-gray-400">Quantity: {item.qty} set{item.qty !== 1 ? 's' : ''}</p>
                               <p className="text-sm text-gray-600 dark:text-gray-400">Color: {item.color} | Material: {item.material}</p>
                               {(item.optPanels || item.optTV || item.optBedding || item.optSafe || item.optCard || item.optTable) && (

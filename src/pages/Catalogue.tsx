@@ -109,7 +109,7 @@ const Catalogue: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            Product <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Catalogue</span>
+            Product <span className="text-brand-gradient">Catalogue</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -211,8 +211,8 @@ const Catalogue: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Complete <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Series Overview</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                Complete Series Overview
               </h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                 Discover our comprehensive range of capsule bed series, each engineered for specific applications and environments
@@ -266,7 +266,7 @@ const Catalogue: React.FC = () => {
                       <div className="bg-gradient-to-r from-cyan-100/50 to-blue-100/50 dark:from-cyan-500/20 dark:to-blue-600/20 p-8">
                         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                           <div className="flex-1">
-                            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <h3 className="text-3xl font-bold text-brand-gradient mb-3 flex items-center">
                               <Shield className="h-8 w-8 text-cyan-500 mr-3" />
                               {series.name}
                             </h3>
@@ -524,8 +524,8 @@ const Catalogue: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                All <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Products</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                All Products
               </h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
                 {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} 
@@ -598,7 +598,7 @@ const Catalogue: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-3xl md:text-4xl font-bold text-brand-gradient mb-6"
           >
             Ready to Transform Your Space?
           </motion.h2>

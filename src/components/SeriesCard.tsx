@@ -4,18 +4,14 @@ import { motion } from 'framer-motion';
 import { ProductSeriesDetail } from '../types';
 import { ChevronRight, Package, Palette, Building } from 'lucide-react';
 import ImageSlider from './ImageSlider';
-import { getSeriesPriceDisplay, products } from '../data/products';
+import { getSeriesPriceDisplay } from '../data/products';
 import { useTheme } from '../context/ThemeContext';
 
 interface SeriesCardProps {
   series: ProductSeriesDetail;
 }
 
-// Helper to extract price from product.price string
-const extractPrice = (priceString: string): string => {
-  const match = priceString.match(/₹([\d,]+)/);
-  return match ? `₹${match[1]}` : 'Price on Request';
-};
+//
 
 const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
   const { theme } = useTheme();
@@ -83,7 +79,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
         </p>
 
         <motion.h3 
-          className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300"
+          className="text-xl font-bold text-brand-gradient mb-3"
         >
           {series.name}
         </motion.h3>
@@ -149,7 +145,7 @@ const SeriesCard: React.FC<SeriesCardProps> = ({ series }) => {
           <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Model Codes (SKU)</h4>
           <div className="flex flex-wrap gap-1">
             {series.models.slice(0, 3).map((model, modelIndex) => (
-              <span key={modelIndex} className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-mono">
+              <span key={modelIndex} className="bg-gray-200 dark:bg-gray-700 text-brand-gradient px-2 py-1 rounded text-xs font-mono">
                 {model}
               </span>
             ))}

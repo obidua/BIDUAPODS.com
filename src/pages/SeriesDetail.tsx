@@ -131,7 +131,7 @@ const SeriesDetail: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="flex-1">
                 <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                  {series.name} <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Series</span>
+                  {series.name} <span className="text-brand-gradient">Series</span>
                 </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
                   {series.description}
@@ -195,8 +195,8 @@ const SeriesDetail: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Series <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Specifications</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                Series Specifications
               </h2>
             </motion.div>
 
@@ -307,8 +307,8 @@ const SeriesDetail: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Key <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Features</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                Key Features
               </h2>
             </motion.div>
 
@@ -365,11 +365,11 @@ const SeriesDetail: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Available <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Models</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                  Available Models
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                  {seriesProducts.length} model{seriesProducts.length !== 1 ? 's' : ''} available in the {series.name} series
+                  {seriesProducts.length} model{seriesProducts.length !== 1 ? 's' : ''} available in the <span className="text-brand-gradient">{series.name}</span> series
                 </p>
               </motion.div>
 
@@ -438,8 +438,8 @@ const SeriesDetail: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Why Choose <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">{series.name}</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+                Why Choose <span className="text-brand-gradient">{series.name}</span>
               </h2>
             </motion.div>
 
@@ -486,9 +486,9 @@ const SeriesDetail: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6"
+              className="text-3xl md:text-4xl font-bold text-brand-gradient mb-6"
             >
-              Ready to Order {series.name}?
+              Ready to Order <span className="text-brand-gradient">{series.name}</span>?
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}

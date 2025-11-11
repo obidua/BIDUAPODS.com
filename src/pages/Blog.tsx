@@ -50,7 +50,7 @@ const Blog: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-brand-gradient mb-6">
                 BIDUA <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Blog</span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
@@ -109,7 +109,7 @@ const Blog: React.FC = () => {
         {featuredBlogs.length > 0 && selectedCategory === 'all' && !searchTerm && (
           <section className="py-16 bg-gray-50/70 dark:bg-gray-900/70">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              <h2 className="text-3xl font-bold text-brand-gradient mb-8">
                 Featured Articles
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -143,7 +143,7 @@ const Blog: React.FC = () => {
                               <span>{blog.readTime}</span>
                             </span>
                           </div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-500 transition-colors line-clamp-2">
+                          <h3 className="text-xl font-bold text-brand-gradient mb-3 group-hover:opacity-90 transition-colors line-clamp-2">
                             {blog.title}
                           </h3>
                           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
@@ -166,7 +166,7 @@ const Blog: React.FC = () => {
         {/* All Blog Posts */}
         <section className="py-16 bg-white/70 dark:bg-gray-950/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            <h2 className="text-3xl font-bold text-brand-gradient mb-8">
               {searchTerm ? 'Search Results' : selectedCategory === 'all' ? 'Latest Articles' : selectedCategory}
             </h2>
             
@@ -205,7 +205,7 @@ const Blog: React.FC = () => {
                               <span>{blog.readTime}</span>
                             </span>
                           </div>
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-500 transition-colors line-clamp-2">
+                          <h3 className="text-lg font-bold text-brand-gradient mb-3 group-hover:opacity-90 transition-colors line-clamp-2">
                             {blog.title}
                           </h3>
                           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm">
@@ -242,7 +242,7 @@ const Blog: React.FC = () => {
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-cyan-500 to-blue-600">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-6">
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl text-cyan-50 mb-8">

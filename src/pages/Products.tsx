@@ -50,7 +50,7 @@ const Products: React.FC = () => {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'var(--svg-background-pattern)' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Capsule Beds by <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">BIDUA</span>
+            Capsule Beds by <span className="text-brand-gradient-rtl">BIDUA</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             As a premier manufacturer and importer, we deliver hotel-grade sleeping pods in Single, Double, Vertical Single 
@@ -69,8 +69,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Product <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Series</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Product Series
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Explore our comprehensive range of capsule bed series, each designed for specific applications and environments
@@ -86,7 +86,7 @@ const Products: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl group ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}
               >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{series.name}</h3>
+                <h3 className="text-lg font-semibold text-brand-gradient mb-3">{series.name}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{series.description}</p>
                 
                 {/* Origin Badge */}
@@ -140,8 +140,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Materials & <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Construction</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Materials & Construction
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Premium materials and construction details across all series
@@ -160,8 +160,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Featured <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Models</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Featured Models
             </h2>
           </motion.div>
 
@@ -184,7 +184,7 @@ const Products: React.FC = () => {
                      : 'bg-white dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 hover:border-cyan-500/40 hover:bg-gray-50 dark:hover:bg-gray-800/70 shadow-md'
                   }`}
                 >
-                 <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{series.name}</h3>
+                 <h3 className="font-semibold text-brand-gradient mb-1">{series.name}</h3>
                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 line-clamp-2">{series.description}</p>
                   <div className="flex items-center space-x-2 mt-2">
                     <Package className="h-4 w-4 text-cyan-400" />
@@ -215,7 +215,7 @@ const Products: React.FC = () => {
                        : 'bg-gray-50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800/50'
                     }`}
                   >
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{series.name}</h4>
+                    <h4 className="font-semibold text-brand-gradient">{series.name}</h4>
                     <p className="text-gray-600 dark:text-gray-400 text-xs mt-1">{series.description}</p>
                   </motion.button>
                 ))}
@@ -255,7 +255,7 @@ const Products: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/10 to-transparent pointer-events-none"></div>
                   <div className="absolute bottom-6 left-6 pointer-events-none">
-                    <h2 className="text-3xl font-bold text-white dark:text-white mb-2">{selectedSeries.name}</h2>
+                    <h2 className="text-3xl font-bold text-brand-gradient mb-2">{selectedSeries.name}</h2>
                     <div className="mb-3">
                       <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm whitespace-nowrap ${
                         selectedSeries.origin === 'made-in-india' 
@@ -432,8 +432,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Dimensions <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Overview</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Dimensions Overview
             </h2>
           </motion.div>
 
@@ -480,8 +480,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Series <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Details</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Series Details
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Comprehensive specifications for each product series
@@ -568,8 +568,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Perfect for <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Every Occasion</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Perfect for Every Occasion
             </h2>
           </motion.div>
 
@@ -626,7 +626,7 @@ const Products: React.FC = () => {
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       className="bg-gray-100 dark:bg-gray-700/30 rounded-lg p-4"
                     >
-                      <h4 className="text-cyan-400 font-semibold mb-2">{series.name}</h4>
+                      <h4 className="text-brand-gradient font-semibold mb-2">{series.name}</h4>
                       <div className="space-y-1">
                         {series.models.map((model, modelIndex) => (
                           <span key={modelIndex} className="block text-gray-600 dark:text-gray-300 text-sm font-mono">
@@ -652,8 +652,8 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Why Choose <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">BIDUA</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Why Choose BIDUA
             </h2>
           </motion.div>
 
