@@ -103,10 +103,10 @@ export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({
       <div className="my-12 h-1 rounded-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-70" />
     ),
     table: ({ node, ...props }) => (
-      <div className="my-10 overflow-hidden rounded-3xl border border-cyan-100/60 dark:border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
+      <div className="my-10 overflow-x-auto w-full -mx-4 px-4 rounded-3xl border border-cyan-100/60 dark:border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
         <table
           {...props}
-          className="w-full text-left text-base text-gray-700 dark:text-gray-100"
+          className="min-w-max text-left text-base text-gray-700 dark:text-gray-100"
         />
       </div>
     ),
