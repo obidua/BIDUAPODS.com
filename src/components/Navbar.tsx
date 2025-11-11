@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, Bed, Sun, Moon, ChevronDown, Home, ShoppingBag, BookOpen, MoreHorizontal } from 'lucide-react';
+import { Bed, Sun, Moon, ChevronDown, Home, ShoppingBag, BookOpen, MoreHorizontal } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const Navbar: React.FC = () => {
@@ -157,14 +157,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navbar - Hidden, only show menu dropdown when opened */}
       <nav className="md:hidden fixed top-0 left-0 right-0 w-full z-50 pointer-events-none">
-        <div className="pointer-events-auto">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="fixed top-4 right-4 z-50 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-md"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+        <div className="hidden pointer-events-auto"></div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -301,6 +294,7 @@ const Navbar: React.FC = () => {
                       <Link
                         key={moreidx}
                         to={moreItem.path}
+                        onClick={() => setIsOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 hover:bg-gray-50 dark:hover:bg-cyan-400/5 transition-all"
                       >
                         {moreItem.label}
