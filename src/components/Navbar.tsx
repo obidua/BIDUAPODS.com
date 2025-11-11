@@ -60,11 +60,13 @@ const Navbar: React.FC = () => {
 
   // Items to show under "More" menu in mobile
   const moreMenuItems = [
+    { path: '/products', label: 'All Products' },
     { path: '/catalogue', label: 'Catalogue' },
-    { path: '/features', label: 'Features' },
+    { path: '/features', label: 'Features & Benefits' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/about', label: 'About' },
+    { path: '/about', label: 'About Us' },
     { path: '/contact', label: 'Contact' },
+    { path: '/order-now', label: 'Get Quote' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
