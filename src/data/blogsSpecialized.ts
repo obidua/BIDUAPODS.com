@@ -565,7 +565,7 @@ Highway sleeping pods are not just a business opportunity—they're a **life-sav
     publishDate: '2025-02-05',
     category: 'Buyer Guides',
     tags: ['highway', 'safety', 'road accidents', 'truck drivers', 'hourly stays', 'rest stops'],
-    imageUrl: '/Pods_Images/COSMOS series/Cosmos-Horizontal single  bed.png',
+    imageUrl: '/Pods_Images/For Website main images/Pods Hall looks.jpg',
     readTime: '18 min read',
     metaDescription: 'How highway sleeping pods with hourly pricing are preventing 328,000 drowsy driving accidents in India annually. 5-star facilities from ₹150/hour vs ₹2,500 hotels. Save lives, save money.',
     metaKeywords: ['highway sleeping pods India', 'drowsy driving prevention', 'rest stops India', 'hourly accommodation', 'road safety pods', 'truck driver facilities'],
