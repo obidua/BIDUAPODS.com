@@ -6,9 +6,40 @@
   html {
     scroll-behavior: smooth;
   }
+  :root {
+    --brand-pink: #ec4899;
+    --brand-purple: #8b5cf6;
+    --brand-blue: #3b82f6;
+    --brand-green: #16a34a;
+    --brand-gradient-ltr: linear-gradient(90deg, var(--brand-pink) 0%, var(--brand-purple) 45%, var(--brand-blue) 80%, var(--brand-green) 100%);
+    --brand-gradient-rtl: linear-gradient(90deg, var(--brand-green) 0%, var(--brand-blue) 35%, var(--brand-purple) 70%, var(--brand-pink) 100%);
+  }
 }
 
 @layer utilities {
+  /* Brand gradient utilities */
+  .text-brand-gradient {
+    background-image: var(--brand-gradient-ltr);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-brand-gradient-rtl {
+    background-image: var(--brand-gradient-rtl);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-brand-gradient {
+    background-image: var(--brand-gradient-ltr);
+  }
+  .btn-brand {
+    background-image: var(--brand-gradient-ltr);
+    color: #ffffff;
+  }
+  .btn-brand:hover { filter: brightness(1.05); }
+  .ring-brand { box-shadow: 0 0 0 3px rgba(22,163,74,0.2); }
+
   .text-shadow-glow {
     text-shadow: 0 0 10px rgba(102, 126, 234, 0.5),
                  0 0 20px rgba(102, 126, 234, 0.3),

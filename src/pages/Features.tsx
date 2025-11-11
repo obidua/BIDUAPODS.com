@@ -74,7 +74,7 @@ const Features: React.FC = () => {
         <div className="absolute inset-0 bg-[url('/features-background.svg')] opacity-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Advanced <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Technology</span>
+            Advanced <span className="text-brand-gradient">Technology</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             Experience the convergence of cutting-edge technology and sleep science in our revolutionary capsule bed systems. 
@@ -110,8 +110,8 @@ const Features: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Core <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Technologies</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Core Technologies
             </h2>
           </motion.div>
 
@@ -140,8 +140,8 @@ const Features: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              Complete Feature <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Overview</span>
+            <h3 className="text-2xl md:text-3xl font-bold text-brand-gradient mb-8 text-center">
+              Complete Feature Overview
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
@@ -168,8 +168,8 @@ const Features: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Standard Features <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">(Per Pod)</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Standard Features (Per Pod)
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Every BIDUA capsule bed comes equipped with these essential features as standard
@@ -202,8 +202,8 @@ const Features: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Materials & <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Safety</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-6">
+                Materials & Safety
               </h2>
               <div className="space-y-6">
                 <div className={`bg-white dark:bg-gray-900/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-cyan-500/30 shadow-lg ${theme === 'dark' ? 'dark-mode-card-glow' : ''}`}>
@@ -268,8 +268,8 @@ const Features: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Innovation <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Journey</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gradient mb-4">
+              Innovation Journey
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               From concept to global deployment, our commitment to innovation drives every advancement

@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         transition={{ duration: 0.2 }}
       >
         <motion.h3 
-          className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300"
+          className="text-xl font-bold text-brand-gradient mb-3 transition-all duration-300"
         >
           {product.name}
         </motion.h3>
@@ -102,7 +102,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               + delivery + GST
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-              SKU: <span className="font-mono font-bold">{product.id}</span>
+              SKU: <span className="font-mono font-bold text-brand-gradient">{product.id}</span>
             </div>
           </div>
         </motion.div>

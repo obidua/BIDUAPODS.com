@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import WelcomeSplash from './components/WelcomeSplash';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
@@ -62,36 +63,44 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
+
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <HelmetProvider>
       <Router>
         <PreloadImages />
         <ScrollToTop />
-        <Navbar />
-        <WhatsAppButton />
-        <PWAInstallPrompt />
-        <div className="min-h-screen md:bg-white/70 dark:md:bg-gray-950/80 transition-colors duration-500 relative z-20">
-          <main className="pt-0 md:pt-16 pb-0 md:pb-0">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/catalogue" element={<Catalogue />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/series/:seriesId" element={<SeriesDetail />} />
-              <Route path="/features" element={<Features />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/order-now" element={<OrderNow />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/logo-showcase" element={<LogoShowcase />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        {showSplash && <WelcomeSplash onFinish={() => setShowSplash(false)} />}
+        {!showSplash && (
+          <>
+            <Navbar />
+            <WhatsAppButton />
+            <PWAInstallPrompt />
+            <div className="min-h-screen md:bg-white/70 dark:md:bg-gray-950/80 transition-colors duration-500 relative z-20">
+              <main className="pt-0 md:pt-16 pb-0 md:pb-0">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/catalogue" element={<Catalogue />} />
+                  <Route path="/products/:id" element={<ProductDetail />} />
+                  <Route path="/series/:seriesId" element={<SeriesDetail />} />
+                  <Route path="/features" element={<Features />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/order-now" element={<OrderNow />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
+                  <Route path="/logo-showcase" element={<LogoShowcase />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </>
+        )}
       </Router>
     </HelmetProvider>
   );

@@ -177,7 +177,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold text-brand-gradient-rtl mb-6 sm:mb-8 leading-tight"
           >
             Premium Capsule
             <motion.span 
@@ -268,7 +268,7 @@ const Home: React.FC = () => {
                   initial={{ opacity: 0.8 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.05 + 0.2 }}
-                  className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2"
+                  className="text-3xl md:text-4xl font-extrabold text-brand-gradient mb-2"
                 >
                   {stat.value}
                 </motion.div>
@@ -293,8 +293,8 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              BIDUA <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Series</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-gradient mb-6">
+              BIDUA <span className="font-extrabold text-brand-gradient-rtl">Series</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
               Discover our complete range of premium capsule bed series designed for commercial and hospitality applications
@@ -364,8 +364,8 @@ const Home: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Premium <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Features</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-gradient mb-6">
+              Premium <span className="font-extrabold text-brand-gradient-rtl">Features</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
               Experience premium comfort with our advanced features designed for commercial hospitality applications
@@ -400,7 +400,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8"
+            className="text-4xl md:text-5xl font-extrabold text-brand-gradient mb-8"
           >
             Ready to Upgrade Your Facility?
           </motion.h2>

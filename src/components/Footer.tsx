@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Heart, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import BIDUALogo from './BIDUALogo';
-import { useTheme } from '../context/ThemeContext';
 
 const Footer: React.FC = () => {
-  const { theme } = useTheme();
   
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white overflow-hidden">
@@ -22,15 +20,19 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-4">
             <div className="flex items-center space-x-3 mb-4">
-              <BIDUALogo 
-                variant="icon" 
-                className="h-12 w-12" 
-                glowEffect={theme === 'dark'}
-              />
-              <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  BIDUA Pods
-                </span>
+              <div className="flex-shrink-0">
+                <BIDUALogo 
+                  variant="icon" 
+                  className="h-12 w-12" 
+                  glowEffect={true}
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-xl sm:text-2xl font-bold">
+                  <span className="text-brand-gradient-rtl">BIDUA</span>
+                  {' '}
+                  <span className="text-brand-gradient">Pods</span>
+                </div>
                 <p className="text-gray-400 text-xs mt-0.5">Premium Sleep Solutions</p>
               </div>
             </div>
@@ -173,25 +175,17 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section - Simplified */}
         <div className="border-t border-white/5 mt-8 pt-6">
-          <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
+          <div className="flex flex-col space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
             {/* Copyright */}
-            <div className="flex flex-col items-center space-y-2 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-2 text-gray-400 text-sm">
+            <div className="flex flex-col items-center space-y-2 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-2 text-gray-300 text-sm">
               <span className="text-center lg:text-left">© 2025 BIDUA Pods. All rights reserved.</span>
-              <span className="hidden lg:inline">•</span>
-              <span className="flex items-center justify-center">
+              <span className="hidden lg:inline text-gray-500">•</span>
+              <span className="flex items-center justify-center text-center">
                 Made with <Heart className="h-3 w-3 text-red-400 mx-1 animate-pulse" /> in India
               </span>
             </div>
 
-            {/* Action Links */}
-            <div className="flex flex-col items-center space-y-3 lg:flex-row lg:items-center lg:space-y-0 lg:space-x-4">
-              <Link 
-                to="/order-now" 
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-full hover:from-cyan-400 hover:to-blue-500 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg hover:shadow-cyan-500/20 text-sm"
-              >
-                Get Quote
-              </Link>
-            </div>
+            {/* Action Links - removed Get Quote as requested */}
           </div>
         </div>
       </div>

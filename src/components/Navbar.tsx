@@ -84,9 +84,16 @@ const Navbar: React.FC = () => {
                 className="h-10 w-10 transition-all duration-300 group-hover:scale-110" 
                 glowEffect={theme === 'dark'}
               />
-              <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-all duration-300">
-                BIDUA Pods
-              </span>
+              <div className="flex items-baseline gap-1">
+                {/* Start BIDUA with green → blue → purple → pink */}
+                <span className="text-xl font-extrabold bg-[linear-gradient(90deg,#16a34a_0%,#3b82f6_35%,#8b5cf6_70%,#ec4899_100%)] bg-clip-text text-transparent tracking-tight drop-shadow-sm group-hover:brightness-110 transition-all duration-300">
+                  BIDUA
+                </span>
+                {/* Keep Pods in original left-to-right order */}
+                <span className="text-xl font-extrabold bg-[linear-gradient(90deg,#ec4899_0%,#8b5cf6_45%,#3b82f6_80%,#16a34a_100%)] bg-clip-text text-transparent tracking-tight drop-shadow-sm group-hover:brightness-110 transition-all duration-300">
+                  Pods
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Navigation with Submenus */}

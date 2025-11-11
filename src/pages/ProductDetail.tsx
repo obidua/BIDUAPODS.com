@@ -196,7 +196,7 @@ const ProductDetail: React.FC = () => {
             <span>Back to Catalogue</span>
           </Link>
           
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-brand-gradient-rtl mb-4">
             {product.name}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
@@ -255,7 +255,7 @@ const ProductDetail: React.FC = () => {
                   <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-700/30 rounded-lg">
                     <div className="text-center">
                       <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Product SKU</div>
-                      <div className="font-mono text-sm text-gray-900 dark:text-white font-bold">{product.id}</div>
+                      <div className="font-mono text-sm font-bold text-brand-gradient">{product.id}</div>
                     </div>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ const ProductDetail: React.FC = () => {
             >
               {/* Key Features */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <h2 className="text-2xl font-extrabold text-brand-gradient mb-6 flex items-center">
                   <Star className="h-6 w-6 text-cyan-400 mr-3" />
                   Key Features
                 </h2>
@@ -318,7 +318,7 @@ const ProductDetail: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 flex items-center justify-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-gradient mb-4 flex items-center justify-center">
               <Layers className="h-8 w-8 text-cyan-400 mr-3" />
               Detailed Specifications
             </h2>

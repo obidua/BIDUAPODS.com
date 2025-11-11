@@ -27,7 +27,7 @@ const About: React.FC = () => {
       <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-cyan-50/40 dark:from-gray-950 dark:via-blue-900/30 dark:to-cyan-900/40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'var(--svg-background-pattern)' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-brand-gradient-rtl mb-6">
             About <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">BIDUA</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -54,7 +54,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-brand-gradient mb-6">Our Mission</h2>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                 At BIDUA, we believe that quality sleep is the foundation of human performance and well-being. 
                 As both a manufacturer and importer, our mission is to revolutionize the way people rest by creating 
@@ -82,7 +82,7 @@ const About: React.FC = () => {
       <section className="py-20 bg-gray-50/70 dark:bg-gray-900/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Values</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-gradient mb-4">Our Values</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
