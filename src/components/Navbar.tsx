@@ -153,19 +153,12 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Navbar */}
-      <nav className="md:hidden fixed top-0 left-0 right-0 w-full z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-gray-100 dark:border-cyan-500/30">
-        <div className="px-4 py-3 flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <Bed className="h-7 w-7 text-cyan-500 group-hover:text-cyan-400" />
-            <span className="text-lg font-bold text-gray-900 dark:text-white">
-              BIDUA
-            </span>
-          </Link>
-
+      {/* Mobile Navbar - Hidden, only show menu dropdown when opened */}
+      <nav className="md:hidden fixed top-0 left-0 right-0 w-full z-50 pointer-events-none">
+        <div className="pointer-events-auto">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            className="fixed top-4 right-4 z-50 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-md"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -179,7 +172,7 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-16 left-0 w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg border-b border-gray-200 dark:border-cyan-500/20 max-h-[calc(100vh-120px)] overflow-y-auto pb-24"
+              className="absolute top-0 left-0 w-full bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg border-b border-gray-200 dark:border-cyan-500/20 max-h-[calc(100vh-80px)] overflow-y-auto pb-24"
             >
               <div className="px-4 py-4 space-y-2">
                 {mainNavItems.map((item, idx) => (
@@ -334,8 +327,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Spacer for fixed navbar */}
-      <div className="h-16"></div>
+      {/* Spacer for fixed navbar - Desktop only */}
+      <div className="hidden md:block h-16"></div>
 
       {/* Spacer for mobile bottom nav */}
       <div className="md:hidden h-20"></div>
