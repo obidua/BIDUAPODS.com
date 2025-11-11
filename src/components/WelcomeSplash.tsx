@@ -10,7 +10,7 @@ const WelcomeSplash: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [logoIn, setLogoIn] = useState(false);
   const [showText, setShowText] = useState(false);
   const [typed, setTyped] = useState('');
-  const fullText = 'BIDUA Beds';
+  const fullText = 'BIDUA Sleeping Pods';
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
