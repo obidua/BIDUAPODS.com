@@ -180,6 +180,7 @@ const SeriesDetail: React.FC = () => {
                 className="w-full h-64 sm:h-80 md:h-96"
                 autoPlay={true}
                 interval={5000}
+                alt={`${series.name} capsule bed series`}
               />
             </motion.div>
           </div>

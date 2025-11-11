@@ -101,6 +101,32 @@ const ProductDetail: React.FC = () => {
 
   const currentSpecs = additionalSpecs[product.id as keyof typeof additionalSpecs] || additionalSpecs['galaxy-single'];
 
+  // Breadcrumb structured data
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://biduapods.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://biduapods.com/catalogue"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": `https://biduapods.com/products/${product.id}`
+      }
+    ]
+  };
+
   // Generate structured data for the product
   const productStructuredData = {
     "@context": "https://schema.org",
@@ -114,7 +140,7 @@ const ProductDetail: React.FC = () => {
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "BIDUA Industries PvLtd"
+      "name": "BIDUA Industries Pvt Ltd"
     },
     "offers": {
       "@type": "Offer",
@@ -156,7 +182,7 @@ const ProductDetail: React.FC = () => {
         ogTitle={`${product.name} | BIDUA Pods`}
         ogDescription={`${product.description} Price: ${product.price}. Contact for delivery and installation.`}
         ogImage={product.images.find(img => !img.toLowerCase().endsWith('.mp4')) || "https://biduapods.com/image.png"}
-        structuredData={productStructuredData}
+        structuredData={[breadcrumbSchema, productStructuredData]}
       />
       <div className="min-h-screen bg-white/70 dark:bg-gray-900/70">
       {/* Header */}
@@ -195,6 +221,7 @@ const ProductDetail: React.FC = () => {
                   className="w-full h-64 sm:h-80 md:h-96"
                   autoPlay={false}
                   interval={5000}
+                  alt={product.name}
                 />
                 <div className="p-6">
                   <div className="flex items-center justify-between">

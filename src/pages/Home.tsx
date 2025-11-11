@@ -17,7 +17,8 @@ const Home: React.FC = () => {
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "BIDUA Pods",
+    "name": "BIDUA Industries Pvt Ltd",
+    "alternateName": "BIDUA Pods",
     "url": "https://biduapods.com/",
     "logo": "https://biduapods.com/image.png",
     "description": "Leading manufacturer and importer of premium capsule beds and sleeping pods for commercial applications",
@@ -26,17 +27,80 @@ const Home: React.FC = () => {
       "streetAddress": "NOIDA",
       "addressLocality": "Noida",
       "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
       "addressCountry": "IN"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-9512921903",
       "contactType": "sales",
-      "email": "biduaindustries@gmail.com"
+      "email": "biduaindustries@gmail.com",
+      "availableLanguage": ["en", "hi"]
     },
     "sameAs": [
       "https://wa.me/919512921903"
     ]
+  };
+
+  const localBusinessData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BIDUA Industries Pvt Ltd",
+    "image": "https://biduapods.com/image.png",
+    "description": "Premium capsule beds and sleeping pods manufacturer and supplier in Noida, India. Specializing in hotel-grade sleeping solutions for hostels, airports, offices, and hospitals.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.5355,
+      "longitude": 77.3910
+    },
+    "url": "https://biduapods.com",
+    "telephone": "+91-9512921903",
+    "email": "biduaindustries@gmail.com",
+    "priceRange": "₹₹₹",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Capsule Beds and Sleeping Pods",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Premium Capsule Beds"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Sleeping Pods for Hotels"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Airport Sleeping Pods"
+          }
+        }
+      ]
+    }
   };
 
   const websiteData = {
@@ -79,7 +143,7 @@ const Home: React.FC = () => {
         ogTitle="BIDUA Pods | Premium Capsule Beds & Sleeping Pods"
         ogDescription="Premium capsule beds with intelligent LED controls, security features, and fresh-air ventilation. Factory-direct pricing from manufacturer."
         ogImage="https://biduapods.com/image.png"
-        structuredData={[organizationData, websiteData]}
+        structuredData={[organizationData, localBusinessData, websiteData]}
       />
       <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
       {/* Image Slider Section */}
@@ -94,6 +158,8 @@ const Home: React.FC = () => {
           className="w-full h-full"
           autoPlay={false}
           interval={6000}
+          alt="BIDUA Pods capsule beds showcase - Premium sleeping pod solutions for hotels, airports, and offices"
+          priority={true}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-cyan-50/5 to-blue-50/5 dark:from-gray-950/10 dark:via-blue-900/5 dark:to-cyan-900/5"></div>
       </motion.section>

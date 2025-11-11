@@ -36,6 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="w-full h-48 sm:h-56 md:h-64"
           autoPlay={false}
           interval={6000}
+          alt={`${product.name} - Premium capsule bed`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none"></div>
         

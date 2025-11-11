@@ -8,13 +8,17 @@ interface ImageSliderProps {
   autoPlay?: boolean;
   interval?: number;
   className?: string;
+  alt?: string; // Alt text for images
+  priority?: boolean; // If true, skip lazy loading (for above-fold images)
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ 
   images, 
   autoPlay = false, 
-  interval = 4000,
-  className = ""
+  interval = 3000, 
+  className = '',
+  alt = "Product image",
+  priority = false // Default to lazy loading
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
@@ -196,8 +200,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               <>
                 <motion.img
                   src={images[currentIndex]}
-                  alt={`Slide ${currentIndex + 1}`}
+                  alt={`${alt} - Image ${currentIndex + 1} of ${images.filter(img => !isVideo(img)).length}`}
                   className="w-full h-full object-contain hover:scale-102 transition-transform duration-200 block"
+                  loading={priority ? "eager" : "lazy"}
                   whileHover={{ scale: 1.02 }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -211,9 +216,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   </div>
                 </div>
               </>
-            )}
-          </motion.div>
-        </AnimatePresence>
+            )
+          }
+        </motion.div>
+      </AnimatePresence>
 
         {/* Play Button Overlay for Videos */}
         {isCurrentMediaVideo() && isPaused && (
