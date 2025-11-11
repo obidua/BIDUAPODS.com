@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, Suspense, useState } from 'react';
+import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -71,8 +71,8 @@ function App() {
         <Navbar />
         <WhatsAppButton />
         <PWAInstallPrompt />
-        <div className="min-h-screen bg-white/70 dark:bg-gray-950/80 transition-colors duration-500 relative z-20">
-          <main className="pt-16">
+        <div className="min-h-screen md:bg-white/70 dark:md:bg-gray-950/80 transition-colors duration-500 relative z-20">
+          <main className="pt-0 md:pt-16 pb-0 md:pb-0">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
