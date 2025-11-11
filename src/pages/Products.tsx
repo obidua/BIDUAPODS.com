@@ -196,24 +196,45 @@ const Products: React.FC = () => {
               ))}
             </div>
 
-            {/* Product Details */}
+            {/* Mobile Series Toggle - Moved inside grid */}
+            {isSeriesPanelOpen && (
+              <div className="lg:hidden col-span-full mb-4 space-y-2">
+                {productSeries.map((series, index) => (
+                  <motion.button
+                    key={series.id}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    onClick={() => {
+                      setSelectedSeries(series);
+                      setIsSeriesPanelOpen(false);
+                    }}
+                    className={`w-full text-left p-3 rounded-lg transition-all duration-300 text-sm ${
+                      selectedSeries.id === series.id
+                       ? 'bg-gradient-to-r from-cyan-100/50 to-blue-100/50 dark:from-cyan-500/20 dark:to-blue-600/20 border border-cyan-400'
+                       : 'bg-gray-50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                    }`}
+                  >
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{series.name}</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-xs mt-1">{series.description}</p>
+                  </motion.button>
+                ))}
+              </div>
+            )}
+
             {/* Mobile Toggle Button */}
-            <div className="lg:hidden mb-4">
+            <div className="lg:hidden col-span-full mb-4">
               <button
                 onClick={() => setIsSeriesPanelOpen(!isSeriesPanelOpen)}
                 className="w-full bg-white dark:bg-gray-800/50 border border-gray-300 dark:border-cyan-500/20 rounded-xl p-4 flex items-center justify-between hover:border-cyan-400/40 transition-all duration-300"
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-                  <span className="font-semibold text-gray-900 dark:text-white">
-                    {isSeriesPanelOpen ? 'Hide Series List' : `Selected: ${selectedSeries.name}`}
+                  <span className="font-semibold text-gray-900 dark:text-white text-sm">
+                    {isSeriesPanelOpen ? 'Hide Series' : `Select: ${selectedSeries.name}`}
                   </span>
                 </div>
-                <div className={`transform transition-transform duration-200 ${isSeriesPanelOpen ? 'rotate-180' : ''}`}>
-                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isSeriesPanelOpen ? 'rotate-180' : ''}`} />
               </button>
             </div>
 
